@@ -1,6 +1,10 @@
+import Logo from "../Shared/Logo"
+
 const Nav = () => {
   return (
-    <div className="bg-amber-200">Nav</div>
+    <div className="flex items-center px-6">
+        <Logo/>
+    </div>
   )
 }
 export default Nav
