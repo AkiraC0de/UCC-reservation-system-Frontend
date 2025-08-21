@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --color-black-text: rgb(48, 49, 53);
+}
+
+
 :root {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,7 +16,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@theme {
-
-  --color-black-text: rgb(48, 49, 53);
+.bg-green-gradient{
+  background: linear-gradient(90deg,rgba(57, 155, 42, 1) 0%, rgba(136, 199, 87, 1) 50%, rgba(237, 221, 83, 1) 100%);
 }
