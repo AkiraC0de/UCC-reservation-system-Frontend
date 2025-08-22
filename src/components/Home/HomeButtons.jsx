@@ -2,7 +2,7 @@ import PrimaryButton from "../Shared/PrimaryButton"
 
 const HomeButtons = () => {
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-10 mt-[10%]">
         <PrimaryButton>
             Reserve Classroom
         </PrimaryButton>
