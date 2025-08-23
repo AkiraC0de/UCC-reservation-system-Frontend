@@ -20,3 +20,30 @@
 .bg-green-gradient{
   background: linear-gradient(332deg,rgba(57, 155, 42, 1) 0%, rgba(136, 199, 87, 1) 65%, rgba(237, 221, 83, 1) 100%);
 }
+
+@keyframes cloud {
+  from{
+    transform: translateX(0);
+    opacity: 0%;
+  }
+  5%{
+    opacity: 90%;
+  }
+  to{
+    transform: translateX(860%);
+  }
+}
+
+.anim-cloud-1 {
+  animation: cloud 44s infinite;
+}
+
+.anim-cloud-2 {
+  animation: cloud 44s infinite;
+  animation-delay: 5s;
+}
+
+.anim-cloud-3 {
+  animation: cloud 44s infinite;
+  animation-delay: 10s;
+}

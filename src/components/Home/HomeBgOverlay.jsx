@@ -1,28 +1,30 @@
+import Cloud from "../Shared/Cloud"
+
 const HomeBgOverlay = () => {
   return (
     <div className="overflow-hidden bg-gray-200/50 w-3/5 aspect-square rounded-full absolute -z-10 -top-[40%] -right-[10%]">
+          <Cloud width="19%" color="#84d1fa" bottom="51%" anim="anim-cloud-1" index="4"/>
+          <Cloud width="18%" color="#5eb0db" bottom="53%" anim="anim-cloud-3" index="3"/>
+          <Cloud width="16%" color="#72bae0" bottom="52%" anim="anim-cloud-2" index="2"/>
+          <Cloud width="14%" color="#61a8cf" bottom="54%" anim="anim-cloud-1" index="1"/>
+          <Cloud width="12%" color="#569abf" bottom="53%" anim="anim-cloud-3" index="1"/>
+
+          <Cloud width="19%" color="#84d1fa" bottom="52%" anim="anim-cloud-3" index="4"/>
+          <Cloud width="18%" color="#5eb0db" bottom="54%" anim="anim-cloud-1" index="3"/>
+          <Cloud width="16%" color="#72bae0" bottom="51%" anim="anim-cloud-3" index="2"/>
+          <Cloud width="14%" color="#61a8cf" bottom="52%" anim="anim-cloud-3" index="1"/>
+          <Cloud width="12%" color="#569abf" bottom="54%" anim="anim-cloud-2" index="1"/>
       <svg 
-      className="absolute bottom-1/2 translate-y-1/2 left-[6%]"
-      width="100px" 
-      height="100px" 
-      viewBox="0 0 24 24" 
-      fill="#5ab5fa" 
-      xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#clip0_15_50)">
-        <path d="M6.5 18H13H19C20.6961 17.7573 22 16.2632 22 14.5C22 12.7096 20.6556 11.2331 18.9212 11.0251C18.4555 8.175 15.9818 6 13 6C10.7118 6 8.72277 7.2809 7.71081 9.1648C7.32556 9.0574 6.91949 9 6.5 9C4.01472 9 2 11.0147 2 13.5C2 15.9853 4.01472 18 6.5 18Z" stroke="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-      </svg>
-      <svg 
-        className="absolute bottom-[24%] translate-y-1/2 left-1/2 -translate-x-1/2 aspect-square w-full"
+        className="absolute z-10 bottom-[24%] translate-y-1/2 left-1/2 -translate-x-1/2 aspect-square w-full"
         fill="#ffffff" 
         version="1.1" 
         id="Capa_1" 
         xmlns="http://www.w3.org/2000/svg" 
-        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        xmlnsXlink="http://www.w3.org/1999/xlink" 
         width="600px" 
         height="600px" 
         viewBox="0 0 962 962" 
-        xml:space="preserve">
+        xmlSpace="preserve">
         <g>
           <g>
             <path d="M959.1,404.35l-37.6-35.8c-3.9-3.9-10.3-3.9-14.2,0l-37.6,35.8c-1.9,1.899-2.9,4.399-2.9,7.1v178.5c0,5.5-4.5,10-10,10
