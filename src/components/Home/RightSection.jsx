@@ -1,6 +1,9 @@
+import HomeCard from "./HomeCard"
+
 const RightSection = ({children}) => {
   return (
-    <section>
+    <section className="flex px-6">
+      <HomeCard/>
         {children}
     </section>
   )

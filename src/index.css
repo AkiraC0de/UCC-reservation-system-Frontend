@@ -30,20 +30,20 @@
     opacity: 90%;
   }
   to{
-    transform: translateX(860%);
+    transform: translateX(850%);
   }
 }
 
 .anim-cloud-1 {
-  animation: cloud 44s infinite;
+  animation: cloud 120s infinite;
 }
 
 .anim-cloud-2 {
-  animation: cloud 44s infinite;
-  animation-delay: 5s;
+  animation: cloud 120s infinite;
+  animation-delay: 7s;
 }
 
 .anim-cloud-3 {
-  animation: cloud 44s infinite;
-  animation-delay: 10s;
+  animation: cloud 120s infinite;
+  animation-delay: 15s;
 }
