@@ -1,4 +1,4 @@
-const HomeCard = ({fill = "white", width = "80px", value = 0, label = "Card Label", background, svg}) => {
+const HomeCard = ({fill = "white", width = "80px", value = 0, label = "Card Label", background, Icon}) => {
   const cardStyle = {
     background: background
   }
@@ -12,7 +12,7 @@ const HomeCard = ({fill = "white", width = "80px", value = 0, label = "Card Labe
         <div 
           className=""
           style={svgStyle}>
-          {svg}
+          {<Icon/>}
         </div>
         <div className="flex flex-col items-end">
           <h3 
