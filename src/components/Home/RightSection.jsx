@@ -22,7 +22,6 @@ const RightSection = ({children}) => {
           Icon={ProjectorIcon}
         />
       </HomeCardContainer>
-        {children}
     </section>
   )
 }
