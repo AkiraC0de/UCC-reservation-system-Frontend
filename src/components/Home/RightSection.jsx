@@ -26,8 +26,8 @@ const RightSection = ({children}) => {
       </HomeCardContainer>
       <HomeCardContainer up>
          <HomeCard
-          label="Television Available"
-          width="70px"
+          label="TV Available"
+          width="50px"
           value={1}
           background="linear-gradient(182deg, rgba(35, 235, 166, 1) 27%,rgba(49, 182, 67, 1) 100%)"
           fill="white"

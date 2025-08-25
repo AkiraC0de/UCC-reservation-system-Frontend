@@ -7,7 +7,7 @@ const HomeCard = ({children, fill = "white", width = "80px", value = 0, label = 
     fill: fill
   }
   return (
-    <div className="flex gap-1 items-start flex-col relative justify-center rounded-2xl h-fit bg-white p-4 shadow-xl"
+    <div className="flex gap-1 items-start flex-col relative` justify-center relative rounded-2xl h-fit bg-white p-4 shadow-xl"
         style={cardStyle}>
         <div 
           className=""
