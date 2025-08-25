@@ -3,6 +3,7 @@ import HomeCardContainer from "./HomeCardContainer"
 import ClassroomIcon from "../Shared/Icons/ClassroomIcon"
 import ProjectorIcon from "../Shared/Icons/ProjectorIcon"
 import TelevisionIcon from "../Shared/Icons/TelevisionIcon"
+import Banner from "../Shared/Banner"
 
 const RightSection = ({children}) => {
   return (
@@ -31,7 +32,9 @@ const RightSection = ({children}) => {
           background="linear-gradient(182deg, rgba(35, 235, 166, 1) 27%,rgba(49, 182, 67, 1) 100%)"
           fill="white"
           Icon={TelevisionIcon}
-         />
+         >
+          <Banner label="NEW" background="#08adff"/>
+          </HomeCard>
       </HomeCardContainer>
     </section>
   )
