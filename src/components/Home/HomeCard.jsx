@@ -1,4 +1,4 @@
-const HomeCard = ({fill = "white", width = "80px", value = 0, label = "Card Label", background, Icon}) => {
+const HomeCard = ({children, fill = "white", width = "80px", value = 0, label = "Card Label", background, Icon}) => {
   const cardStyle = {
     background: background
   }
@@ -23,6 +23,7 @@ const HomeCard = ({fill = "white", width = "80px", value = 0, label = "Card Labe
             {label}
           </h2>
         </div>
+        {children}
     </div>
   )
 }

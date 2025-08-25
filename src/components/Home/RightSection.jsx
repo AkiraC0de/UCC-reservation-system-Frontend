@@ -1,7 +1,8 @@
 import HomeCard from "./HomeCard"
 import HomeCardContainer from "./HomeCardContainer"
-import ClassroomIcon from "../Shared/ClassroomIcon"
-import ProjectorIcon from "../Shared/ProjectorIcon"
+import ClassroomIcon from "../Shared/Icons/ClassroomIcon"
+import ProjectorIcon from "../Shared/Icons/ProjectorIcon"
+import TelevisionIcon from "../Shared/Icons/TelevisionIcon"
 
 const RightSection = ({children}) => {
   return (
@@ -21,6 +22,16 @@ const RightSection = ({children}) => {
           background="linear-gradient(10deg, rgba(235, 112, 36, 1) 35%,rgba(255, 238, 92, 1) 100%)"
           Icon={ProjectorIcon}
         />
+      </HomeCardContainer>
+      <HomeCardContainer up>
+         <HomeCard
+          label="Television Available"
+          width="70px"
+          value={1}
+          background="linear-gradient(182deg, rgba(35, 235, 166, 1) 27%,rgba(49, 182, 67, 1) 100%)"
+          fill="white"
+          Icon={TelevisionIcon}
+         />
       </HomeCardContainer>
     </section>
   )
