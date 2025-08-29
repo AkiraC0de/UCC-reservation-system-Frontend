@@ -5,7 +5,7 @@ const PatternedDot = ({style, color1 = "white", color2 = "white", color3 = "whit
         version="1.1" 
         xmlns="http://www.w3.org/2000/svg" 
         xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-        viewBox="0 0 2560 1600" enable-background="new 0 0 2560 1600" 
+        viewBox="0 0 2560 1600" enableBackground="new 0 0 2560 1600" 
         xmlSpace="preserve">
     <pattern  width="300" height="300" patternUnits="userSpaceOnUse" id="Polka_Dot_Pattern" viewBox="0 -300 300 300" overflow="visible">
         <g>
