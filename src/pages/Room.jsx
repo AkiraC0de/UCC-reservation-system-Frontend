@@ -6,7 +6,8 @@ const Room = () => {
   const [isNavOpen, setIsNavOpen] = useState(true)
 
   return (
-    <main className={`grid px-10 gap-6 transition-all duration-500`}>
+    <main className={`grid ${isNavOpen ? 'grid-cols-[280px_1fr]' : 'grid-cols-[60px_1fr]'} px-10 gap-6 transition-all duration-500`}>
+      <RoomNav/>
       <ModelPlatform/>
     </main>
   )

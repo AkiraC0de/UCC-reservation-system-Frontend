@@ -1,6 +1,9 @@
+import PatternedDot from "../Shared/Icons/PatternedDot"
+
 const NorthCongressModel = ({style}) => {
   return (
     <div className={style}>
+      
       <img 
         className="w-full drop-shadow-lg"
         src="/campus/north_congress/uccCongressModel.png" 
@@ -17,6 +20,11 @@ const NorthCongressModel = ({style}) => {
         <rect width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath2)" />
         <rect width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath1)" />
       </svg>
+
+      {/* <div className="blob-1 w-[90%] translate-y-1/2 aspect-square absolute bottom-1/2 -z-10 -right-12 bg-green-400/90"></div> */}
+      <PatternedDot style="absolute w-4/10 bottom-0 -right-8 -z-9" color1="green"/>
+      <PatternedDot style="absolute w-4/10 top-17 left-30 -z-9 rotate-90" />
+      <div className="w-full h-1/15 bg-green-600/90 -right-2 shadow-xl shadow-black/20 -z-1 absolute bottom-18 rounded-[80%]"></div>
     </div>
   )
 }

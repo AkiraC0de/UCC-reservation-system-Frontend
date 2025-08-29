@@ -2,12 +2,8 @@ import NorthCongressModel from "./NorthCongressModel"
 
 const ModelPlatform = () => {
   return (
-    <div className=" flex justify-center flex-col items-center">
-        <div className="flex justify-end">
-          <NorthCongressModel style="w-[68%] relative"/> 
-          
-        </div>
-        <div className="bg-green-500 w-screen h-33 absolute bottom-0 right-1/2 translate-x-1/2"></div>
+    <div className=" flex justify-center flex-col items-center relative">
+        <NorthCongressModel style="min-w-100 w-[70%] absolute bottom-[0] right-10 z-20 -translate-y-[20%]"/> 
     </div>
   )
 }
