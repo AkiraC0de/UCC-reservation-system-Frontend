@@ -1,6 +1,20 @@
+import { useState } from "react"
 import PatternedDot from "../Shared/Icons/PatternedDot"
 
+// THIS MODEL USES STATES TO HANDLE THE TEXT HOVERED DUE TO SVG LIMITATIONS
+// HOVER THIS METHOD REQUIRES MORE EVENT CHECKER
+
 const NorthCongressModel = ({style}) => {
+  const [leftWingHovered, setLeftWingHovered] = useState(false)
+  const [rightWingHovered, setRightWingHovered] = useState(false)
+
+  const handleLeftWingHovered = () => {
+    setLeftWingHovered(prev => !prev)
+  }
+
+  const handleRightWingHovered = () => {
+    setRightWingHovered(prev => !prev)
+  }
   return (
     <div className={style}>
       
@@ -17,9 +31,17 @@ const NorthCongressModel = ({style}) => {
         <clipPath id="clipPath2" clipPathUnits="objectBoundingBox">
           <polygon points="0.380 0.258, 0.780 0.09, 0.905 0.141, 0.961 0.267, 0.940 0.277, 0.940 0.760, 0.411 0.766, 0.410 0.290, 0.377 0.258"></polygon>
         </clipPath>
-        <rect width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath2)" />
-        <rect width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath1)" />
+        <rect onMouseEnter={handleRightWingHovered} onMouseLeave={handleRightWingHovered} width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath2)" />
+        <rect onMouseEnter={handleLeftWingHovered} onMouseLeave={handleLeftWingHovered} width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20 " clipPath="url(#clipPath1)" />
       </svg>
+
+      { rightWingHovered && 
+        <span className="anim-fade-in-top absolute top-4 right-50 bg-orange-500 text-white font-semibold px-3 py-1 text-xs rounded-2xl">Right Wing</span>
+      }
+
+      { leftWingHovered && 
+        <span className="anim-fade-in-top absolute top-20 left-24 bg-orange-500 text-white font-semibold px-3 py-1 text-xs rounded-2xl">Left Wing</span>
+      }
 
       {/* <div className="blob-1 w-[90%] translate-y-1/2 aspect-square absolute bottom-1/2 -z-10 -right-12 bg-green-400/90"></div> */}
       <PatternedDot style="absolute w-4/10 bottom-0 -right-8 -z-9" color1="green"/>
