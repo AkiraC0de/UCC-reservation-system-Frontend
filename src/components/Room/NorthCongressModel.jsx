@@ -2,7 +2,7 @@ import { useState } from "react"
 import PatternedDot from "../Shared/Icons/PatternedDot"
 
 // THIS MODEL USES STATES TO HANDLE THE TEXT HOVERED DUE TO SVG LIMITATIONS
-// HOVER THIS METHOD REQUIRES MORE EVENT CHECKER
+// HOWEVER THIS METHOD REQUIRES MORE EVENT CHECKER
 
 const NorthCongressModel = ({style}) => {
   const [leftWingHovered, setLeftWingHovered] = useState(false)
@@ -31,8 +31,8 @@ const NorthCongressModel = ({style}) => {
         <clipPath id="clipPath2" clipPathUnits="objectBoundingBox">
           <polygon points="0.380 0.258, 0.780 0.09, 0.905 0.141, 0.961 0.267, 0.940 0.277, 0.940 0.760, 0.411 0.766, 0.410 0.290, 0.377 0.258"></polygon>
         </clipPath>
-        <rect onMouseEnter={handleRightWingHovered} onMouseLeave={handleRightWingHovered} width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath2)" />
-        <rect onMouseEnter={handleLeftWingHovered} onMouseLeave={handleLeftWingHovered} width="100%" height="100%" className="opacity-0 hover:opacity-50 z-20 " clipPath="url(#clipPath1)" />
+        <rect onMouseEnter={handleRightWingHovered} onMouseLeave={handleRightWingHovered} width="100%" height="100%" className="cursor-pointer opacity-0 hover:opacity-50 z-20" clipPath="url(#clipPath2)" />
+        <rect onMouseEnter={handleLeftWingHovered} onMouseLeave={handleLeftWingHovered} width="100%" height="100%" className="cursor-pointer opacity-0 hover:opacity-50 z-20 " clipPath="url(#clipPath1)" />
       </svg>
 
       { rightWingHovered && 
