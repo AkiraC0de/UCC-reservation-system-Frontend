@@ -1,20 +1,21 @@
 import { useState } from "react"
+import Option from "./Option"
 
-const Select = ({ label, children }) => {
+const Select = ({ label, options = [], value, handleValue }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div
       id="select"
-      className="overflow-hidden grid transition-all duration-500"
+      className="overflow-hidden grid transition-all duration-500 gap-2"
     >
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex items-center justify-between px-1.5 py-1 rounded-2xl border-2 cursor-pointer"
       >
-        <label htmlFor="#select" className="text-sm ml-2 w-full overflow-ellipsis text-start">
-          {label}
-        </label>
+        <span className="text-sm ml-2 w-full overflow-ellipsis text-start">
+          {value || label}
+        </span>
         <svg
           className={`${isOpen ? "-rotate-90" : "rotate-90"} duration-500 transition-all`}
           width="30px"
@@ -30,9 +31,18 @@ const Select = ({ label, children }) => {
         </svg>
       </button>
 
-      {/* This row grows/shrinks */}
-      <div className={`overflow-hidden transition-all duration-600 ${isOpen ? "max-h-60" : "max-h-0"}`}>
-        {children} a
+      <div className={`overflow-hidden transition-all duration-600 ${isOpen ? "max-h-60" : "max-h-0"} flex flex-col items-start`}>
+        {options.map(option => (
+          <Option
+            key={option.label}
+            onClick={() => {
+              handleValue(option.value || option.label)
+              setIsOpen(false)
+            }}
+          >
+            {option.label}
+          </Option>
+        ))}
       </div>
     </div>
   )
