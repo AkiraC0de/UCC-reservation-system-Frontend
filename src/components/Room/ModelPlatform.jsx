@@ -1,20 +1,27 @@
 import useRoom from "../../hooks/useRoom"
-import NorthCongressModel from "./NorthCongressModel"
+import LeftWing from "./LeftWing"
+import NorthCongressModel from "./NorthCongressModel" 
+import Stage1 from "./ModelStages/Stage1"
+import Stage2 from "./ModelStages/Stage2"
 
-const ModelPlatform = () => {
+const renderStage = () => {
   const {stage} = useRoom()
 
+  switch (stage) {
+    case 1:
+      return <Stage1/>
+    case 2:
+      return <Stage2/>
+    default:
+      return <p>NOTHING</p>
+  }
+}
+
+
+const ModelPlatform = () => {
   return (
-    <div className=" flex justify-center flex-col items-center relative">
-        {
-          stage == 1 ?
-          <>
-            <h1 className="z-60 absolute top-2 font-bold text-2xl tracking-wider capitalize text-black-text">- SELECT A BUILDING -</h1>
-            <NorthCongressModel style="min-w-100 w-164 absolute bottom-[0] right-1/10 z-20 -translate-y-[20%]"/>
-          </> 
-          :
-          "NOTHING"
-        }
+    <div className=" flex justify-center flex-col items-center relative cube-wrap">
+        {renderStage()}
     </div>
   )
 }
