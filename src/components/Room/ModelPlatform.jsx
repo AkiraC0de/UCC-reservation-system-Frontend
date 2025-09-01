@@ -1,6 +1,4 @@
 import useRoom from "../../hooks/useRoom"
-import LeftWing from "./LeftWing"
-import NorthCongressModel from "./NorthCongressModel" 
 import Stage1 from "./ModelStages/Stage1"
 import Stage2 from "./ModelStages/Stage2"
 
