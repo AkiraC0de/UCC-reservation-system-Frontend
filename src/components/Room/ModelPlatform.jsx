@@ -13,7 +13,7 @@ const renderStage = () => {
     case 2:
       return <Stage2/>
     default:
-      return <p>NOTHING</p>
+      return <p>Error! Please Reset</p>
   }
 }
 
