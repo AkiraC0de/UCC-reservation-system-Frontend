@@ -7,7 +7,7 @@ const Stage1 = () => {
         - SELECT A BUILDING -
         </h1>
         <NorthCongressModel 
-        style="anim-fade-in-top min-w-100 w-164 absolute bottom-0 right-1/10 z-20 -translate-y-[20%]"
+        style="anim-fade-in-top min-w-100 w-[70%] absolute bottom-1/2 right-1/10 z-20  translate-y-[50%]"
         />
     </>
   )
