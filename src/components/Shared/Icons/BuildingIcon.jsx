@@ -4,7 +4,7 @@ const BuildingIcon = ({className}) => {
         className={className}
         width="40px"  
         viewBox="0 0 16 16" 
-        fill="none" 
+        fill="#374254" 
         xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M14 0H2V16H6V12H10V16H14V0ZM5 3H7V5H5V3ZM7 7H5V9H7V7ZM9 3H11V5H9V3ZM11 7H9V9H11V7Z"/>
     </svg>

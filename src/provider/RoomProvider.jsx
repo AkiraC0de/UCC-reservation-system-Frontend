@@ -6,10 +6,15 @@ const RoomProvider = ({children}) => {
 
     const [isNavOpen, setIsNavOpen] = useState(true)
     const [building, setBuilding] = useState(null)
+    const [floor, setFloor] = useState(1)
 
     const handleBuilding = (val) => {
       setBuilding(val)
       setStage(2)
+    }
+
+    const handleFloor = (val) => {
+      setFloor(val)
     }
 
     const HandleNavOpen = () => {
@@ -25,6 +30,7 @@ const RoomProvider = ({children}) => {
         stage, handleStage,
         isNavOpen, HandleNavOpen,
         building, handleBuilding,
+        floor, handleFloor
         }}>
         {children}
     </RoomContext.Provider>

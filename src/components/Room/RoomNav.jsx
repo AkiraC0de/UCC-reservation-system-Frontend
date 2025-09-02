@@ -3,10 +3,11 @@ import BuildingIcon from "../Shared/Icons/BuildingIcon"
 import Option from "../Shared/Option"
 import Select from "../Shared/Select"
 import RoomControl from "./RoomControl"
+import RoomFloorNav from "./RoomFloorNav"
 import RoomNavHeader from "./RoomNavHeader"
 
 const RoomNav = () => {
-  const {building, handleBuilding, isNavOpen} = useRoom()
+  const {building, handleBuilding, isNavOpen, HandleNavOpen} = useRoom()
 
   return (
     <div className="z-100">
@@ -18,11 +19,13 @@ const RoomNav = () => {
           value={building}
           handleValue={handleBuilding}
           shrink={!isNavOpen}
+          shrinkHandler={HandleNavOpen}
           options={[
             {label: "Left Wing"},
             {label: "Right Wing"},
           ]}
         />
+        <RoomFloorNav/>
       </div>
     </div>
   )

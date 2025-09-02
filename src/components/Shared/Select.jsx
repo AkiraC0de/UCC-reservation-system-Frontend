@@ -1,8 +1,21 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Option from "./Option"
 
-const Select = ({ label, options = [], value, handleValue, Icon, shrink = false }) => {
+const Select = ({ label, options = [], value, handleValue, Icon, shrink = false, shrinkHandler }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const handleClick = () => {
+    if(shrink){
+      setIsOpen(true)
+      shrinkHandler(false)
+    } else {
+      setIsOpen((prev) => !prev)
+    }
+  }
+
+  useEffect(() => {
+    if(shrink) setIsOpen(false)
+  },[shrink])
 
   return (
     <div
@@ -10,10 +23,10 @@ const Select = ({ label, options = [], value, handleValue, Icon, shrink = false 
       className="overflow-hidden grid transition-all duration-500 gap-1"
     >
       <button
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={handleClick}
         className={`flex items-center ${shrink ? "justify-center" : "justify-between px-1.5"} py-0.5 rounded-2xl  cursor-pointer`}
       >
-        {<Icon className="fill-black-text w-7"/>}
+        {<Icon className=" w-7"/>}
 
         {
           shrink || 
