@@ -4,8 +4,7 @@ import RightWing from "../RightWing"
 
 const renderBuilding = () => {
   const { building } = useRoom()
-  console.log(building)
-
+  
   switch(building) {
     case "Left Wing" :
         return (<>

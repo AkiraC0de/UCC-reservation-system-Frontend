@@ -13,11 +13,13 @@ const CONGRESSIONAL_ROOMS_BTN = {
 export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
   {
     id: "stage1Locate",
+    stage: 1,
     label: "Locate",
     icon: LocateIcon
   },
   {
     id: "stage2Schedule",
+    stage: 3,
     label: "Schedule",
     icon: ScheduleIcon
   },
