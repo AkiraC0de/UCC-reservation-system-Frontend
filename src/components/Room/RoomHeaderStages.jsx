@@ -10,7 +10,7 @@ const RoomHeaderStages = () => {
   }, [])
 
   const isActive = (index) => {
-    return index == stage
+    return index <= stage
   }
 
   const isCompleted = (index) => {
@@ -18,7 +18,7 @@ const RoomHeaderStages = () => {
   }
 
   return (
-    <ul className="text-[11px] flex justify-between items-center font-meduim px-8 ">
+    <ul className="text-[11px] flex justify-between items-center font-meduim px-8 pt-5 pb-8">
       {
         CONGRESSIONAL_ROOM_PROGRESS_ITEMS.map((item, index) => (
           <>
@@ -27,14 +27,14 @@ const RoomHeaderStages = () => {
               className="flex flex-col justify-center items-center gap-1 w-12"
             >
               <item.icon 
-                className={`${isActive(item.stage) || isCompleted(item.stage) ? "fill-green-500" : "fill-black-text"} w-7 duration-300 transition-all`}/>
+                className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/60"} w-7 duration-300 transition-all`}/>
                 <h2
-                  className={`${isActive(item.stage) || isCompleted(item.stage) ? "text-green-500 font-semibold" : "text-black-text"} duration-300 transition-all`}
+                  className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "text-green-500 font-semibold" : "text-black-text/60"} duration-300 transition-all`}
                 >
                   {item.label}
                 </h2>
             </li>
-            { LAST_INDEX != index && <ProgressBar isActive={isActive(item.stage)} isCompleted={isCompleted(item.stage)}/>}
+            { LAST_INDEX != index && <ProgressBar isActive={isActive(item.stage)} isCompleted={isCompleted(item.stageEnd)}/>}
           </>
         )) 
       }
@@ -45,7 +45,7 @@ const RoomHeaderStages = () => {
 
 const ProgressBar = ({isActive, isCompleted}) => {
   return(
-    <div className="h-1 w-full bg-black-text relative rounded-4xl">
+    <div className="h-1 w-full bg-black-text/60 relative rounded-4xl">
       <div className={`${isActive ? "w-1/2 delay-300" : isCompleted ? "w-full" : "w-0"} duration-300 transition-all h-1 bg-green-400 absolute left-0 rounded-4xl`}></div>
     </div>
   )

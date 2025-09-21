@@ -2,6 +2,14 @@ import useRoom from "../../hooks/useRoom"
 import Stage1 from "./ModelStages/Stage1"
 import Stage2 from "./ModelStages/Stage2"
 
+const ModelPlatform = () => {
+  return (
+    <div className=" flex justify-start flex-col items-center relative cube-wrap pt-14">
+        {renderStage()}
+    </div>
+  )
+}
+
 const renderStage = () => {
   const {stage} = useRoom()
 
@@ -16,11 +24,4 @@ const renderStage = () => {
 }
 
 
-const ModelPlatform = () => {
-  return (
-    <div className=" flex justify-center flex-col items-center relative cube-wrap">
-        {renderStage()}
-    </div>
-  )
-}
 export default ModelPlatform

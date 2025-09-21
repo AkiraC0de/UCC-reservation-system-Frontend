@@ -14,6 +14,7 @@ export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
   {
     id: "stage1Locate",
     stage: 1,
+    stageEnd: 3,
     label: "Locate",
     icon: LocateIcon
   },
