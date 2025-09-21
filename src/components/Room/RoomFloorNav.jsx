@@ -37,7 +37,7 @@ const RoomFloorNav = () => {
         onClick={() => {handleFloor(prev => prev > 1 ? prev - 1 : prev)}}
         flipY
       />
-      <span className="mx-2 font-semibold text-gray-700 text-xl">{floor} Floor</span>
+      <span className="mx-2 font-semibold text-gray-700 text-xl">{floor} {isNavOpen && " Floor  "}</span>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import NavUser from "./NavUser.jsx"
 
 const Nav = () => {
   return (
-    <div className="flex items-center justify-between px-6">
+    <div className="flex items-center justify-between px-6 z-200">
         <Logo/>
         <NavItems/>
         <NavUser/>
