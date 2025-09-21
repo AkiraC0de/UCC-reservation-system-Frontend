@@ -1,5 +1,4 @@
-import { useCallback, useState } from "react"
-import RectCloudTxt from "../Shared/RectCloudTxt"
+
 
 const NorthCongressModelV2 = () => {
   return (
@@ -40,7 +39,7 @@ const ModelHoverOverlay = () => {
           "
           fill="transparent"
           stroke="black"
-          strokeWidth="0.003"
+          strokeWidth="0.002"
           className="hover:stroke-black/40 hover:fill-black/40 cursor-pointer"
         />
         <polygon
@@ -55,7 +54,7 @@ const ModelHoverOverlay = () => {
           "
           fill="transparent"
           stroke="black"
-          strokeWidth="0.003"
+          strokeWidth="0.002"
           className="hover:stroke-black/40 hover:fill-black/40 cursor-pointer"
         />
       </svg>
@@ -67,11 +66,12 @@ const BGoverlay = () => {
   return(
     <>
       <div className="cp-1 absolute top-80 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-120 z-20 cube-2 bg-green-gradient-2"></div>
-      <div className="absolute top-[30%] left-[18%]  w-70 h-9 z-20 cube-2 bg-green-gradient-2"></div>
+      <div className="absolute top-[32%] left-[14%]  w-70 h-9 z-20 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[9%] left-[24%]  w-50 h-5 z-20 cube-2 bg-green-gradient-2"></div>
-      <div className="absolute top-0 left-[70%]  w-180 h-22 z-19 cube-2 bg-green-gradient-2"></div>
+      <div className="absolute top-[4%] left-[70%]  w-180 h-22 z-19 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[12%] left-[60%]  w-100 h-10 -z-10 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[80%] left-[62%]  w-100 h-8 -z-10 cube-2 bg-green-gradient-2"></div>
+      <div className="absolute top-[20%] left-[42%]  w-80 h-4 -z-10 cube-2 bg-green-gradient-2"></div>
     </>
   )
 }
