@@ -4,21 +4,26 @@ import { useState } from "react";
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
 
-    const [isNavOpen, setIsNavOpen] = useState(true)
-    const [building, setBuilding] = useState(null)
-    const [floor, setFloor] = useState(1)
+    const [reservation, setReservation] = useState({
+      building: null,
+      floor: 1,
+    })
 
-    const handleBuilding = (val) => {
-      setBuilding(val)
-      setStage(2)
-    }
+    const handleReservation = (inputName, value) => {
+      const STAGES = {
+        building: 1,
+        floor: 2,
+        room: 3
+      }
+      setReservation(prev => (
+        {
+          ...prev,
+          [inputName]: value === undefined ? !prev[inputName] : value
+        }
+      ))
 
-    const handleFloor = (val) => {
-      setFloor(val)
-    }
-
-    const HandleNavOpen = () => {
-      setIsNavOpen(prev => !prev)
+      //Adjust the stage to proceed to the next options
+      setStage(STAGES[inputName] + 1 || 1)
     }
 
     const handleStage = (val) => {
@@ -28,9 +33,7 @@ const RoomProvider = ({children}) => {
   return (
     <RoomContext.Provider value={{
         stage, handleStage,
-        isNavOpen, HandleNavOpen,
-        building, handleBuilding,
-        floor, handleFloor
+        reservation, handleReservation,
         }}>
         {children}
     </RoomContext.Provider>

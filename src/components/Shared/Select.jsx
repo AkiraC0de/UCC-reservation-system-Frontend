@@ -13,7 +13,8 @@ const Select = ({
     shrink = false, 
     shrinkHandler, 
     isRequired,
-    handleRequiredTurnOff
+    valueAddress,
+    handleRequiredTurnOff = () => {}
     }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -81,8 +82,14 @@ const Select = ({
           <Option
             key={option.label}
             onClick={() => {
-              handleValue(option.value || option.label)
+              if(valueAddress){
+                handleValue(valueAddress, option.value || option.label)
+              }else{
+                handleValue(option.value || option.label)
+              }
+              
               setIsOpen(false)
+              handleRequiredTurnOff()
             }}
           >
             {option.label}
