@@ -1,15 +1,35 @@
 import { useEffect, useState } from "react"
 import Option from "./Option"
 
-const Select = ({ label, options = [], value, handleValue, Icon, shrink = false, shrinkHandler, placeholder }) => {
+const Select = ({ 
+    label, 
+    Icon, 
+    placeholder,
+    options = [],
+    unlock = true, 
+    handleLock = () => {},
+    value, 
+    handleValue,
+    shrink = false, 
+    shrinkHandler, 
+    isRequired,
+    handleRequiredTurnOff
+    }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
+    if(!unlock) {
+      handleLock()
+      return
+    }
+
     if(shrink){
       setIsOpen(true)
       shrinkHandler(false)
+      handleRequiredTurnOff()
     } else {
       setIsOpen((prev) => !prev)
+      handleRequiredTurnOff()
     }
   }
 
@@ -20,20 +40,20 @@ const Select = ({ label, options = [], value, handleValue, Icon, shrink = false,
   return (
     <div
       id="select"
-      className="grid transition-all duration-500 gap-1 border-1 border-black/40 rounded-lg pt-2 relative overflow-visible"
+      className={`${isRequired ? "border-red-500 anim-shake" : "border-black/40"} border-1 grid transition-all duration-500 gap-1 rounded-lg pt-2 relative overflow-visible`}
     >
-      <h3 className="text-xs absolute -top-2.5 left-2.5 px-2 bg-white z-20 text-black/40 font-medium">
+      <h3 className={`${isRequired ? "text-red-500" : "text-black/40"} text-xs absolute -top-2.5 left-2.5 px-2 bg-white z-20 font-medium`}>
         {label || "Dropdown"}
       </h3>
       <button
         onClick={handleClick}
         className={`flex items-center ${shrink ? "justify-center" : "justify-between px-1.5"} py-0.5 rounded-2xl  cursor-pointer`}
       >
-        {<Icon className=" w-7 fill-black/40"/>}
+        {<Icon className={`${isRequired ? "fill-red-600" : "fill-black/40"} w-`}/>}
 
         {
           shrink || 
-          <span className="text-sm ml-2 w-full overflow-ellipsis text-start text-black-text  ">
+          <span className={`${isRequired ? "text-red-500" : "text-black-text"} text-sm ml-2 w-full overflow-ellipsis text-start `}>
             {value || placeholder}
           </span>
         }

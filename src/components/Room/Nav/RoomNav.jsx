@@ -1,6 +1,7 @@
 import RoomHeaderStages from "./RoomHeaderStages"
 import RoomNavLocateSection from "./RoomNavLocateSection"
 import RoomNavHeader from "./RoomNavHeader"
+import RoomNavSchedSection from "./RoomNavSchedSection"
 
 const RoomNav = () => {
   return (
@@ -8,7 +9,10 @@ const RoomNav = () => {
       <div className=" bg-white p-4 rounded-2xl shadow-md flex flex-col gap-4 min-h-120">
         <RoomNavHeader/>
         <RoomHeaderStages/>
-        <RoomNavLocateSection/>
+        <div className="flex flex-col gap-4">
+          <RoomNavLocateSection/>
+          <RoomNavSchedSection/>
+        </div>
       </div>
     </div>
   )
