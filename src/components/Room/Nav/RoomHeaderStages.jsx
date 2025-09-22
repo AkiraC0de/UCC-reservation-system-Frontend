@@ -1,6 +1,6 @@
 import { useMemo } from "react"
-import { CONGRESSIONAL_ROOM_PROGRESS_ITEMS } from "../../configs/Room.config"
-import useRoom from "../../hooks/useRoom"
+import { CONGRESSIONAL_ROOM_PROGRESS_ITEMS } from "../../../configs/Room.config"
+import useRoom from "../../../hooks/useRoom"
 
 const RoomHeaderStages = () => {
   const {stage} = useRoom()
@@ -18,14 +18,13 @@ const RoomHeaderStages = () => {
   }
 
   return (
-    <ul className="text-[11px] flex justify-between items-center font-meduim px-8 pt-5 pb-8">
+    <ul className="text-[11px] flex justify-between items-center font-meduim px-8 py-5">
       {
         CONGRESSIONAL_ROOM_PROGRESS_ITEMS.map((item, index) => (
-          <>
-            <li 
-              key={item.id}
-              className="flex flex-col justify-center items-center gap-1 w-12"
-            >
+          <li 
+            key={item.id}
+            className="flex">
+            <div className="flex flex-col justify-center items-center gap-1 w-12">
               <item.icon 
                 className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/60"} w-7 duration-300 transition-all`}/>
                 <h2
@@ -33,9 +32,9 @@ const RoomHeaderStages = () => {
                 >
                   {item.label}
                 </h2>
-            </li>
+            </div>
             { LAST_INDEX != index && <ProgressBar isActive={isActive(item.stage)} isCompleted={isCompleted(item.stageEnd)}/>}
-          </>
+          </li>
         )) 
       }
 

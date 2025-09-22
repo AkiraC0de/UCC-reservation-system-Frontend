@@ -1,5 +1,5 @@
 import ModelPlatform from "../components/Room/ModelPlatform"
-import RoomNav from "../components/Room/RoomNav"
+import RoomNav from "../components/Room/Nav/RoomNav";
 import useRoom from "../hooks/useRoom"
 
 const Room = () => {

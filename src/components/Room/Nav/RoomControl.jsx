@@ -1,10 +1,10 @@
-import useRoom from "../../hooks/useRoom"
+import useRoom from "../../../hooks/useRoom"
 
 const RoomControl = () => {
   const {handleStage} = useRoom()
 
   return (
-    <>
+    <div className="flex gap-2">
       <button
         onClick={() => handleStage(1)} 
         className="bg-gray-200 w-9 aspect-square p-2.5 rounded-full cursor-pointer group relative">
@@ -33,7 +33,7 @@ const RoomControl = () => {
           Back
         </span>
       </button>
-    </>
+    </div>
   )
 }
 export default RoomControl

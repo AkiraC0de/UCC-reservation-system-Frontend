@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Option from "./Option"
 
-const Select = ({ label, options = [], value, handleValue, Icon, shrink = false, shrinkHandler }) => {
+const Select = ({ label, options = [], value, handleValue, Icon, shrink = false, shrinkHandler, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
@@ -20,25 +20,28 @@ const Select = ({ label, options = [], value, handleValue, Icon, shrink = false,
   return (
     <div
       id="select"
-      className="overflow-hidden grid transition-all duration-500 gap-1"
+      className="grid transition-all duration-500 gap-1 border-1 border-black/40 rounded-lg pt-2 relative overflow-visible"
     >
+      <h3 className="text-xs absolute -top-2.5 left-2.5 px-2 bg-white z-20 text-black/40 font-medium">
+        {label || "Dropdown"}
+      </h3>
       <button
         onClick={handleClick}
         className={`flex items-center ${shrink ? "justify-center" : "justify-between px-1.5"} py-0.5 rounded-2xl  cursor-pointer`}
       >
-        {<Icon className=" w-7"/>}
+        {<Icon className=" w-7 fill-black/40"/>}
 
         {
           shrink || 
-          <span className="text-sm ml-2 w-full overflow-ellipsis text-start font-semibold text-black-text  ">
-            {value || label}
+          <span className="text-sm ml-2 w-full overflow-ellipsis text-start text-black-text  ">
+            {value || placeholder}
           </span>
         }
 
         {
           shrink ||
           <svg
-            className={`${isOpen ? "-rotate-90" : "rotate-90"} duration-500 transition-all`}
+            className={`${isOpen ? "-rotate-90" : "rotate-90"} duration-500 transition-all `}
             width="26px"
             height="26px"
             viewBox="0 0 24 24"
