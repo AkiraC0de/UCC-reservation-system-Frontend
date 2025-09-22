@@ -1,12 +1,19 @@
 import useRoom from "../../../hooks/useRoom"
 
 const RoomControl = () => {
-  const {handleStage} = useRoom()
+  const {handleStage, handleResetReservation, handleReservationUndo} = useRoom()
+
+  const handleResetBtn = () => {
+    // Reset all the reservation data
+    handleResetReservation()
+    // Then Set the stage to the start
+    handleStage(1)
+  }
 
   return (
     <div className="flex gap-2">
       <button
-        onClick={() => handleStage(1)} 
+        onClick={handleResetBtn} 
         className="bg-gray-200 w-9 aspect-square p-2.5 rounded-full cursor-pointer group relative">
         <svg 
           fill="#303135 " 
@@ -20,7 +27,7 @@ const RoomControl = () => {
         </span>
       </button>
       <button 
-        onClick={() => handleStage(prev => prev != 1 ? prev - 1 : prev)}
+        onClick={handleReservationUndo}
         className="bg-gray-200 w-9 aspect-square p-2.5 rounded-full cursor-pointer relative group">
         <svg 
           fill="#303135" 

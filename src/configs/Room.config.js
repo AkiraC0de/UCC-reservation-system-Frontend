@@ -2,12 +2,9 @@ import ConfirmIcon from "../components/Shared/Icons/ConfirmIcon"
 import LocateIcon from "../components/Shared/Icons/LocateIcon"
 import ScheduleIcon from "../components/Shared/Icons/ScheduleIcon"
 
-const CONGRESSIONAL_ROOMS_BTN = {
-  ROOMS: [
-    {
-      label: "101"
-    }
-  ]
+export const ROOM_RESERVATION_DEFAULT_VALUE = {
+  building: null,
+  floor: 1,
 }
 
 export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [

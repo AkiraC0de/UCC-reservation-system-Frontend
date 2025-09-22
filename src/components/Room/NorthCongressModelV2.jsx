@@ -18,7 +18,7 @@ const NorthCongressModelV2 = () => {
 }
 
 const ModelHoverOverlay = () => {
-  const {handleBuilding} = useRoom()
+  const {handleReservation} = useRoom()
 
   return(
     <>
@@ -29,7 +29,7 @@ const ModelHoverOverlay = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <polygon
-          onClick={() => handleBuilding("Left Wing")}
+          onClick={() => handleReservation("building","Left Wing")}
           points="
             0.365 0.121
             0.365 0.428
@@ -47,7 +47,7 @@ const ModelHoverOverlay = () => {
           className="hover:stroke-black/40 hover:fill-black/40 cursor-pointer"
         />
         <polygon
-          onClick={() => handleBuilding("Right Wing")}
+          onClick={() => handleReservation("building","Right Wing")}
           points="
             0.647 0.310, 
             0.645 0.619, 
