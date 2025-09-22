@@ -51,7 +51,12 @@ const RoomNavLocateSection = () => {
                 {label: "3rd", value: 3},
                 {label: "4th", value: 4},
               ]}
-              handleLock={() => handleIsRequired("building", true)}
+              handleLock={() => {
+                handleIsRequired("building", false)
+                setTimeout(() => {
+                  handleIsRequired("building", true)
+                }, 10);
+              }}
             />
             <Select 
               label="Room"
@@ -67,7 +72,12 @@ const RoomNavLocateSection = () => {
                 {label: "4th Floor", value: 2},
                 {label: "4th2 Floor", value: 2},
               ]}
-              handleLock={() => handleIsRequired("building", true)}
+              handleLock={() => {
+                handleIsRequired("building", false)
+                setTimeout(() => {
+                  handleIsRequired("building", true)
+                }, 10);
+              }}
             />
         </div>
     </div>

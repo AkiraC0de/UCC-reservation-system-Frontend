@@ -3,12 +3,12 @@ import useRoom from "../../hooks/useRoom"
 
 const NorthCongressModelV2 = () => {
   return (
-    <div className=" w-full relative flex justify-center items-start">
+    <div className=" w-full relative flex justify-center items-start anim-fade-in-bottom-left">
       <BGoverlay/>
       <div className="z-30 relative">
         <ModelHoverOverlay/>
         <img
-          className="w-140  anim-fade-in-top duration-1000"
+          className="w-140 "
           src="/campus/north_congress/northCampusModel3d.webp" 
           alt="north-congress-img" 
         />
