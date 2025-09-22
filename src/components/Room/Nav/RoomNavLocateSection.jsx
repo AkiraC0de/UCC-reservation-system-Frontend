@@ -5,7 +5,7 @@ import { useState } from "react"
 
 const RoomNavLocateSection = () => {
 
-  const {stage, building, handleBuilding, isNavOpen, HandleNavOpen, floor, handleFloor} = useRoom()
+  const {reservation, handleReservation} = useRoom()
 
   const [isRequired, setIsRequired] = useState({
     building: false
@@ -28,10 +28,9 @@ const RoomNavLocateSection = () => {
               label="Building"
               placeholder="Select"
               Icon={BuildingIcon}
-              value={building}
-              handleValue={handleBuilding}
-              shrink={!isNavOpen}
-              shrinkHandler={HandleNavOpen}
+              valueAddress="building"
+              value={reservation.building}
+              handleValue={handleReservation}
               options={[
                 {label: "Left Wing"},
                 {label: "Right Wing"},
@@ -41,24 +40,26 @@ const RoomNavLocateSection = () => {
             />
             <Select 
               label="Floor"
-              unlock={building}
+              unlock={reservation.building}
               Icon={BuildingIcon}
-              value={floor}
-              handleValue={handleFloor}
+              valueAddress="floor"
+              value={reservation.floor}
+              handleValue={handleReservation}
               options={[
-                {label: "1st Floor", value: 1},
-                {label: "2nd Floor", value: 2},
-                {label: "3rd Floor", value: 2},
-                {label: "4th Floor", value: 2},
+                {label: "1st", value: 1},
+                {label: "2nd", value: 2},
+                {label: "3rd", value: 3},
+                {label: "4th", value: 4},
               ]}
               handleLock={() => handleIsRequired("building", true)}
             />
             <Select 
               label="Room"
-              unlock={building}
+              unlock={reservation.building}
               Icon={BuildingIcon}
+              valueAddress="room"
               value={"Test"}
-              handleValue={handleFloor}
+              handleValue={handleReservation}
               options={[
                 {label: "301", value: 1},
                 {label: "302", value: 2},
@@ -66,7 +67,7 @@ const RoomNavLocateSection = () => {
                 {label: "4th Floor", value: 2},
                 {label: "4th2 Floor", value: 2},
               ]}
-              handleLock={() => handleIsRequired("building")}
+              handleLock={() => handleIsRequired("building", true)}
             />
         </div>
     </div>

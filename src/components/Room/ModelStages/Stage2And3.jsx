@@ -3,9 +3,9 @@ import LeftWing from "../LeftWing"
 import RightWing from "../RightWing"
 
 const renderBuilding = () => {
-  const { building } = useRoom()
+  const { reservation } = useRoom()
   
-  switch(building) {
+  switch(reservation.building) {
     case "Left Wing" :
         return (<>
           <h1 className="z-60 absolute top-2 font-bold text-2xl tracking-wider capitalize text-black-text">
@@ -27,7 +27,7 @@ const renderBuilding = () => {
   }
 }
 
-const Stage2 = () => {
+const Stage2And3 = () => {
   return (
     <>
       {renderBuilding()}
@@ -35,4 +35,4 @@ const Stage2 = () => {
     
   )
 }
-export default Stage2
+export default Stage2And3

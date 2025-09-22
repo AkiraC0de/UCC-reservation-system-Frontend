@@ -20,7 +20,7 @@ export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
   },
   {
     id: "stage2Schedule",
-    stage: 3,
+    stage: 4,
     label: "Schedule",
     icon: ScheduleIcon
   },

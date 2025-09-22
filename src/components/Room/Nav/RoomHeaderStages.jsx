@@ -44,7 +44,7 @@ const RoomHeaderStages = () => {
 const ProgressBar = ({isActive, isCompleted}) => {
   return(
     <div className="h-1 w-full bg-black-text/60 relative rounded-4xl">
-      <div className={`${isActive ? "w-1/2 delay-300" : isCompleted ? "w-full" : "w-0"} duration-300 transition-all h-1 bg-green-400 absolute left-0 rounded-4xl`}></div>
+      <div className={`${isCompleted ? "w-full" : isActive ? "w-1/2 delay-300" : "w-0"} duration-300 transition-all h-1 bg-green-400 absolute left-0 rounded-4xl`}></div>
     </div>
   )
 }
