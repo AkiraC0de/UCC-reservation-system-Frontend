@@ -27,3 +27,52 @@ export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
     icon: ConfirmIcon
   }
 ]
+
+// UNIFNISHED
+export const ROOM_RESERVATION_ROOM_MAP = {
+  "Right Wing": {
+    1: [
+      {
+        id: "RWRM101",
+        label: "101",
+        available: false
+      },{
+        id: "RWRM102",
+        label: "102",
+        available: false
+      }
+    ],
+    2: {
+
+    }
+  },
+  "Left Wing":{
+    1:[
+      {
+        id: "LWRM106",
+        label: "106",
+        available: false
+      },
+      {
+        id: "LWRM107",
+        label: "107",
+        available: true
+      },
+      {
+        id: "LWRM108",
+        label: "108",
+        available: true
+      },
+      {
+        id: "LWRM109",
+        label: "109",
+        available: true
+      },
+      {
+        id: "LWRM110",
+        label: "110",
+        available: true
+      },
+    ]
+  }
+}

@@ -1,6 +1,10 @@
 import useRoom from "../../../hooks/useRoom"
-import LeftWing from "../LeftWing"
-import RightWing from "../RightWing"
+import LeftWing from "../Buildings/LeftWing"
+import RightWing from "../Buildings/RightWing"
+
+const Stage2And3 = () => {
+  return renderBuilding()
+}
 
 const renderBuilding = () => {
   const { reservation } = useRoom()
@@ -27,12 +31,4 @@ const renderBuilding = () => {
   }
 }
 
-const Stage2And3 = () => {
-  return (
-    <>
-      {renderBuilding()}
-    </>
-    
-  )
-}
 export default Stage2And3
