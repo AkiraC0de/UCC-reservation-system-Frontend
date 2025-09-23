@@ -2,15 +2,15 @@ import { RoomContext } from "../context/roomContext";
 import { useState } from "react";
 import { ROOM_RESERVATION_DEFAULT_VALUE } from "../configs/Room.config";
 
+const STAGES = {
+  building: 1,
+  floor: 2,
+  room: 3
+}
+
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
-
-    const STAGES = {
-      building: 1,
-      floor: 2,
-      room: 3
-    }
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
