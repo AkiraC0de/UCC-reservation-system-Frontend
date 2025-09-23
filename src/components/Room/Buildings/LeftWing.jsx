@@ -22,7 +22,7 @@ const LeftWingSidesOverlay = () => {
 const LeftWingModel = () => {
   return(
     <div className="cube-2 w-4/5 ">
-      <img className="w-full" src="/campus/north_congress/leftWing.png" alt="left_wing_blg" />
+      <img className="w-full" src="/campus/north_congress/leftWing.webp" alt="left_wing_blg" />
     </div>
   )
 }
