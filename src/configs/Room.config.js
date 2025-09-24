@@ -5,6 +5,7 @@ import ScheduleIcon from "../components/Shared/Icons/ScheduleIcon"
 export const ROOM_RESERVATION_DEFAULT_VALUE = {
   building: null,
   floor: 1,
+  room: null
 }
 
 export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [

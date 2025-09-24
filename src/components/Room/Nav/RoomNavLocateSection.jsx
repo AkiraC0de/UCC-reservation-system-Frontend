@@ -23,7 +23,7 @@ const RoomNavLocateSection = () => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-sm px-2 text-black-text">Locate your room</h2>
-        <div className="flex justify-between items-start gap-2">
+        <div className="flex justify-between items-start gap-2 transition-all duration-500 w-full">
             <Select 
               label="Building"
               placeholder="Select"
@@ -61,9 +61,10 @@ const RoomNavLocateSection = () => {
             <Select 
               label="Room"
               unlock={reservation.building}
+              placeholder="Select"
               Icon={BuildingIcon}
               valueAddress="room"
-              value={"Test"}
+              value={reservation.room}
               handleValue={handleReservation}
               options={[
                 {label: "301", value: 1},

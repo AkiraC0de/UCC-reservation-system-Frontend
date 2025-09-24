@@ -41,20 +41,20 @@ const Select = ({
   return (
     <div
       id="select"
-      className={`${isRequired ? "border-red-500 anim-shake" : "border-black/40"} border-1 grid transition-all duration-500 gap-1 rounded-lg pt-2 relative overflow-visible`}
+      className={`${isRequired ? "border-red-500 anim-shake" : "border-black/40"} w-full border-1 grid transition-all duration-500 gap-1 rounded-lg pt-2 relative overflow-visible`}
     >
       <h3 className={`${isRequired ? "text-red-500" : "text-black/40"} text-xs absolute -top-2.5 left-2.5 px-2 bg-white z-20 font-medium`}>
         {label || "Dropdown"}
       </h3>
       <button
         onClick={handleClick}
-        className={`flex items-center ${shrink ? "justify-center" : "justify-between px-1.5"} py-0.5 rounded-2xl  cursor-pointer`}
+        className={`flex items-center ${shrink ? "justify-center" : "justify-between px-1.5"} w-full transition-all duration-500 py-0.5 rounded-2xl  cursor-pointer`}
       >
         {<Icon className={`${isRequired ? "fill-red-600" : "fill-black/40"} w-`}/>}
 
         {
           shrink || 
-          <span className={`${isRequired ? "text-red-500" : "text-black-text"} text-sm ml-2 w-full overflow-ellipsis text-start `}>
+          <span className={`${isRequired ? "text-red-500" : "text-black-text"} w-full text-sm ml-2  overflow-ellipsis text-start `}>
             {value || placeholder}
           </span>
         }
@@ -87,7 +87,6 @@ const Select = ({
               }else{
                 handleValue(option.value || option.label)
               }
-              
               setIsOpen(false)
               handleRequiredTurnOff()
             }}

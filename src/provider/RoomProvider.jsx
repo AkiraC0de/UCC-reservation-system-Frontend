@@ -22,11 +22,7 @@ const RoomProvider = ({children}) => {
       ))
       
       // THIS PART WILL REQUIRE FUTURE UPDATES
-      // Only advance the stage if the current inputName corresponds to the current stage
-      // This prevents resetting progress if a previous step is modified
-      if (stage === STAGES[inputName]) {
-        setStage(STAGES[inputName] + 1 || 1);
-      }   
+      setStage(STAGES[inputName] + 1 || 1);
     }
 
     const handleResetReservation = () => {
@@ -34,20 +30,23 @@ const RoomProvider = ({children}) => {
     }
 
     const handleReservationUndo = () => {
+      console.log(stage)
       // Get the Last Input name
-      const lastStageInputName = Object.keys(STAGES)[stage - 2]
+      const prevStageInputName = Object.keys(STAGES)[stage - 2]
+      const prevTwiceStageInputName = Object.keys(STAGES)[stage - 3]
 
       if(!lastStageInputName) return
 
       // Then if the Last Input Value is NOT the same as its default
       // Reset the value to its default value
       // And undo the stage one time 
-      if(reservation[lastStageInputName] !== ROOM_RESERVATION_DEFAULT_VALUE[lastStageInputName]){
-        handleReservation(lastStageInputName, ROOM_RESERVATION_DEFAULT_VALUE[lastStageInputName])
+      if(reservation[prevStageInputName] !== ROOM_RESERVATION_DEFAULT_VALUE[prevStageInputName]){
+        handleReservation(prevStageInputName, ROOM_RESERVATION_DEFAULT_VALUE[prevStageInputName])
         setStage(prev => prev > 1 ? prev - 1 : prev)
       } else {
-         // Otherwise, undo the stage twice to Skip the stage
-      setStage(prev => prev > 2 ? prev - 2 : prev > 1 ? prev - 1 : prev)
+        // Otherwise, undo the stage twice to Skip the stage
+        handleReservation(prevTwiceStageInputName, ROOM_RESERVATION_DEFAULT_VALUE[prevTwiceStageInputName])
+        setStage(prev => prev > 2 ? prev - 2 : prev > 1 ? prev - 1 : prev)
       }
 
     }

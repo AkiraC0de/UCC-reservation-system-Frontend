@@ -1,6 +1,7 @@
 import useRoom from "../../hooks/useRoom"
 import Stage1 from "./ModelStages/Stage1"
 import Stage2And3 from "./ModelStages/Stage2And3"
+import Stage4 from "./ModelStages/Stage4"
 
 const ModelPlatform = () => {
   return (
@@ -19,6 +20,8 @@ const renderStage = () => {
     case 2:
     case 3:
       return <Stage2And3/>
+    case 4: 
+      return <Stage4/>
     default:
       return <p>Error! Please Reset</p>
   }
