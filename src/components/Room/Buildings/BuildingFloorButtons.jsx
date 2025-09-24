@@ -38,14 +38,14 @@ const BuildingFloorButtons = ({upPos, downPos}) => {
 const BuildingFloorButton = ({onClick, posX, posY, up}) => {
   return(
     <div
-      className="absolute w-[7%] h-[35%] z-70 hover:z-71"
+      className="absolute w-[7%] h-[35%] z-51 has-[.child:hover]:z-52"
       style={{
         top: posX + "%",
         right: posY + "%"
       }}
     >
       <button 
-        className="peer cube-2 hover:-translate-y-[14%] z-51 text-sm text-white font-semibold w-full h-full opacity-75 bg-blue-gradient cursor-pointer  hover:opacity-100"
+        className="peer child cube-2 hover:-translate-y-[14%] z-51 text-sm text-white font-semibold w-full h-full opacity-75 bg-blue-gradient cursor-pointer  hover:opacity-100"
         onClick={onClick}
       >  
         <span className="rotate-90 absolute bottom-1/2 translate-y-1/2 right-1/2 translate-x-1/2">{up ? "UP" : "DOWN"}</span>
