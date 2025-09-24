@@ -38,44 +38,44 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Faculty",
         available: false,
         btnPos: {
-                x: 0,
-                y: 0
-              }
+          x: 45.5,
+          y: 23.5
+        }
       },{
         id: "RWRM102",
         no: "102",
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 63.5,
+          y: 43.5
         }
       },{
         id: "RWRM103",
         no: "103",
-        label: "Room",
-        available: true,
+        label: "Guidance",
+        available: false,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 46.9,
+          y: 62.6
         }
       },{
         id: "RWRM104",
         no: "104",
-        label: "Room",
-        available: true,
+        label: "Records",
+        available: false,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:28.6,
+          y:42.2
         }
       },{
         id: "RWRM105",
         no: "105",
-        label: "Room",
-        available: true,
+        label: "Registrar",
+        available: false,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:10.5,
+          y:22
         }
       },
 
@@ -87,8 +87,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Faculty",
         available: false,
         btnPos: {
-          x: 0,
-          y: 0
+          x: 45.5,
+          y: 23.5
         }
       },{
         id: "RWRM202",
@@ -96,8 +96,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 63.5,
+          y: 43.5
         }
       },{
         id: "RWRM203",
@@ -105,8 +105,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 46.9,
+          y: 62.6
         }
       },{
         id: "RWRM204",
@@ -114,8 +114,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:28.6,
+          y:42.2
         }
       },{
         id: "RWRM205",
@@ -123,8 +123,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:10.5,
+          y:22
         }
       },
     ],
@@ -135,17 +135,17 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
         btnPos: {
-                x: 0,
-                y: 0
-              }
+          x: 45.5,
+          y: 23.5
+        }
       },{
         id: "RWRM302",
         no: "302",
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 63.5,
+          y: 43.5
         }
       },{
         id: "RWRM303",
@@ -153,8 +153,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 46.9,
+          y: 62.6
         }
       },{
         id: "RWRM304",
@@ -162,8 +162,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:28.6,
+          y:42.2
         }
       },{
         id: "RWRM305",
@@ -171,8 +171,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "MIS",
         available: false,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:10.5,
+          y:22
         }
       },
     ],
@@ -183,17 +183,17 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
         btnPos: {
-                x: 0,
-                y: 0
-              }
+          x: 45.5,
+          y: 23.5
+        }
       },{
         id: "RWRM402",
         no: "402",
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 63.5,
+          y: 43.5
         }
       },{
         id: "RWRM403",
@@ -201,8 +201,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x: 46.9,
+          y: 62.6
         }
       },{
         id: "RWRM404",
@@ -210,8 +210,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:28.6,
+          y:42.2
         }
       },{
         id: "RWRM405",
@@ -219,8 +219,8 @@ export const ROOM_RESERVATION_ROOM_MAP = {
         label: "Room",
         available: true,
 	      btnPos: {
-          x: 0,
-          y: 0
+          x:10.5,
+          y:22
         }
       },
     ],
