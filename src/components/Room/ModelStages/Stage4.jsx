@@ -1,6 +1,8 @@
 const Stage4 = () => {
   return (
-    <div>Stage4</div>
+    <div className="bg-amber-300">
+      Stage4
+    </div>
   )
 }
 export default Stage4
