@@ -1,7 +1,8 @@
 import useRoom from "../../../hooks/useRoom"
 import Select from "../../Shared/Select"
 import BuildingIcon from "../../Shared/Icons/BuildingIcon"
-import { useState } from "react"
+import { useState, useMemo } from "react"
+import { ROOM_RESERVATION_ROOM_MAP } from "../../../configs/Room.config"
 
 const RoomNavLocateSection = () => {
 
@@ -10,6 +11,18 @@ const RoomNavLocateSection = () => {
   const [isRequired, setIsRequired] = useState({
     building: false
   })
+
+  const ROOM_SELECTIONS = useMemo(() => {
+    const selectedFloorRooms = ROOM_RESERVATION_ROOM_MAP[reservation.building]?.[reservation.floor]
+    
+    if(!selectedFloorRooms) return
+
+    const roomList = selectedFloorRooms.filter(room => room.available).map(room => {
+      if(room.available) return {label: room.no}
+    })
+
+    return selectedFloorRooms ? roomList : []
+  }, [reservation.floor, reservation.building])
 
   const handleIsRequired = (input, value) => {
     setIsRequired(prev => (
@@ -66,13 +79,7 @@ const RoomNavLocateSection = () => {
               valueAddress="room"
               value={reservation.room}
               handleValue={handleReservation}
-              options={[
-                {label: "301", value: 1},
-                {label: "302", value: 2},
-                {label: "3rd Floor", value: 2},
-                {label: "4th Floor", value: 2},
-                {label: "4th2 Floor", value: 2},
-              ]}
+              options={ROOM_SELECTIONS}
               handleLock={() => {
                 handleIsRequired("building", false)
                 setTimeout(() => {

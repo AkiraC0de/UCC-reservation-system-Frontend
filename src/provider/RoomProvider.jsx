@@ -14,14 +14,37 @@ const RoomProvider = ({children}) => {
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
+
+      // GET the Inputname Index to Stages
+      const inputStage = STAGES[inputName] - 1
+
+      // GET the ARRAY of other Inputs NAME 
+      // that is ONLY next to the selected Input (inputName)
+      const inputsNextToInputName = Object.keys(STAGES).filter((_, index) => index > inputStage)
+      
+      // THEN use the ARRAY of other Input NAME 
+      // TO create NEW ARRAY with each corresponding default value 
+      const resetedInputsList =  inputsNextToInputName?.map(item => {
+        return [ item , ROOM_RESERVATION_DEFAULT_VALUE[item] ]
+      })
+
+      // CONVERT the NEW ARRAY to OBJECT
+      const resetedInputsObj = Object.fromEntries(resetedInputsList)
+
+      // THEN set the reservation with:
+      // Previous value,
+      // Reseted Value of Next inputs
+      // New set value (value)
       setReservation(prev => (
         {
           ...prev,
+          ...resetedInputsObj,
           [inputName]: value === undefined ? !prev[inputName] : value
         }
       ))
       
-      // THIS PART WILL REQUIRE FUTURE UPDATES
+      // Lastly, set the stage to the next
+      // THIS PART MIGHT REQUIRE FUTURE UPDATES
       setStage(STAGES[inputName] + 1 || 1);
     }
 
@@ -35,7 +58,7 @@ const RoomProvider = ({children}) => {
       const prevStageInputName = Object.keys(STAGES)[stage - 2]
       const prevTwiceStageInputName = Object.keys(STAGES)[stage - 3]
 
-      if(!lastStageInputName) return
+      if(!prevStageInputName) return
 
       // Then if the Last Input Value is NOT the same as its default
       // Reset the value to its default value
