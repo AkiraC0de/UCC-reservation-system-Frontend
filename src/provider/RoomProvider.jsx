@@ -53,7 +53,6 @@ const RoomProvider = ({children}) => {
     }
 
     const handleReservationUndo = () => {
-      console.log(stage)
       // Get the Last Input name
       const prevStageInputName = Object.keys(STAGES)[stage - 2]
       const prevTwiceStageInputName = Object.keys(STAGES)[stage - 3]
