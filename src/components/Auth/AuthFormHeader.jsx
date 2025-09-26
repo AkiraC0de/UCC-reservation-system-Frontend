@@ -1,4 +1,9 @@
+import useAuth from "../../hooks/useAuth"
+
 const AuthFormHeader = () => {
+  const {authState} = useAuth()
+  const state = authState == "login" ? "Log in" : "Sign up"
+
   return (
     <div className="flex flex-col items-center gap-6 py-5">
       <div className="flex justify-center gap-2 items-center ">
@@ -8,7 +13,7 @@ const AuthFormHeader = () => {
           <h2 className="font-medium text-green-500 text-sm">• MIS Reservation System</h2>
         </div>
       </div>
-      <h1 className="text-sm font-semibold text-black-text">Log In to Continue</h1>
+      <h1 className="text-sm font-semibold text-black-text">{state} to Continue</h1>
     </div>
   )
 }

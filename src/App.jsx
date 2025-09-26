@@ -5,10 +5,11 @@ import Room from "./pages/Room"
 import RoomProvider from "./provider/roomProvider"
 import Auth from "./pages/Auth"
 import ProtectedPage from "./layouts/ProtectedPage"
+import AuthProvider from "./provider/AuthProvider"
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         <Route path="/auth" element={<Auth/>}/>
         <Route path="/" element={
@@ -23,7 +24,7 @@ function App() {
         </Route>
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
-    </>
+    </AuthProvider>
   )
 }
 
