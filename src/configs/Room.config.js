@@ -29,6 +29,10 @@ export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
   }
 ]
 
+export const ROOM_RESERVATION_DAY_AVAILABLE = {
+  min: 1,
+  max: 7
+} 
 
 export const ROOM_RESERVATION_ROOM_MAP = {
   "Right Wing": {
