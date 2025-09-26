@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router"
 import { useEffect } from "react"
+import Auth from "../pages/Auth"
 
 // WILL REQUIRE REFACTORING ONCE THE GLOBAL AUTH PROVIDER HAS BEEN ESTABLISHED
 const ProtectedPage = ({children}) => {
   // PORTABLE
-  const isLogin = true
+  const isLogin = false
   const navigate = useNavigate()
 
-  if (!isLogin) {
-    navigate('/auth', { replace: true }); 
-  }
 
   return (
     <>
       {children}
+      {!isLogin && <Auth />}
     </>
   )
 }
