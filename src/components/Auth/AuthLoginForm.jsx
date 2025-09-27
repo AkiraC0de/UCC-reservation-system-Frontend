@@ -43,14 +43,12 @@ const AuthLoginForm = () => {
   return (
     <div className="flex flex-col gap-2 w-full">
       <AuthLoginInputs/>
-      <div className="flex justify-between pb-2">
-        <RememberMe/>
+      <div className="flex justify-end pb-2">
         <ForgotPassword/>
       </div>
       <PrimaryButton onClick={handleLoginClick}>
         {isLoading ? <SyncLoader color="green" size={6}/> : "LOGIN"}     
       </PrimaryButton>
-      
     </div>
   )
 }

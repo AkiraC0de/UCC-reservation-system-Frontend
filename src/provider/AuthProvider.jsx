@@ -43,8 +43,13 @@ const AuthProvider = ({children}) => {
     })
     .then(data => {
       if (data && data.success) {
-        handleAuth("isLogin", true)
-        handleAuth("userData", data.data)
+        setAuth(prev => ({
+          ...prev,
+          isLogin: true,
+          userData: data.data,
+          email: "",
+          password: ""
+        }))
       }
     })
     .catch((err) => {
