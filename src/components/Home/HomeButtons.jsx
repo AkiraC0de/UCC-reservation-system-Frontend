@@ -1,4 +1,5 @@
 import PrimaryButton from "../Shared/PrimaryButton"
+import SecondaryButton from "../Shared/SecondaryButton"
 
 const HomeButtons = () => {
   return (
@@ -6,9 +7,9 @@ const HomeButtons = () => {
         <PrimaryButton>
             Reserve Classroom
         </PrimaryButton>
-        <PrimaryButton>
+        <SecondaryButton>
             Reserve Projector
-        </PrimaryButton>
+        </SecondaryButton>
     </div>
   )
 }

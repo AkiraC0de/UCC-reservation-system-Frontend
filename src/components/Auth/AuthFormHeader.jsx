@@ -5,7 +5,7 @@ const AuthFormHeader = () => {
   const state = authState == "login" ? "Log in" : "Sign up"
 
   return (
-    <div className="flex flex-col items-center gap-6 py-5">
+    <div className="flex flex-col items-center gap-6 py-2">
       <div className="flex justify-center gap-2 items-center ">
         <img className="w-14" src="/logo/logo_low.webp" alt="logo" />
         <div>
