@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { AuthContext } from "../context/authContext"
 
 const AuthProvider = ({children}) => {
@@ -11,13 +11,14 @@ const AuthProvider = ({children}) => {
     isLogin: false
   })
 
+  
   const handleLogin = () => {
     // #1 Extract the user Input 
     const {email, password} = auth
 
     // #2 Set up the Fetch Link and Option
-    const URL = "http://localhost:8080/api/auth/login"
-    const OPTION = {
+    const URL_LOGIN = "http://localhost:8080/api/auth/login"
+    const OPTION_LOGIN = {
       method: "POST",
       headers: {
         "Content-Type" : "application/json"
@@ -30,34 +31,89 @@ const AuthProvider = ({children}) => {
     setIsLoading(true)
     setError({})
 
-    fetch(URL, OPTION)
+    fetch(URL_LOGIN, OPTION_LOGIN)
     .then(async res => {
-      // #4 After receiving the response, stop the loading animation
-      setIsLoading(false)
-      
-
-      // #5 Parse the Data from JSON to JS object
-      const data = await res.json()
-
       if (!res.ok) {
         // const errorMessage = data.message || `Login failed with status: ${res.status}`
-        setError(prev => ({
-          ...prev,
-          [data.errorAt] : data.message
-        }))
+        handleError(data.errorAt, data.message)
       }
-      
-      return data
+      return await res.json()
     })
     .then(data => {
       if (data && data.success) {
-        setAuth(prev => ({ ...prev, isLogin: true, data: data }))
+        handleAuth("isLogin", true)
+        handleAuth("userData", data.data)
       }
     })
     .catch((err) => {
       console.error("fetch error:", err)
     })
+    .finally(() => {
+      setIsLoading(false)
+    })
   }
+
+  const URL_LOGOUT = "http://localhost:8080/api/auth/logout"
+  const OPTION_LOGOUT = {
+    method: "POST",
+    credentials: 'include',
+    headers: {
+        "Content-Type": "application/json"
+    },
+  }
+
+  const handleLogout = () => {
+    setIsLoading(true)
+    fetch(URL_LOGOUT, OPTION_LOGOUT)
+    .then(res => {
+      handleAuth("isLogin", false)
+
+      if(!res.ok){
+        throw new Error("Something went wrong")
+      }
+
+    })
+    .catch(err => console.log("Logout error: ",err.message))
+    .finally(() => {
+      setIsLoading(false)
+    })
+  }
+
+  const URL_REFRESH = "http://localhost:8080/api/auth/refresh"
+  const OPTION_REFRESH = {
+    method: "POST",
+    credentials: 'include',
+    headers: {
+        "Content-Type": "application/json"
+    },
+  }
+
+  // AUTO LOGIN
+  useEffect(() => {
+    handleLoading(true)
+    fetch(URL_REFRESH, OPTION_REFRESH)
+    .then(async res => {
+      if (!res.ok) {
+          throw new Error('AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING'); 
+      }
+      return await res.json()
+    })
+    .then(data => {
+      if(data.success){    
+        handleAuth("isLogin", true)
+        handleAuth("userData", data.data)
+      }
+    })
+    .catch(err => {
+      if (err.message !== 'AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING') {
+          // If it's a true network failure or an unexpected error, log it.
+          console.error("Auto-login critical error:", err);
+      }
+    })
+    .finally(() => {
+      handleLoading(false)
+    })
+  }, [])
 
   const handleAuth = (inputName, value) => {
     setAuth(prev => ({
@@ -88,7 +144,7 @@ const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider value={{
       auth, handleAuth,
-      handleLogin, 
+      handleLogin, handleLogout,
       isLoading, handleLoading,
       error, handleError, resetError,
       authState, handleAuthState

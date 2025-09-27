@@ -19,6 +19,7 @@ const AuthLoginInputs = () => {
       <div className="flex flex-col">
         <Input
           label="Email *"
+          className="bg-white"
           value={auth.email}
           onChange={handleEmail}
           placeholder="Enter your email"
