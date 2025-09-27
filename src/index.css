@@ -30,6 +30,51 @@
   background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
 }
 
+.text-green-gradient {
+  background: linear-gradient(
+    332deg,
+    rgba(57, 155, 42, 1) 0%,
+    rgba(136, 199, 87, 1) 65%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  -webkit-background-clip: text;
+  color: transparent;       
+  -webkit-text-fill-color: transparent; 
+}
+
+.border-green-gradient {
+  position: relative;
+  background: transparent; 
+}
+
+.border-green-gradient > * {
+  position: relative;
+  z-index: 1;
+}
+
+.border-green-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(
+    332deg,
+    rgba(57, 155, 42, 1) 0%,
+    rgba(136, 199, 87, 1) 65%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
 @keyframes cloud {
   from{
     transform: translateX(0);

@@ -4,26 +4,35 @@ import { PROGRAM_CHOICES, YEAR_LEVEL_CHOICES } from "../../configs/Auth.config"
 
 const AuthStudentDatInputs = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-5">
+      <div className="flex gap-3">
         <Input
-          className="flex-3"
+          className="flex-4"
           label="Student No. *"
           placeholder="Ex: 00000000-A"
           type="Text"
         />
-      </div>
-      <div className="flex gap-2">
         <SelectV2 
           className="flex-3"
-          label="Program *"
-          options={PROGRAM_CHOICES}
-        />
-        <SelectV2 
-          className="flex-1"
           label="Year *"
+          placeholder=""
           options={YEAR_LEVEL_CHOICES}
         />
+        <Input
+          className="flex-3"
+          label="Section *"
+          placeholder="Ex: 1A"
+          type="Text"
+        />
+      </div>
+      <div className="flex gap-3">
+        <SelectV2 
+          className="flex-5"
+          label="Program *"
+          placeholder="Select your program"
+          options={PROGRAM_CHOICES}
+        />
+        
       </div>
     </div>
   )

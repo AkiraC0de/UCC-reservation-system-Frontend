@@ -14,12 +14,12 @@ const Input = ({ label, type = "text", placeholder, className = "" }) => {
       <input
         id={id}
         placeholder={placeholder}
-        className="peer border p-2 py-3 text-sm rounded-sm w-full focus:outline-green-400"
+        className="peer border p-2 py-3 text-xs rounded-sm w-full focus:outline-green-400"
         type={inputType}
       />
       <label
         htmlFor={id}
-        className="peer-focus:text-green-400 text-black-text absolute -top-2 left-2 text-sm font-medium bg-white px-2"
+        className="peer-focus:text-green-400 text-black-text absolute -top-2 left-2 text-xs font-medium bg-white px-2"
       >
         {label}
       </label>

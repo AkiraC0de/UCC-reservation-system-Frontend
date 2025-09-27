@@ -2,8 +2,8 @@ import Input from "../Shared/Input"
 
 const AuthNameInputs = () => {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex gap-2">
+    <div className="flex flex-col gap-5">
+      <div className="flex gap-3">
         <Input
           className="flex-3"
           label="Fistname *"
@@ -12,12 +12,12 @@ const AuthNameInputs = () => {
         />
         <Input
           className="flex-1"
-          label="M.I"
+          label="M.I."
           placeholder="Ex: A."
           type="Text"
         />
       </div>
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         <Input
           className="flex-3"
           label="Lastname *"
