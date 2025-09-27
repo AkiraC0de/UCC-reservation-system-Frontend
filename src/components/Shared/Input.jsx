@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Input = ({ label, type = "text", placeholder, className = "" }) => {
+const Input = ({ label, type = "text", placeholder, className = "", value, onChange = () => {} }) => {
   const [show, setShow] = useState(false)
   const isPassword = type === "password"
   const inputType = isPassword && show ? "text" : type
@@ -13,6 +13,8 @@ const Input = ({ label, type = "text", placeholder, className = "" }) => {
     <div className={parentClass}>
       <input
         id={id}
+        value={value || ""}
+        onChange={onChange}
         placeholder={placeholder}
         className="peer border p-2 py-3 text-xs rounded-sm w-full focus:outline-green-400"
         type={inputType}

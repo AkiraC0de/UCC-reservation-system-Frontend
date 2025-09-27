@@ -3,8 +3,8 @@ const SelectV2 = ({label = "", options, className = "", placeholder}) => {
 
   return (
     <div className={parentClass}>
-      <select className="peer w-full text-xs overflow-hidden text-sm px-1 py-3 border border-text-black rounded-sm focus:outline-green-500 focus:border-green-500 focus:border-2">
-        <option disabled selected hidden>{placeholder}</option>
+      <select defaultValue="NaN" className="peer w-full text-xs overflow-hidden px-1 py-3 border border-text-black rounded-sm focus:outline-green-500 focus:border-green-500 focus:border-2">
+        <option disabled hidden value="NaN">{placeholder}</option>
         {options.map(item => {
           return <option key={item.value} className="text-xs" value={item.value}>{item.label}</option>
         })}
