@@ -9,3 +9,8 @@ export const formatDate = (date) => {
 
   return [year, month, day].join('-');
 }
+
+export const evalidateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}

@@ -15,27 +15,29 @@ const AuthLoginInputs = () => {
 
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-3">
       <div className="flex flex-col">
         <Input
           label="Email *"
           className="bg-white"
           value={auth.email}
+          error={error.email}
           onChange={handleEmail}
           placeholder="Enter your email"
           type="email"
         />
-        {error.email && <ErrorTxt>{error.email}</ErrorTxt>}
+        <ErrorTxt>{error.email || ""}</ErrorTxt>
       </div>
       <div>
         <Input
           label="Password *"
           value={auth.password}
+          error={error.password}
           onChange={handlePassword}
           placeholder="Enter your password"
           type="password"
         />
-        {error.password && <ErrorTxt>{error.password}</ErrorTxt>}
+        <ErrorTxt>{error.password || ""}</ErrorTxt>
       </div>
     </div>
   )

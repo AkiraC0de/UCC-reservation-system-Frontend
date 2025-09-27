@@ -4,7 +4,7 @@ import ForgotPassword from "./ForgotPassword"
 import PrimaryButton from "../Shared/PrimaryButton"
 import useAuth from "../../hooks/useAuth"
 import { SyncLoader } from "react-spinners"
-import { useState } from "react"
+import { evalidateEmail } from "../../Utils/utils"
 
 const AuthLoginForm = () => {
   const {handleLogin, isLoading, auth, handleError, resetError} = useAuth()
@@ -13,17 +13,29 @@ const AuthLoginForm = () => {
     resetError()
     let hasError = false
 
+    if(!evalidateEmail(auth.email)){
+      setTimeout(() => {
+        handleError("email", "Enter a valid email")
+      }, 10)
+      hasError = true
+    }
+
     if(!auth.email){
-      handleError("email", "Email is required")
+      setTimeout(() => {
+        handleError("email", "Email is required")
+      }, 10)
       hasError = true
     }
 
     if(!auth.password){
-      handleError("password", "Password is required")
+      setTimeout(() => {
+        handleError("password", "Password is required")
+      }, 10)
       hasError = true
     }
     
     if(hasError) return
+    
     handleLogin()
   }
 

@@ -33,11 +33,13 @@ const AuthProvider = ({children}) => {
 
     fetch(URL_LOGIN, OPTION_LOGIN)
     .then(async res => {
+      const data = await res.json()
       if (!res.ok) {
-        // const errorMessage = data.message || `Login failed with status: ${res.status}`
         handleError(data.errorAt, data.message)
+        const errorMessage = data.message || `Login failed with status: ${res.status}`
+        throw new Error(errorMessage)
       }
-      return await res.json()
+      return data
     })
     .then(data => {
       if (data && data.success) {
@@ -134,7 +136,10 @@ const AuthProvider = ({children}) => {
   }
 
   const resetError = () => {
-    setError({})
+    setError({
+      email: null,
+      password: null
+    })
   }
 
   const handleAuthState = () => {

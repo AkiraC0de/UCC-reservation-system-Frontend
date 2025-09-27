@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-const Input = ({ label, type = "text", placeholder, className = "", value, onChange = () => {} }) => {
+const Input = ({ label, type = "text", placeholder, className = "", value, onChange = () => {}, error }) => {
   const [show, setShow] = useState(false)
   const isPassword = type === "password"
   const inputType = isPassword && show ? "text" : type
 
-  const parentClass = `${className} relative`
+  const parentClass = `${className} ${error && "anim-shake" } relative`
+  const inputClass = `${error && "border-1 border-red-500" } focus:outline-green-400 peer border p-2 py-3 text-xs rounded-sm w-full `
+  const labelClass = `${error ? "text-red-500" : "text-black-text"} peer-focus:text-green-400 absolute -top-2 left-2 text-xs font-medium bg-white px-2`
 
   const id = label ? label.replace(/\s+/g, "-").toLowerCase() : undefined
 
@@ -16,12 +18,12 @@ const Input = ({ label, type = "text", placeholder, className = "", value, onCha
         value={value || ""}
         onChange={onChange}
         placeholder={placeholder}
-        className="peer border p-2 py-3 text-xs rounded-sm w-full focus:outline-green-400"
+        className={inputClass}
         type={inputType}
       />
       <label
         htmlFor={id}
-        className="peer-focus:text-green-400 text-black-text absolute -top-2 left-2 text-xs font-medium bg-white px-2"
+        className={labelClass}
       >
         {label}
       </label>
