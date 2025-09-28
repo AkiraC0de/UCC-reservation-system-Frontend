@@ -12,13 +12,13 @@ const LogoutConfirmation = ({onConfirm = () => {}, onCancel = () => {}}) => {
         opacity: { duration: 0.5 }
       }} 
       className="flex p-4 rounded-lg flex-col items-center absolute bottom-1/2 translate-1/2 right-1/2 bg-white">
-        <ExitIcon className="w-18 stroke-red-400"/>
+        <ExitIcon className="w-18 stroke-gray-400"/>
         <h2 className="text-black-text font-medium">Logging Out...</h2>
         <p className="text-xs mt-5 text-black-text">Are sure you want to logout?</p>
         <div className="w-full flex gap-3 py-2">
           <button 
             onClick={onConfirm}
-            className="text-sm cursor-pointer text-red-400 border-1 rounded-lg border-red-400 px-3 py-1 flex-1">
+            className="text-sm cursor-pointer text-gray-400 border-1 rounded-lg border-gray-400 px-3 py-1 flex-1">
             Yes
           </button>
           <button

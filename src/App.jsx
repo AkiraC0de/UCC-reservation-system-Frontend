@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Room from "./pages/Room"
 import Auth from "./pages/Auth"
 import ProtectedPage from "./layouts/ProtectedPage"
+import Projector from "./pages/Projector"
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         }>
         <Route index element={<Home/> }></Route>
         <Route path="/room" element={<Room/>}/>
-        <Route path="/projector" element={<Room/>}></Route>
+        <Route path="/projector" element={<Projector/>}></Route>
         <Route path="/about" element={<Room/>}></Route>
       </Route>
       <Route path="*" element={<div>404 Not Found</div>} />

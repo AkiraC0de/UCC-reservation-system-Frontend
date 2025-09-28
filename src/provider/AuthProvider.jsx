@@ -4,6 +4,7 @@ import { AuthContext } from "../context/authContext"
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState("login")
   const [isLoading, setIsLoading] = useState(false)
+  const [isAutoLoginAtProgress, setIsAutoLoginAtProgress] = useState(true)
   const [error, setError] = useState({})
   const [auth, setAuth] = useState({
     email: null,
@@ -98,14 +99,16 @@ const AuthProvider = ({children}) => {
   // AUTO LOGIN
   useEffect(() => {
     handleLoading(true)
+
     fetch(URL_REFRESH, OPTION_REFRESH)
     .then(async res => {
+      const data = await res.json()
+      setIsAutoLoginAtProgress(false)
+
       if (!res.ok) {
           throw new Error('AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING'); 
       }
-      return await res.json()
-    })
-    .then(data => {
+
       if(data.success){    
         handleAuth("isLogin", true)
         handleAuth("userData", data.data)
@@ -154,7 +157,7 @@ const AuthProvider = ({children}) => {
   return (
     <AuthContext.Provider value={{
       auth, handleAuth,
-      handleLogin, handleLogout,
+      handleLogin, handleLogout, isAutoLoginAtProgress,
       isLoading, handleLoading,
       error, handleError, resetError,
       authState, handleAuthState

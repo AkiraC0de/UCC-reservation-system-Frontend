@@ -25,9 +25,9 @@ const RoomHeaderStages = () => {
           <Fragment key={item.id}>
             <div className="flex flex-col justify-center items-center gap-1 w-12">
               <item.icon 
-                className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/60"} w-7 duration-300 transition-all`}/>
+                className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/40"} w-7 duration-300 transition-all`}/>
                 <h2
-                  className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "text-green-500 font-semibold" : "text-black-text/60"} duration-300 transition-all`}
+                  className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "text-green-500 font-semibold" : "text-black-text/40"} duration-300 transition-all`}
                 >
                   {item.label}
                 </h2>
@@ -43,7 +43,7 @@ const RoomHeaderStages = () => {
 
 const ProgressBar = ({isActive, isCompleted}) => {
   return(
-    <div className="h-1 w-full bg-black-text/60 relative rounded-4xl">
+    <div className="h-1 w-full bg-black-text/40 relative rounded-4xl">
       <div className={`${isCompleted ? "w-full" : isActive ? "w-1/2 delay-300" : "w-0"} duration-300 transition-all h-1 bg-green-400 absolute left-0 rounded-4xl`}></div>
     </div>
   )
