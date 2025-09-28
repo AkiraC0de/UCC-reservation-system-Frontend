@@ -7,7 +7,9 @@ const Stage1 = () => {
       <ModelPlatformHeader>
          - SELECT A BUILDING -
       </ModelPlatformHeader>
-      <NorthCongressModelV2/>
+      <div className="w-full mt-18">
+        <NorthCongressModelV2/>
+      </div>
     </>
   )
 }

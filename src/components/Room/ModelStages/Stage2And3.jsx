@@ -17,7 +17,9 @@ const renderBuilding = () => {
             <ModelPlatformHeader>
               - LEFT WING -
             </ModelPlatformHeader>
-            <LeftWing/>
+            <div className="mt-18 w-full">
+              <LeftWing/>
+            </div>
           </>
         )
       break
@@ -27,7 +29,9 @@ const renderBuilding = () => {
             <ModelPlatformHeader>
               - RIGHT WING -
             </ModelPlatformHeader>
-            <RightWing/>
+            <div className="mt-18 w-full">
+              <RightWing/>
+            </div>
           </>
         )
       break

@@ -22,8 +22,8 @@ const NavUser = () => {
         <p className="text-sm text-black-text font-semibold ">{ auth.userData.firstName} { auth.userData.lastName}</p>
         <button 
           onClick={toggleShowLogoutConfirm}
-          className="border-2 mx-2 text-green-700 text-sm font-semibold rounded-3xl px-5 py-1.5 cursor-pointer hover:bg-gray-200/50 transition-all duration-300">
-            Log out
+          className="border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer hover:bg-gray-200/50 transition-all duration-300">
+            Logout
         </button>
       </>}
       {showLogoutConfirm && <LogoutConfirmation onConfirm={handleConfirm} onCancel={toggleShowLogoutConfirm}/>}

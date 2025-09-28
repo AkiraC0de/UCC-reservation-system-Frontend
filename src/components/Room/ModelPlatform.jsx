@@ -5,7 +5,7 @@ import Stage4 from "./ModelStages/Stage4"
 
 const ModelPlatform = () => {
   return (
-    <div className=" flex justify-start flex-col items-center relative cube-wrap pt-18">
+    <div className=" flex justify-start flex-col items-center relative cube-wrap">
         {renderStage()}
     </div>
   )

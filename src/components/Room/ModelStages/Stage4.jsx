@@ -1,7 +1,10 @@
+
+import ScheduleTable from "../ScheduleTable"
+
 const Stage4 = () => {
   return (
-    <div className="bg-amber-300">
-      Stage4
+    <div className="w-full">
+      <ScheduleTable/>
     </div>
   )
 }

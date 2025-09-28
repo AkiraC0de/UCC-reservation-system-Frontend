@@ -8,8 +8,8 @@ const LogoutConfirmation = ({onConfirm = () => {}, onCancel = () => {}}) => {
       initial={{ opacity: 0, scale: 0}}
       animate={{ opacity: 1, scale: 1 }}
       transition={{
-        scale: { type: "spring", stiffness: 200, damping: 15, duration: 0.5 },
-        opacity: { duration: 0.5 }
+        scale: { type: "spring", stiffness: 100, damping: 10, duration: 0.2 },
+        opacity: { duration: 0.2 }
       }} 
       className="flex p-4 rounded-lg flex-col items-center absolute bottom-1/2 translate-1/2 right-1/2 bg-white">
         <ExitIcon className="w-18 stroke-gray-400"/>

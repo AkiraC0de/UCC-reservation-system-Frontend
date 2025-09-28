@@ -236,3 +236,25 @@
 .cp-1 {
   clip-path: polygon(17% 20%, 17% 0, 100% 0, 100% 17%, 100% 100%, 17% 100%, 17% 36%, 0 36%, 0 20%);
 }
+
+.scroll-bar-1::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* You might also want to style the track and thumb */
+::-webkit-scrollbar {
+  width: 10px; /* Adjust as needed */
+}
+
+.scroll-bar-1::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scroll-bar-1::-webkit-scrollbar-thumb {
+  background: #dcdbd7;
+  border-radius: 4px;
+}
+
+.scroll-bar-1::-webkit-scrollbar-thumb:hover {
+  background: #b1b9be;
+}
