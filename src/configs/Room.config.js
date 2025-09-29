@@ -12,6 +12,16 @@ export const MOCK_DATA_RESERVATION = [
     startingTime: 2,
     weekDay: 1,
     hours: 3,
+  },
+  {
+    type: "Plotted",
+    program: "BSCS",
+    section: "2B",
+    prof: "Mr. Jerwin Cabral",
+    purpose: "Lecture",
+    startingTime: 3,
+    weekDay: 5,
+    hours: 5,
   }
 ]
 

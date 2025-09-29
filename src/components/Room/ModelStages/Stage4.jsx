@@ -1,5 +1,5 @@
 import { motion } from "motion/react"
-import ScheduleTable from "../ScheduleTable"
+import ScheduleTable from "../ScheduleTable/ScheduleTable"
 import useRoom from "../../../hooks/useRoom"
 
 const Stage4 = () => {

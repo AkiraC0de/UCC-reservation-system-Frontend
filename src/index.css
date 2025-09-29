@@ -131,6 +131,12 @@
   }
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .anim-fade-in-top {
   animation: fade-in-top 300ms;
