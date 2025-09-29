@@ -2,6 +2,19 @@ import ConfirmIcon from "../components/Shared/Icons/ConfirmIcon"
 import LocateIcon from "../components/Shared/Icons/LocateIcon"
 import ScheduleIcon from "../components/Shared/Icons/ScheduleIcon"
 
+export const MOCK_DATA_RESERVATION = [
+  {
+    type: "Plotted",
+    program: "BSCS",
+    section: "2B",
+    prof: "Mr. Jerwin Cabral",
+    purpose: "Lecture",
+    startingTime: 2,
+    weekDay: 1,
+    hours: 3,
+  }
+]
+
 export const ROOM_RESERVATION_DEFAULT_VALUE = {
   building: null,
   floor: 1,

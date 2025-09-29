@@ -23,7 +23,7 @@ const LogoutConfirmation = ({onConfirm = () => {}, onCancel = () => {}}) => {
           </button>
           <button
             onClick={onCancel}
-            className="text-sm cursor-pointer flex-1 text-white bg-red-400 rounded-lg px-3 py-1"
+            className="text-sm cursor-pointer flex-1 text-white bg-green-gradient-2 rounded-lg px-3 py-1"
           >
             No
           </button>

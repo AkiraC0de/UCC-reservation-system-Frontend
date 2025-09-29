@@ -79,6 +79,7 @@ const AuthProvider = ({children}) => {
       if(!res.ok){
         throw new Error("Something went wrong")
       }
+      setAuth({})
 
     })
     .catch(err => console.log("Logout error: ",err.message))

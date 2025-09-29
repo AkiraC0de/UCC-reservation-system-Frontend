@@ -4,8 +4,6 @@ import { motion, AnimatePresence  } from "motion/react"
 import useRoom from "../../../hooks/useRoom"
 import { useState, useRef, useEffect } from "react"
 
-
-
 const LeftWing = () => {
   const { reservation } = useRoom();
   const [direction, setDirection] = useState(1); // 1 = up, -1 = down
