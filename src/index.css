@@ -249,7 +249,7 @@
 
 /* You might also want to style the track and thumb */
 ::-webkit-scrollbar {
-  width: 10px; /* Adjust as needed */
+  width: 8px; /* Adjust as needed */
 }
 
 .scroll-bar-1::-webkit-scrollbar-track {
@@ -257,7 +257,7 @@
 }
 
 .scroll-bar-1::-webkit-scrollbar-thumb {
-  background: #dcdbd7;
+  background: #e0dfdd;
   border-radius: 4px;
 }
 

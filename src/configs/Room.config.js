@@ -28,8 +28,27 @@ export const MOCK_DATA_RESERVATION = [
 export const ROOM_RESERVATION_DEFAULT_VALUE = {
   building: null,
   floor: 1,
-  room: null
+  room: null,
+  date: new Date()
 }
+
+export const TIME_SLOTS = [
+  { min: "7:00 AM", mid: "7:30 AM", max: "7:59 AM" },
+  { min: "8:00 AM", mid: "8:30 AM", max: "8:59 AM" },
+  { min: "9:00 AM", mid: "9:30 AM", max: "9:59 AM" },
+  { min: "10:00 AM", mid: "10:30 AM", max: "10:59 AM" },
+  { min: "11:00 AM", mid: "11:30 AM", max: "11:59 AM" },
+  { min: "12:00 PM", mid: "12:30 PM", max: "12:59 PM" },
+  { min: "1:00 PM", mid: "1:30 PM", max: "1:59 PM" },
+  { min: "2:00 PM", mid: "2:30 PM", max: "2:59 PM" },
+  { min: "3:00 PM", mid: "3:30 PM", max: "3:59 PM" },
+  { min: "4:00 PM", mid: "4:30 PM", max: "4:59 PM" },
+  { min: "5:00 PM", mid: "5:30 PM", max: "5:59 PM" },
+  { min: "6:00 PM", mid: "6:30 PM", max: "6:59 PM" },
+  { min: "7:00 PM", mid: "7:30 PM", max: "7:59 PM" },
+  { min: "8:00 PM", mid: "8:30 PM", max: "8:59 PM" },
+  { min: "9:00 PM", mid: "9:30 PM", max: "9:59 PM" }
+]
 
 export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [
   {

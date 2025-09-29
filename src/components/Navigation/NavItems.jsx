@@ -5,7 +5,7 @@ import { memo } from "react"
 const NavItems = () => {
   const {pathname} = useLocation();   
   return (
-    <ul className="flex gap-10">
+    <ul className="flex justify-evenly gap-10 ">
         {NAV_ITEMS.map(item => (
             <li 
                 key={item.id}

@@ -46,7 +46,7 @@ const AuthLoginForm = () => {
       <div className="flex justify-end pb-2">
         <ForgotPassword/>
       </div>
-      <PrimaryButton onClick={handleLoginClick}>
+      <PrimaryButton onClick={handleLoginClick} type="submit">
         {isLoading ? <SyncLoader color="green" size={6}/> : "LOGIN"}     
       </PrimaryButton>
     </div>
