@@ -1,8 +1,11 @@
 import { useMemo } from "react"
 import { MOCK_DATA_RESERVATION } from "../../../configs/Room.config"
 import ScheduledTimeSlot from "./ScheduledTimeSlot"
+import useRoom from "../../../hooks/useRoom"
 
 const ScheduleTableColumnList = () => {
+  const { schedule } = useRoom() 
+
   // TEMPORARY
   const MOCK_DATA = MOCK_DATA_RESERVATION
   const data = useMemo(() => {
@@ -12,7 +15,7 @@ const ScheduleTableColumnList = () => {
     }, [])
   }, [MOCK_DATA])
 
-  const cellClasses = " border-x border-gray-100 h-16 flex items-center justify-center text-sm"
+  const cellClasses = " border-x border-gray-100 h-16 flex items-center justify-center text-sm  flex flex-col relative"
 
   // # Render 6 Column that has 14 Row (Cell) from top to bottom
   return [...Array(6)].map((_, colIndex) => {
@@ -24,7 +27,7 @@ const ScheduleTableColumnList = () => {
           return(
             <div 
               key={rowIndex}
-              className={`${cellClasses} flex flex-col relative border-1`}>
+              className={`${cellClasses} ${colIndex === schedule.focus && "bg-green-50"}`}>
               {
                 matchedData &&
                 <ScheduledTimeSlot data={matchedData} height={height}/>

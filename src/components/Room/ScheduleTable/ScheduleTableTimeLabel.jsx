@@ -1,5 +1,5 @@
 const ScheduleTableTimeLabel = ({time}) => {
-  const timeLabelClasses = "border-1 h-16 flex flex-col items-center text-[11px] border-r border-l-0 border-gray-300 text-gray-800"
+  const timeLabelClasses = "cursor-pointer h-16 flex flex-col justify-center items-center text-[11px] border-r border-l-0 border-gray-300 text-gray-800"
 
   return (
     <div 

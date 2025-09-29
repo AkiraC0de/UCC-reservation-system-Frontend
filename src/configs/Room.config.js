@@ -14,10 +14,14 @@ export const MOCK_DATA_RESERVATION = [
     hours: 3,
   },
   {
-    type: "Plotted",
-    program: "BSCS",
-    section: "2B",
-    prof: "Mr. Jerwin Cabral",
+    type: "Reserved",
+    reservedBy: {
+      firstName: "Mcraven Akira",
+      lastName: "Fernandez",
+      section: "B",
+      yearLevel: 2,
+      program: "BSCS"
+    },
     purpose: "Lecture",
     startingTime: 3,
     weekDay: 5,

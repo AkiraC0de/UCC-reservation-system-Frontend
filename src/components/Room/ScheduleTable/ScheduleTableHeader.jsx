@@ -1,8 +1,12 @@
+import clsx from "clsx"
+import useRoom from "../../../hooks/useRoom"
 import { getDay, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames } from "../../../Utils/utils"
 
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const ScheduleTableHeader = () => {
+  const {schedule, handleSchedule} = useRoom()
+
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
 
@@ -13,22 +17,29 @@ const ScheduleTableHeader = () => {
   const headerCellClasses = "px-2 font-semibold text-gray-700"
 
   return (
-    <div className="grid grid-cols-7 mr-[8px]">
+    <div className="grid grid-cols-7 mr-[8px] ">
       <h1 className="border-b border-b-gray-200 center font-medium border-r bg-white border-gray-300">TIME</h1>
       {
-        DAYS_OF_WEEK.map((day, colIndex) => {
+        DAYS_OF_WEEK.map((day, index) => {
+          const buttonClasnames = clsx({
+            "bg-green-100 border-2 border-green-300": index === schedule.focus,
+            "bg-white border-x border-b border-gray-100": index !== schedule.focus,
+          }, "text-start flex transition-all duration-300 flex-col cursor-pointer top-0 p-1 text-xs")
           return(
-            <div key={colIndex} className=" flex flex-col bg-white top-0 p-1 border-x border-b border-gray-100 text-xs">
+            <button 
+              key={index}
+              onClick={() => handleSchedule(prev => ({...prev, focus: index}))} 
+              className={buttonClasnames}>
               <h1 className={headerCellClasses}>
                 {day}
               </h1>
               <h2 className="px-2 text-[16px]">
-                {nextDayByWeekDay <= colIndex ? numberByDaysOfNextSavenDays[colIndex - nextDayByWeekDay] : numberByDaysOfNextSavenDays[5 - ((nextDayByWeekDay - colIndex) - 1)]}
+                {nextDayByWeekDay <= index ? numberByDaysOfNextSavenDays[index - nextDayByWeekDay] : numberByDaysOfNextSavenDays[5 - ((nextDayByWeekDay - index) - 1)]}
               </h2>
               <h2 className="px-2 text-[11px] text-gray-400">
-                {nextDayByWeekDay <= colIndex ? monthNameOfNextSavenDays[colIndex - nextDayByWeekDay] : monthNameOfNextSavenDays[5 - ((nextDayByWeekDay - colIndex) - 1)]}
+                {nextDayByWeekDay <= index ? monthNameOfNextSavenDays[index - nextDayByWeekDay] : monthNameOfNextSavenDays[5 - ((nextDayByWeekDay - index) - 1)]}
               </h2>
-            </div>
+            </button>
         )})
       }
     </div>

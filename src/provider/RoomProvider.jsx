@@ -11,6 +11,7 @@ const STAGES = {
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
+    const [schedule, setSchedule] = useState({})
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
@@ -77,6 +78,10 @@ const RoomProvider = ({children}) => {
     const handleStage = (val) => {
       setStage(val)
     }
+  
+    const handleSchedule = (val) => {
+      setSchedule(val)
+    }
 
   return (
     <RoomContext.Provider value={{
@@ -85,7 +90,8 @@ const RoomProvider = ({children}) => {
           reservation, 
           handleReservation, 
           handleResetReservation, 
-          handleReservationUndo
+          handleReservationUndo,
+          schedule, handleSchedule
         }}>
         {children}
     </RoomContext.Provider>
