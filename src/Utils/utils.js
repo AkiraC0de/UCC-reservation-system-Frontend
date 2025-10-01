@@ -59,6 +59,8 @@ export const getDay = () =>  {
   return today.getDay()
 }
 
+// getSorted and getDaysSpan will require future update
+// If number of available days in schedule table change 
 export const getSorted = (daysArr, startingIndex) => {
   let days = new Array(6)
   const length = days.length - startingIndex + 1
@@ -69,4 +71,10 @@ export const getSorted = (daysArr, startingIndex) => {
     days[index + startingIndex] = daysArr[index] 
   }
   return days
+}
+
+export const getDaysSpan = (startingIndex) => {
+  const thisWeekSpan = 6 - startingIndex
+  const nextWeekSpan = 6 - (6 - startingIndex)
+  return ({thisWeekSpan, nextWeekSpan}) 
 }

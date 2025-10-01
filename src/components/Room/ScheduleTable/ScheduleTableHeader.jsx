@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import useRoom from "../../../hooks/useRoom"
-import { getDay, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames, getSorted } from "../../../Utils/utils"
+import { getDay, getDaysSpan, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames, getSorted } from "../../../Utils/utils"
 import { useMemo } from "react"
 
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
@@ -24,14 +24,26 @@ const ScheduleTableHeader = () => {
     return getSorted(monthNameOfNextSavenDays, nextDayByWeekDay)
   }, [])
 
+  const daysSpan = getDaysSpan(nextDayByWeekDay)
+
   const headerCellClasses = "px-2 font-semibold text-gray-700"
+  const nextWeekColSpan = `col-span-[${daysSpan.nextWeekSpan}]`
+  const thisWeekColSpan = `col-span-[${daysSpan.thisWeekSpan}]`
+  const nextWeekClasses = clsx(
+    "bg-green-300 h-5 text-center text-sm font-semibold text-white",
+    nextWeekColSpan
+  )
+  const thisWeekClasses = clsx(
+    "bg-green-400 h-5 text-center text-sm font-semibold text-white",
+    thisWeekColSpan
+  )
 
   return (
     <div>
       <div className="grid grid-cols-7 pr-[8px]">
-        <h1></h1>
-        <h1 className="bg-green-300 h-5 col-span-3 text-center text-sm font-semibold text-white">NEXT WEEK</h1>
-        <h1 className="bg-green-400 h-5 col-span-3 text-center text-sm font-semibold text-white">THIS WEEK</h1>
+        <h1 className="bg-green-300"></h1>
+        <h1 className={nextWeekClasses}>NEXT WEEK</h1>
+        <h1 className={thisWeekClasses}>THIS WEEK</h1>
       </div>
       <div className="grid grid-cols-7 mr-[8px] ">
       <h1 className="border-b border-b-gray-200 center font-medium border-r bg-white border-gray-300">TIME</h1>
