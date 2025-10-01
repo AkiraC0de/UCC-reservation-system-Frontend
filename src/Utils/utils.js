@@ -58,3 +58,15 @@ export const getDay = () =>  {
   // The getDay() method returns the day of the week as a number (0-6)
   return today.getDay()
 }
+
+export const getSorted = (daysArr, startingIndex) => {
+  let days = new Array(6)
+  const length = days.length - startingIndex + 1
+  for (let index = 0; index < length; index++) {
+    days[index] = daysArr[startingIndex + index] 
+  }
+  for (let index = 0; index < startingIndex; index++) {
+    days[index + startingIndex] = daysArr[index] 
+  }
+  return days
+}
