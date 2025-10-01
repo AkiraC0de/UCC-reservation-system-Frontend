@@ -63,12 +63,12 @@ export const getDay = () =>  {
 // If number of available days in schedule table change 
 export const getSorted = (daysArr, startingIndex) => {
   let days = new Array(6)
-  const length = days.length - startingIndex + 1
+  const length = daysArr.length - startingIndex
   for (let index = 0; index < length; index++) {
-    days[index] = daysArr[startingIndex + index] 
+    days[startingIndex + index] = daysArr[index] 
   }
   for (let index = 0; index < startingIndex; index++) {
-    days[index + startingIndex] = daysArr[index] 
+    days[index] = daysArr[index + length] 
   }
   return days
 }
