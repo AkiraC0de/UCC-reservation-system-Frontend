@@ -14,8 +14,7 @@ const RoomDatePicker = () => {
 
   const maxDay = new Date(today);
   maxDay.setDate(today.getDate() + max)
-  console.log(reservation)
-
+  
   return (
     <DatePicker
       minDate={formatDate(minDay)}

@@ -35,6 +35,26 @@ export const  getNextSevenDateNumbers = () => {
   return dateNumbers
 }
 
+export const  getNextSevenDate = () => {
+  const dates = []
+  const today = new Date()
+
+  for (let i = 1; i < 7; i++) {
+    // Create a new Date object for the current iteration's day
+    const nextDay = new Date(today)
+    
+    // Add 'i' days to the date. JavaScript handles month rollovers automatically.
+    nextDay.setDate(today.getDate() + i)
+    
+    // Get the date number (day of the month, 1-31)
+    const date = formatDate(nextDay)
+    
+    dates.push(date)
+  }
+
+  return dates
+}
+
 export const getNextSevenDatesShortMonthNames = () => {
   const monthNames = [];
   const today = new Date();

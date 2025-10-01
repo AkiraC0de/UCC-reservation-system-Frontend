@@ -55,6 +55,7 @@ const RoomProvider = ({children}) => {
 
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
+      setSchedule({})
     }
 
     const handleReservationUndo = () => {

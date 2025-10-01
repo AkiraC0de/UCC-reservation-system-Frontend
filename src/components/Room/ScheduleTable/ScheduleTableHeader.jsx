@@ -1,15 +1,16 @@
 import clsx from "clsx"
 import useRoom from "../../../hooks/useRoom"
-import { getDay, getDaysSpan, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames, getSorted } from "../../../Utils/utils"
+import { getDay, getDaysSpan, getNextSevenDate, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames, getSorted } from "../../../Utils/utils"
 import { useMemo } from "react"
 
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const ScheduleTableHeader = () => {
-  const {schedule, handleSchedule} = useRoom()
-
+  const {schedule, handleSchedule, handleReservationDate, reservation : {building, floor, room}} = useRoom()
+  
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
+  const nextSevenDaysDate = getNextSevenDate()
 
   // Get the index of the day to day (Ex: monday = 1)
   // Then deduct 1 since the tables day start with monday add do not have Sunday Column
@@ -24,6 +25,10 @@ const ScheduleTableHeader = () => {
     return getSorted(monthNameOfNextSavenDays, nextDayByWeekDay)
   }, [])
 
+  const sortedDate = useMemo(() => {
+    return getSorted(nextSevenDaysDate, nextDayByWeekDay)
+  }, [])
+
   const daysSpan = getDaysSpan(nextDayByWeekDay)
 
   const headerCellClasses = "px-2 font-semibold text-gray-700"
@@ -34,9 +39,16 @@ const ScheduleTableHeader = () => {
   const thisWeekClasses = clsx(
     "bg-green-400 h-5 text-center text-sm font-semibold text-white",
   )
-
+  console.log(schedule)
   return (
     <div>
+      <div className="px-4 py-1">
+        <h2 className="text-xs text-gray-500">{`Blg. ${building} > Floor${floor} > Room${room}`}</h2>
+        <h1 className="font-medium">
+          <span className="text-green-500">ROOM {room} </span> 
+          Available Schedule
+        </h1>
+      </div>
       <div className="grid grid-cols-7 pr-[8px]">
         <h1 className="bg-green-300"></h1>
         <h1 style={{gridColumn: "span " + daysSpan.nextWeekSpan}} className={nextWeekClasses}>NEXT WEEK</h1>
@@ -53,7 +65,10 @@ const ScheduleTableHeader = () => {
           return(
             <button 
               key={index}
-              onClick={() => handleSchedule(prev => ({...prev, focus: index}))} 
+              onClick={() => {
+                handleSchedule(prev => ({...prev, focus: index}))
+                handleReservationDate(sortedDate[index])
+              }} 
               className={buttonClasnames}>
               <h1 className={headerCellClasses}>
                 {day}

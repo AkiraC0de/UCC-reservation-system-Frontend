@@ -14,6 +14,26 @@ export const MOCK_DATA_RESERVATION = [
     hours: 3,
   },
   {
+    type: "Plotted",
+    program: "BSCS",
+    section: "2B",
+    prof: "Mr. Jerwin Cabral",
+    purpose: "Lecture",
+    startingTime: 5,
+    weekDay: 2,
+    hours: 3,
+  },
+  {
+    type: "Plotted",
+    program: "BSCS",
+    section: "2B",
+    prof: "Mr. Jerwin Cabral",
+    purpose: "Lecture",
+    startingTime: 0,
+    weekDay: 4,
+    hours: 3,
+  },
+  {
     type: "Reserved",
     reservedBy: {
       firstName: "Mcraven Akira",
