@@ -1,12 +1,12 @@
 import clsx from "clsx"
 import useRoom from "../../../hooks/useRoom"
 import { getDay, getDaysSpan, getNextSevenDate, getNextSevenDateNumbers, getNextSevenDatesShortMonthNames, getSorted } from "../../../Utils/utils"
-import { useMemo } from "react"
+import { useEffect, useMemo } from "react"
 
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const ScheduleTableHeader = () => {
-  const {schedule, handleSchedule, handleReservationDate, reservation : {building, floor, room}} = useRoom()
+  const {schedule, handleSchedule, handleReservationDate, reservation : {building, floor, room, date}} = useRoom()
   
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
@@ -28,6 +28,14 @@ const ScheduleTableHeader = () => {
   const sortedDate = useMemo(() => {
     return getSorted(nextSevenDaysDate, nextDayByWeekDay)
   }, [])
+
+  // Track the changes for Date. So, if the user change the date value from the nav, the day focus of table will match
+  useEffect(() => {
+    if(!date) return
+
+    const indexOfSelectedDate = sortedDate.findIndex(item => item === date)
+    handleSchedule(prev => ({...prev, focus: indexOfSelectedDate}))
+  }, [date])
 
   const daysSpan = getDaysSpan(nextDayByWeekDay)
 

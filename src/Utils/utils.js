@@ -15,59 +15,67 @@ export const evalidateEmail = (email) => {
     return emailRegex.test(email)
 }
 
-export const  getNextSevenDateNumbers = () => {
+export const getNextSevenDateNumbers = () => {
   const dateNumbers = []
   const today = new Date()
 
-  for (let i = 1; i < 7; i++) {
-    // Create a new Date object for the current iteration's day
+  let i = 1
+  while (dateNumbers.length < 6) {   
     const nextDay = new Date(today)
-    
-    // Add 'i' days to the date. JavaScript handles month rollovers automatically.
     nextDay.setDate(today.getDate() + i)
-    
-    // Get the date number (day of the month, 1-31)
-    const dateNumber = nextDay.getDate()
-    
-    dateNumbers.push(dateNumber)
+
+    // Skip if it's Sunday (0 = Sunday)
+    if (nextDay.getDay() !== 0) {
+      dateNumbers.push(nextDay.getDate())
+    }
+
+    i++
   }
 
   return dateNumbers
 }
 
-export const  getNextSevenDate = () => {
+
+export const getNextSevenDate = () => {
   const dates = []
   const today = new Date()
 
-  for (let i = 1; i < 7; i++) {
-    // Create a new Date object for the current iteration's day
+  let i = 1
+  while (dates.length < 6) {    
     const nextDay = new Date(today)
-    
-    // Add 'i' days to the date. JavaScript handles month rollovers automatically.
     nextDay.setDate(today.getDate() + i)
-    
-    // Get the date number (day of the month, 1-31)
-    const date = formatDate(nextDay)
-    
-    dates.push(date)
+
+    // 0 = Sunday
+    if (nextDay.getDay() !== 0) {
+      const date = formatDate(nextDay)
+      dates.push(date)
+    }
+
+    i++
   }
 
   return dates
 }
 
-export const getNextSevenDatesShortMonthNames = () => {
-  const monthNames = [];
-  const today = new Date();
 
-  for (let i = 1; i < 7; i++) {
-    const nextDay = new Date(today);
-    nextDay.setDate(today.getDate() + i);
-    
-    // Use 'short' for the month name
-    const shortMonthName = nextDay.toLocaleDateString('en-US', { month: 'short' });
-    
-    monthNames.push(shortMonthName);
+export const getNextSevenDatesShortMonthNames = () => {
+  const monthNames = []
+  const today = new Date()
+
+  let i = 1
+  while (monthNames.length < 6) {    
+    const nextDay = new Date(today)
+    nextDay.setDate(today.getDate() + i)
+
+    // Skip the sunday, 0 = Sunday
+    if (nextDay.getDay() !== 0) {
+      const shortMonthName = nextDay.toLocaleDateString('en-US', { month: 'short' })
+      monthNames.push(shortMonthName)
+    }
+
+    i++
   }
+
 
   return monthNames;
 }

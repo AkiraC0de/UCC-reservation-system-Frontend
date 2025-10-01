@@ -5,7 +5,8 @@ import { ROOM_RESERVATION_DEFAULT_VALUE } from "../configs/Room.config";
 const STAGES = {
   building: 1,
   floor: 2,
-  room: 3
+  room: 3,
+  date: 4
 }
 
 const RoomProvider = ({children}) => {
@@ -65,6 +66,12 @@ const RoomProvider = ({children}) => {
 
       if(!prevStageInputName) return
 
+      // IF the current Stage is in the Stage 4 (Schedule Table)
+      // reset the focus day to null 
+      if(stage == 4){
+        setSchedule(prev => ({...prev, focus: null}))
+      }
+
       // Then if the Last Input Value is NOT the same as its default
       // Reset the value to its default value
       // And undo the stage one time 
@@ -76,7 +83,7 @@ const RoomProvider = ({children}) => {
         handleReservation(prevTwiceStageInputName, ROOM_RESERVATION_DEFAULT_VALUE[prevTwiceStageInputName])
         setStage(prev => prev > 2 ? prev - 2 : prev > 1 ? prev - 1 : prev)
       }
-
+      
     }
 
     const handleStage = (val) => {
