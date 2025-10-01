@@ -49,6 +49,10 @@ const RoomProvider = ({children}) => {
       setStage(STAGES[inputName] + 1 || 1);
     }
 
+    const handleReservationDate = (val) => {
+      setReservation(prev => ({...prev, date: val}))
+    }
+
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
     }
@@ -73,7 +77,6 @@ const RoomProvider = ({children}) => {
       }
 
     }
-     
 
     const handleStage = (val) => {
       setStage(val)
@@ -88,7 +91,8 @@ const RoomProvider = ({children}) => {
           stage, 
           handleStage,
           reservation, 
-          handleReservation, 
+          handleReservation,
+          handleReservationDate, 
           handleResetReservation, 
           handleReservationUndo,
           schedule, handleSchedule

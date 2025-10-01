@@ -33,7 +33,7 @@ export const ROOM_RESERVATION_DEFAULT_VALUE = {
   building: null,
   floor: 1,
   room: null,
-  date: new Date()
+  date: null
 }
 
 export const TIME_SLOTS = [
