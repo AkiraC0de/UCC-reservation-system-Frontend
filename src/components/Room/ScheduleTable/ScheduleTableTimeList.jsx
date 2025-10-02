@@ -6,7 +6,7 @@ const ScheduleTableTimeList = () => {
   const {schedule, selectedTime} = useRoom()
   const isEven = schedule.cellBeingHovered % 2 == 0
   return (
-     <div className="grid grid-rows-15 transition-all  duration-300">
+     <div className="grid grid-rows-15 transition-all duration-300">
       {TIME_SLOTS.map((time, index) => {
         const isOnFocus = index * 2 === schedule.cellBeingHovered || index * 2 === schedule.cellBeingHovered - 1
         return(

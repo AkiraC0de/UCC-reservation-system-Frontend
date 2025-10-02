@@ -6,9 +6,9 @@ const ScheduleTableTimeLabel = ({time, focus, isEven, isAtStarting}) => {
     <div 
       className={timeLabelClasses}
     >
-      <h2 className={`${isEven && isAtStarting && "bg-green-400 text-white px-2 rounded-xl"}`}>{time.min}</h2>
-      <h1 className={`${focus && (isAtStarting && !isEven || !isAtStarting && isEven) && "font-medium bg-green-500 text-white px-2 rounded-xl"} text-sm`}>{time.mid}</h1>
-      <h2 className={`${!isEven && focus && !isAtStarting && "bg-green-400 text-white font-semibold px-2 rounded-xl"}`}>{time.max}</h2>
+      <h2 className={`${isEven && isAtStarting && "bg-green-400 text-white px-2 rounded-xl"} transition-all duration-300`}>{time.min}</h2>
+      <h1 className={`${focus && (isAtStarting && !isEven || !isAtStarting && isEven) && "font-medium bg-green-500 text-white px-2 rounded-xl"} text-sm transition-all duration-300`}>{time.mid}</h1>
+      <h2 className={`${!isEven && focus && !isAtStarting && "bg-green-400 text-white font-semibold px-2 rounded-xl"} transition-all duration-300`}>{time.max}</h2>
     </div>
   )
 }
