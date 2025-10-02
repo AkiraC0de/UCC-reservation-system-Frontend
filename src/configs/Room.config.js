@@ -11,7 +11,7 @@ export const MOCK_DATA_RESERVATION = [
     purpose: "Lecture",
     startingTime: 2,
     weekDay: 1,
-    hours: 3,
+    hours: 1.5,
   },
   {
     type: "Plotted",

@@ -47,7 +47,7 @@ const ScheduleTableHeader = () => {
   const thisWeekClasses = clsx(
     "bg-green-400 h-5 text-center text-sm font-semibold text-white",
   )
-  console.log(schedule)
+
   return (
     <div>
       <div className="px-4 py-1">
@@ -67,7 +67,7 @@ const ScheduleTableHeader = () => {
       {
         DAYS_OF_WEEK.map((day, index) => {
           const buttonClasnames = clsx({
-            "bg-green-200": index === schedule.focus,
+            "bg-gray-200": index === schedule.focus,
             "bg-white border-x border-b border-gray-100": index !== schedule.focus,
           }, "text-start flex transition-all duration-300 flex-col cursor-pointer top-0 p-1 text-xs")
           return(
