@@ -82,6 +82,15 @@ const ScheduleTableColumnList = () => {
         }
     }
 
+    const onCellHover = (rowIndex) => {
+        handleSchedule(prev => ({...prev, cellBeingHovered: rowIndex}))
+    }
+
+    const onMouseLeave = () => {
+        handleSchedule(prev => ({...prev, cellBeingHovered: null}))
+    }
+    
+
     const cellClasses = "cursor-pointer border-x border-gray-100 h-8 flex items-center justify-center text-sm flex flex-col relative"
 
     // # Render 6 Column that has 30 Row (Cell) from top to bottom
@@ -114,12 +123,14 @@ const ScheduleTableColumnList = () => {
                         "bg-blue-200/50 hover:bg-blue-300/70": isSelectableRange,
                         "bg-red-100 cursor-not-allowed": isOverLimit && !matchedData,
                         "shimmer": isSelectableRange,
-                        "": !isFocusColumn && !matchedData,
+                        "hover:bg-gray-100": !isFocusColumn && !matchedData,
                     })
 
                     return(
                         <div 
                             key={rowIndex}
+                            onMouseEnter={() => onCellHover(rowIndex)}
+                            onMouseLeave={onMouseLeave}
                             onClick={!matchedData ? () => handleCellClick(colIndex, rowIndex) : () => {}}
                             className={`${cellClasses} ${cellVariantClasses}`}
                         >
@@ -130,13 +141,13 @@ const ScheduleTableColumnList = () => {
                             {/* ... (Starting Time / Out Time labels remain the same) ... */}
                             {
                                 selectedStartingTime &&
-                                <div className="absolute left-0 top-0 bg-blue-500 h-1 z-60 w-[120%]">
+                                <div className="absolute left-0 top-1 bg-blue-500 h-0.5 z-60 w-[120%]">
                                     <h1 className="absolute -right-5 translate-y-1/2 bottom-1/2 text-[10px] font-medium bg-blue-500 text-white rounded-2xl px-2">Starting Time</h1>
                                 </div>
                             }
                             {
                                 selectedOutTime &&
-                                <div className="absolute left-0 bottom-0 bg-blue-600 h-1 z-60 w-[120%]">
+                                <div className="absolute left-0 bottom-1 bg-blue-600 h-0.5 z-60 w-[120%]">
                                     <h1 className="absolute -right-5 translate-y-1/2 bottom-1/2 text-[10px] font-medium bg-blue-500 text-white rounded-2xl px-2">Out Time</h1>
                                 </div>
                             }
