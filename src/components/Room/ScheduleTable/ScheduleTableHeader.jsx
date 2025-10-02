@@ -37,6 +37,10 @@ const ScheduleTableHeader = () => {
     handleSchedule(prev => ({...prev, focus: indexOfSelectedDate}))
   }, [date])
 
+  useEffect(() => {
+    handleReservationDate(sortedDate[schedule.focus])
+  }, [schedule.focus])
+
   const daysSpan = getDaysSpan(nextDayByWeekDay)
 
   const headerCellClasses = "px-2 font-semibold text-gray-700"

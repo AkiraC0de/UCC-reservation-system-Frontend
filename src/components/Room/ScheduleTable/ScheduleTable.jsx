@@ -3,8 +3,8 @@ import ScheduleTableHeader from "./ScheduleTableHeader"
 import ScheduleTableColumnList from "./ScheduleTableColumnList"
 
 const ScheduleTable = () => {
-  const tableClass = "bg-white w-full relative max-w-4xl mx-auto rounded-lg shadow-sm overflow-hidden"
-  const tableContentClass = "grid grid-cols-7 max-h-[calc(100vh-220px)] overflow-y-scroll scroll-bar-1"
+  const tableClass = "bg-white w-full relative max-w-4xl mx-auto rounded-lg shadow-sm overflow-y-hidden overflow-x-clip"
+  const tableContentClass = "grid grid-cols-7 max-h-[calc(100vh-220px)] overflow-y-scroll overflow-x-clip scroll-bar-1"
   
   return(
     <div className={tableClass}>

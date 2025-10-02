@@ -137,6 +137,20 @@
   align-items: center;
 }
 
+.shimmer {
+  background: linear-gradient(to right, #d3d3d3 0%, #e8e8e8 20%, #d3d3d3 40%, #d3d3d3 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0; 
+  }
+}
 
 .anim-fade-in-top {
   animation: fade-in-top 300ms;
