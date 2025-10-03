@@ -4,11 +4,10 @@ import ConfirmIcon from "../Shared/Icons/ConfirmIcon"
 import { convertDateFormat } from "../../Utils/utils"
 import { TIME_SLOTS_30_MIN } from "../../configs/Room.config"
 import Input from "../Shared/Input"
-import PrimaryButton from "../Shared/PrimaryButton"
 import CancelIcon from "../Shared/Icons/CancelIcon"
 
 const RoomReservationConfirm = () => {
-  const {reservation : {room, date, purpose}, handleReservationPurpose,  selectedTime} = useRoom()
+  const {reservation : {room, date, purpose},handleSendReservation,  handleReservationPurpose,  selectedTime, handleSchedule} = useRoom()
 
   const formatedDate = useMemo(() => {
     return convertDateFormat(date)
@@ -16,6 +15,10 @@ const RoomReservationConfirm = () => {
 
   const handlePurpose = (e) => {
     handleReservationPurpose(e.target.value)
+  }
+
+  const handleCancel = () => {
+    handleSchedule(prev => ({...prev, isConfirmed: false}))
   }
 
   return (
@@ -37,17 +40,21 @@ const RoomReservationConfirm = () => {
 
           <div className="flex flex-col gap-1">
             <h2 className="font-semibold text-black-text">Time: </h2>
-            <div className="flex gap-2">
-              <h3 className="bg-blue-500 text-white px-2 py-0.5 rounded-xl text-xs">Start </h3>
-              {TIME_SLOTS_30_MIN[selectedTime.startingTime]}
-            </div>
-            <div className="flex gap-2">
-              <h3 className="bg-blue-700 text-white px-2 py-0.5 rounded-xl text-xs">Out </h3>
-              {TIME_SLOTS_30_MIN[selectedTime.outTime]}
-            </div>
-            <div className="flex gap-2">
-              <h3 className="bg-green-500 text-white px-2 py-0.5 rounded-xl text-xs">Duration </h3>
-              {(selectedTime.outTime - selectedTime.startingTime + 1) / 2} Hour/s
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-2">
+                <div className="flex gap-2">
+                  <h3 className="bg-green-500 text-white px-2 py-0.5 rounded-xl text-xs">Start </h3>
+                  {TIME_SLOTS_30_MIN[selectedTime.startingTime]}
+                </div>
+                <div className="flex gap-2">
+                  <h3 className="bg-green-700 text-white px-2 py-0.5 rounded-xl text-xs">Out </h3>
+                  {TIME_SLOTS_30_MIN[selectedTime.outTime + 1]}
+                </div>
+              </div>
+              <div className="w-14 mx-5 aspect-square bg-green-600 text-white rounded-full leading-3 center flex-col">
+                <span className="text-[18px] font-semibold">{(selectedTime.outTime - selectedTime.startingTime + 1) / 2}</span>
+                <span className="text-[10px]">Hour/s</span>
+              </div>
             </div>
           </div>
 
@@ -60,13 +67,19 @@ const RoomReservationConfirm = () => {
             />
           </div>
 
+          <p className="text-xs italic text-gray-400">Note: Account details will be included in the reservation request for admin review.</p>
+
           <div className="flex gap-2">
-            <button className="p-2 w-10 rounded-lg bg-red-500 fill-white">
+            <button 
+              onClick={handleCancel}
+              className="p-2 w-10 rounded-lg bg-red-400 fill-white hover:scale-110 transition-all duration-300 cursor-pointer">
               <CancelIcon/>
             </button>
-            <PrimaryButton className="flex-1">
+            <button 
+              onClick={handleSendReservation}
+              className="flex-1 bg-green-500 text-white font-semibold rounded-lg cursor-pointer hover:scale-104 transition-all duration-300">
               Submit Reservation
-            </PrimaryButton>
+            </button>
           </div> 
 
         </div>

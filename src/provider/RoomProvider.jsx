@@ -13,6 +13,7 @@ const STAGES = {
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
+    const [isLoading, setIsLoading] = useState()
     const [schedule, setSchedule] = useState({
       focus: null,
       isConfirmed: null
@@ -21,6 +22,35 @@ const RoomProvider = ({children}) => {
         startingTime: null, 
         outTime: null 
     })
+
+    const URL = "http://localhost:8080/api/reservation"
+    const OPTION= {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        type: "Reservation",
+        room: reservation.room,
+        weekDay: schedule.focus,
+        startingTime: selectedTime.startingTime,
+        outTime: selectedTime.outTime
+      })
+    }
+
+    const handleSendReservation = () => {
+      setIsLoading(true)
+      fetch(URL, OPTION)
+      .then(async res => {
+        const data = await res.json()
+        console.log(data)
+      })
+      .catch(err => console.log(err, "ERRPR"))
+      .finally(() => {
+        setIsLoading(false)
+      })
+    }
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
@@ -121,7 +151,8 @@ const RoomProvider = ({children}) => {
           handleReservationUndo,
           handleReservationPurpose,
           schedule, handleSchedule,
-          selectedTime, handleSelectedTime
+          selectedTime, handleSelectedTime,
+          handleSendReservation
         }}>
         {children}
     </RoomContext.Provider>

@@ -18,7 +18,7 @@ const RoomNavLocateSection = () => {
     if(!selectedFloorRooms) return
 
     const roomList = selectedFloorRooms.filter(room => room.available).map(room => {
-      if(room.available) return {label: room.no}
+      if(room.available) return {label: room.no, value: room.id}
     })
 
     return selectedFloorRooms ? roomList : []
