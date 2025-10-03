@@ -9,7 +9,7 @@ const AuthProvider = ({children}) => {
   const [auth, setAuth] = useState({
     email: null,
     password : null,
-    isLogin: false
+    isLogin: true
   })
 
   
