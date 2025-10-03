@@ -30,10 +30,10 @@ const BuildingRoomButtons = () => {
 }
 
 const BuildingRoomButton = ({room, onClick}) => {
-  const { no, label, available, value } = room
+  const { no, label, available, value, id } = room
 
   const handleClick = () => {
-    if(available) onClick(no)
+    if(available) onClick(id)
   }
 
   return(

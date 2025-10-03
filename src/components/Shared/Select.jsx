@@ -6,6 +6,7 @@ import Option from "./Option"
 const Select = ({ 
     label, 
     Icon, 
+    className,
     placeholder,
     options = [],
     unlock = true, 
@@ -43,7 +44,7 @@ const Select = ({
   return (
     <div
       id="select"
-      className={`${isRequired ? "border-red-500 anim-shake" : "border-black/40"} border-1 grid transition-all duration-500 gap-1 rounded-lg pt-2 relative overflow-visible`}
+      className={`${isRequired ? "border-red-500 anim-shake" : "border-black/40"} ${className} border-1 grid transition-all duration-500 gap-1 rounded-lg pt-2 relative overflow-visible`}
     >
       <h3 className={`${isRequired ? "text-red-500" : "text-black/40"} text-xs absolute -top-2.5 left-2.5 px-2 bg-white z-20 font-medium`}>
         {label || "Dropdown"}

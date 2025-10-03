@@ -88,6 +88,17 @@
   }
 }
 
+@keyframes scale {
+  from{
+    opacity: 40%;
+    scale: 0%;
+  }
+  to{
+    opacity: 100%;
+    scale: 100%;
+  }
+}
+
 @keyframes fade-in-top {
   from{
     opacity: 0;
@@ -154,6 +165,10 @@
 
 .anim-fade-in-top {
   animation: fade-in-top 300ms;
+}
+
+.anim-scale {
+  animation: scale 300ms;
 }
 
 .anim-fade-in-bottom-left {

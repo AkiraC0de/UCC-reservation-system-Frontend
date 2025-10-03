@@ -32,10 +32,12 @@ const RoomProvider = ({children}) => {
       credentials: 'include',
       body: JSON.stringify({
         type: "Reservation",
-        room: reservation.room,
+        roomId: reservation.room,
+        date: reservation.date,
         weekDay: schedule.focus,
         startingTime: selectedTime.startingTime,
-        outTime: selectedTime.outTime
+        outTime: selectedTime.outTime,
+        purpose: reservation.purpose
       })
     }
 
@@ -45,10 +47,12 @@ const RoomProvider = ({children}) => {
       .then(async res => {
         const data = await res.json()
         console.log(data)
+        handleResetReservation()
       })
       .catch(err => console.log(err, "ERRPR"))
       .finally(() => {
         setIsLoading(false)
+        setSchedule(prev => ({...prev, isConfirmed: false}))
       })
     }
 
@@ -95,6 +99,11 @@ const RoomProvider = ({children}) => {
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
       setSchedule({})
+      setSelectedTime({
+        startingTime: null, 
+        outTime: null 
+      })
+      setStage(1)
     }
 
     const handleReservationUndo = () => {
@@ -152,7 +161,8 @@ const RoomProvider = ({children}) => {
           handleReservationPurpose,
           schedule, handleSchedule,
           selectedTime, handleSelectedTime,
-          handleSendReservation
+          handleSendReservation,
+          isLoading
         }}>
         {children}
     </RoomContext.Provider>
