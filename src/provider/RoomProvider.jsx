@@ -6,13 +6,17 @@ const STAGES = {
   building: 1,
   floor: 2,
   room: 3,
-  date: 4
+  date: 4,
+  confirmation: 5
 }
 
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
-    const [schedule, setSchedule] = useState({})
+    const [schedule, setSchedule] = useState({
+      focus: null,
+      isConfirmed: null
+    })
     const [selectedTime, setSelectedTime] = useState({
         startingTime: null, 
         outTime: null 
@@ -102,6 +106,10 @@ const RoomProvider = ({children}) => {
       setSelectedTime(val)
     }
 
+    const handleReservationPurpose = (val) => {
+      setReservation(prev => ({...prev, purpose: val}))
+    }
+
   return (
     <RoomContext.Provider value={{
           stage, 
@@ -111,6 +119,7 @@ const RoomProvider = ({children}) => {
           handleReservationDate, 
           handleResetReservation, 
           handleReservationUndo,
+          handleReservationPurpose,
           schedule, handleSchedule,
           selectedTime, handleSelectedTime
         }}>

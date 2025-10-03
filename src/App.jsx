@@ -5,6 +5,7 @@ import Room from "./pages/Room"
 import Auth from "./pages/Auth"
 import ProtectedPage from "./layouts/ProtectedPage"
 import Projector from "./pages/Projector"
+import RoomProvider from "./provider/RoomProvider"
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
         </ProtectedPage>
         }>
         <Route index element={<Home/> }></Route>
-        <Route path="/room" element={<Room/>}/>
+        <Route path="/room" element={
+          <RoomProvider>
+            <Room/>
+          </RoomProvider>
+        }/>
         <Route path="/projector" element={<Projector/>}></Route>
         <Route path="/about" element={<Room/>}></Route>
       </Route>

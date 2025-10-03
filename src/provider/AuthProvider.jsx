@@ -25,7 +25,7 @@ const AuthProvider = ({children}) => {
         "Content-Type" : "application/json"
       },
       credentials: 'include',
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({email : email.toLowerCase(), password})
     }
 
     // #3 start the loading animation and Reset the Errors
