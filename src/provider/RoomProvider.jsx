@@ -14,6 +14,8 @@ const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
     const [isLoading, setIsLoading] = useState()
+    const [serverResponse, setServerResponse] = useState({})
+    const [showNotif, setShowNotif] = useState(false)
     const [schedule, setSchedule] = useState({
       focus: null,
       isConfirmed: null
@@ -46,13 +48,24 @@ const RoomProvider = ({children}) => {
       fetch(URL, OPTION)
       .then(async res => {
         const data = await res.json()
-        console.log(data)
+
+        if(!data.success){
+          throw new Error(data)
+        }
+
+        setServerResponse(data)
         handleResetReservation()
+        setShowNotif(true)
       })
-      .catch(err => console.log(err, "ERRPR"))
+      .catch(err => {
+        console.log(err)
+      })
       .finally(() => {
         setIsLoading(false)
         setSchedule(prev => ({...prev, isConfirmed: false}))
+        setTimeout(() => {
+          setShowNotif(false)
+        }, 6000);
       })
     }
 
@@ -117,6 +130,10 @@ const RoomProvider = ({children}) => {
       // reset the focus day to null 
       if(stage == 4){
         setSchedule(prev => ({...prev, focus: null}))
+        setSelectedTime({
+          startingTime: null, 
+          outTime: null 
+        })
       }
 
       // Then if the Last Input Value is NOT the same as its default
@@ -162,6 +179,7 @@ const RoomProvider = ({children}) => {
           schedule, handleSchedule,
           selectedTime, handleSelectedTime,
           handleSendReservation,
+          serverResponse, showNotif,
           isLoading
         }}>
         {children}

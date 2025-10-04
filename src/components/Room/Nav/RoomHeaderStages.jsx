@@ -4,8 +4,10 @@ import useRoom from "../../../hooks/useRoom"
 import { Fragment } from "react"
 
 const RoomHeaderStages = () => {
-  const {stage} = useRoom()
+  const {stage, selectedTime} = useRoom()
 
+  const isOnConfirmation = selectedTime.startingTime !== null && selectedTime.outTime !== null
+  
   const LAST_INDEX = useMemo(() => {
     return CONGRESSIONAL_ROOM_PROGRESS_ITEMS.length - 1
   }, [])
@@ -23,16 +25,30 @@ const RoomHeaderStages = () => {
       {
         CONGRESSIONAL_ROOM_PROGRESS_ITEMS.map((item, index) => (
           <Fragment key={item.id}>
-            <div className="flex flex-col justify-center items-center gap-1 w-12">
-              <item.icon 
-                className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/40"} w-7 duration-300 transition-all`}/>
-                <h2
-                  className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "text-green-500 font-semibold" : "text-black-text/40"} duration-300 transition-all`}
-                >
-                  {item.label}
-                </h2>
-            </div>
-            { LAST_INDEX != index && <ProgressBar isActive={isActive(item.stage)} isCompleted={isCompleted(item.stageEnd)}/>}
+            {
+              LAST_INDEX != index ?
+              <div className="flex flex-col justify-center items-center gap-1 w-12">
+                <item.icon 
+                  className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "fill-green-500" : "fill-black-text/40"} w-7 duration-300 transition-all`}/>
+                  <h2
+                    className={`${isActive(item.stage) || isCompleted(item.stageEnd) ? "text-green-500 font-semibold" : "text-black-text/40"} duration-300 transition-all`}
+                  >
+                    {item.label}
+                  </h2>
+              </div>
+              :
+              <div className="flex flex-col justify-center items-center gap-1 w-12">
+                <item.icon 
+                  className={`${isOnConfirmation ? "fill-green-500" : "fill-black-text/40"} w-7 duration-300 transition-all`}/>
+                  <h2
+                    className={`${isOnConfirmation  ? "text-green-500 font-semibold" : "text-black-text/40"} duration-300 transition-all`}
+                  >
+                    {item.label}
+                  </h2>
+              </div>
+            }
+            { index == 0 && <ProgressBar isActive={isActive(item.stage)} isCompleted={isCompleted(item.stageEnd)}/>}
+            { index == 1 && <ProgressBar isActive={isActive(item.stage)} isCompleted={isOnConfirmation}/>}
           </Fragment>
         )) 
       }

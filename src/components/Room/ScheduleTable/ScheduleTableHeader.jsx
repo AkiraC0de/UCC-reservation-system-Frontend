@@ -12,7 +12,7 @@ const ScheduleTableHeader = () => {
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
   const nextSevenDaysDate = getNextSevenDate()
-  const isTimeSelectionComplete = selectedTime.startingTime !== null && selectedTime.outTime
+  const isTimeSelectionComplete = selectedTime.startingTime !== null && selectedTime.outTime !== null
 
   // Get the index of the day to day (Ex: monday = 1)
   // Then deduct 1 since the tables day start with monday add do not have Sunday Column

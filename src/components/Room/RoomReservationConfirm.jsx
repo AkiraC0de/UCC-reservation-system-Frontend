@@ -17,7 +17,7 @@ const RoomReservationConfirm = () => {
 }
 
 const Form = () => {
-  const {reservation : {room, date, purpose}, handleSendReservation, schedule, handleSchedule, selectedTime} = useRoom()
+  const {reservation : {room, date, purpose}, handleSendReservation, handleReservationPurpose, handleSchedule, selectedTime} = useRoom()
   const formatedDate = useMemo(() => {
     return convertDateFormat(date)
   }, [date])
@@ -75,7 +75,7 @@ const Form = () => {
         />
       </div>
 
-      <p className="text-xs italic text-gray-500">Note: Account details will be included in the reservation request for admin review.</p>
+      <p className="text-xs italic text-gray-500">Note: Some account details will be included in the reservation request for admin review.</p>
 
       <div className="flex gap-2">
         <button 

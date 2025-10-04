@@ -3,7 +3,7 @@ import HomeButtons from "./HomeButtons"
 const HomeHeader = () => {
   return (
     <div className="gap-5 flex flex-col max-w-145">
-        <h2 className="text-black-text font-medium text-sm">University Reservation System by AkiraC0de</h2>
+        <h2 className="text-black-text font-medium text-sm">University Reservation System by Avengers</h2>
         <div className="relative">
           <h1 className="font-bold text-5xl text-black-text">
             Quick & Easy Reservation for Students and Faculty!
