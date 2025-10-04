@@ -112,6 +112,20 @@
   }
 }
 
+@keyframes fade-pop-top {
+  from{
+    opacity: 0;
+    transform: translateY(150px);
+    scale: 0;
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+    scale: 1;
+  }
+}
+
 @keyframes fade-in-bottom-left {
   from{
     opacity: 0;
@@ -161,6 +175,10 @@
   100% {
     background-position: 468px 0; 
   }
+}
+
+.anim-fade-pop-top {
+  animation: fade-pop-top 400ms ease-in;
 }
 
 .anim-fade-in-top {
