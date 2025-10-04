@@ -1,7 +1,6 @@
-import { IoMdArrowBack } from "react-icons/io";
 import { Link } from 'react-router';
 
-export default function Purpose() {
+export default function MeetTheTeam() {
   const titleStyles = `xl:text-4xl lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold mb-4 text-green-700`;
   const subtitleStyles = `xl:text-2xl md:text-2xl sm:text-xl text-lg font-semibold text-green-600`;
   const descriptionStyles = `xl:text-lg md:text-md sm:text-md text-sm text-gray-700 leading-relaxed text-justify`;
@@ -13,41 +12,42 @@ export default function Purpose() {
         <div>
           <Link to="/about">
             <div className="flex items-center gap-3 text-green-700 hover:text-green-900 transition">
-              <IoMdArrowBack className="text-2xl" />
+              <p>←</p>
               <p className="font-medium">Back to About</p>
             </div>
           </Link>
         </div>
 
         <div>
-          <p className={titleStyles}>Purpose</p>
+          <p className={titleStyles}>Meet the Team</p>
         </div>
 
         <div className="flex flex-col gap-4">
           <p className={descriptionStyles}>
-            The purpose of the <strong>Management Information System Room and Equipment Reservation System (MRERS)</strong> 
-            is to modernize the reservation of classrooms and MIS-managed equipment. 
-            Manual, paper-based processes often lead to delays, errors, and scheduling conflicts. 
-            MRERS provides a reliable digital platform that improves efficiency, accuracy, and accessibility 
-            while supporting the operational needs of the University of Caloocan City – North Campus.
+            The <strong>MRERS Development Team</strong> is composed of dedicated
+            Bachelor of Science in Computer Science students from the
+            <strong> University of Caloocan City – North Campus</strong>. United by
+            their shared passion for technology, the team developed the
+            <strong> Management Information System Room and Equipment Reservation System (MRERS)</strong> to modernize the manual reservation process into a
+            faster, more efficient, and reliable platform.
           </p>
 
           <p className={descriptionStyles}>
-            The system enables faculty, staff, and students to make reservations with real-time availability, 
-            while administrators gain a centralized tool for approvals, monitoring, and planning. 
-            Designed to be scalable, MRERS also prepares for future enhancements such as automated notifications, 
-            QR code check-ins, and cross-campus integration.
+          Each member contributed their expertise in system design, frontend and backend development, database management, and documentation. Their collaboration reflects a strong commitment to innovation, teamwork, and excellence—showcasing their capability to deliver practical and scalable technological solutions for the university community.
           </p>
 
-          <p className={`${subtitleStyles} mt-2`}>In summary, MRERS seeks to:</p>
-
-          <ul className={`${descriptionStyles} list-disc pl-6 space-y-2`}>
-            <li>Reduce delays and inefficiencies caused by manual processes.</li>
-            <li>Prevent double bookings through real-time availability tracking.</li>
-            <li>Provide MIS staff with a centralized platform for monitoring and approvals.</li>
-            <li>Maintain a reservation history for better planning and resource maintenance.</li>
-            <li>Offer a scalable solution that can support advanced features in the future.</li>
-          </ul>
+          <p>
+          <div className="mt-6">
+        <h3 className="text-lg font-semibold text-green-700 mb-2">Development Team:</h3>
+        <ul className="list-disc list-inside text-gray-700 leading-relaxed">
+          <li><strong>Mcraven Akira Fernandez</strong> – Team Leader / Full Stack Developer</li>
+          <li><strong>Mary Sembrero</strong> – Quality Assurance / Front-end Developer</li>
+          <li><strong>Attila Sabiniano</strong> – Backend Developer</li>
+          <li><strong>Jan Aryan Bebania</strong> – UI/UX Designer</li>
+        </ul>
+      </div>
+          </p>
+        
         </div>
 
       </div>

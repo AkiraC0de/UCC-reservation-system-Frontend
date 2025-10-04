@@ -1,6 +1,4 @@
-import { IoMdArrowBack } from "react-icons/io";
 import { Link } from 'react-router';
-import { FaBullseye } from "react-icons/fa";
 
 export default function VisionAndMission() {
   const titleStyles = `xl:text-4xl lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold mb-4 text-green-700`
@@ -8,13 +6,13 @@ export default function VisionAndMission() {
   const descriptionStyles = `xl:text-lg md:text-md sm:text-md text-sm text-gray-700 leading-relaxed text-justify`
 
   return (
-    <div className='flex justify-center bg-gray-50 p-6'>
+    <div className='flex justify-center bg-gray-50 p-6 transition-all duration-500'>
       <div className="max-w-3xl flex flex-col p-10 gap-6 border border-green-300 shadow-lg rounded-2xl bg-white">
         
         <div>
           <Link to="/about">
             <div className='flex items-center gap-3 text-green-700 hover:text-green-900 transition'>
-              <IoMdArrowBack className='text-2xl' />
+              <p>←</p>
               <p className='font-md'>Back to About</p>
             </div>
           </Link>

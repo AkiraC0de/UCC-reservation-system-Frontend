@@ -1,4 +1,3 @@
-import { IoMdArrowBack } from "react-icons/io";
 import { Link } from 'react-router';
 
 export default function Purpose() {
@@ -13,7 +12,7 @@ export default function Purpose() {
         <div>
           <Link to="/about">
             <div className="flex items-center gap-3 text-green-700 hover:text-green-900 transition">
-              <IoMdArrowBack className="text-2xl" />
+                <p>←</p>
               <p className="font-medium">Back to About</p>
             </div>
           </Link>
