@@ -21,45 +21,44 @@ const ScheduleTableColumnList = () => {
 
     // --- NEW LOGIC: Determine the maximum selectable rows ---
     const maxSelectableRows = useMemo(() => {
-        const { startingTime, outTime } = selectedTime;
-        const colIndex = schedule.focus;
+        const { startingTime, outTime } = selectedTime
+        const colIndex = schedule.focus
 
         if (startingTime === null || outTime !== null) {
             return Infinity; // No starting time set, or selection is complete
         }
 
-        let maxLimit = startingTime + MAX_SELECTION_HOURS;
-        let barrier = maxLimit;
+        let maxLimit = startingTime + MAX_SELECTION_HOURS
+        let barrier = maxLimit
 
         // 1. Check from startingTime + 1 up to the MAX_SELECTION_HOURS limit
         for (let i = startingTime + 1; i <= maxLimit; i++) {
-            const matchedData = data[`${i}-${colIndex}`];
+            const matchedData = data[`${i}-${colIndex}`]
             if (matchedData) {
                 // Found a reservation! Set the barrier to the cell *before* the reservation.
-                barrier = i; 
-                break;
+                barrier = i
+                break
             }
         }
         
         // The maximum selectable rowIndex is now the barrier
         return barrier;
-    }, [selectedTime, schedule.focus, data]);
+    }, [selectedTime, schedule.focus, data])
 
-    useEffect(() => {
-        handleSelectedTime({ 
-            startingTime: null, 
-            outTime: null 
-        });
-    }, [schedule.focus]);
 
     // Updated handleCellClick function
     const handleCellClick = (colIndex, rowIndex) => {
-        handleSchedule(prev => ({...prev, focus: colIndex}))
+        if(colIndex != schedule.focus){
+            handleSchedule(prev => ({...prev, focus: colIndex}))
+            handleSelectedTime({startingTime: null, outTime: null})
+            return
+        }
+        
 
         // Apply new restriction based on calculated limit
         if (selectedTime.startingTime !== null && selectedTime.outTime === null) {
             if (rowIndex < selectedTime.startingTime) {
-                handleSelectedTime({ startingTime: rowIndex, outTime: null });
+                handleSelectedTime({ startingTime: rowIndex, outTime: null })
                 return // Cannot select time before the start time
             }
             if (rowIndex >= maxSelectableRows) {

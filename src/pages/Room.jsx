@@ -1,16 +1,18 @@
 import ModelPlatform from "../components/Room/ModelPlatform"
 import RoomNav from "../components/Room/Nav/RoomNav";
-import useRoom from "../hooks/useRoom"
-import RoomProvider from "../provider/roomProvider";
+import RoomReservationConfirm from "../components/Room/RoomReservationConfirm";
+import RoomReservationNotif from "../components/Room/RoomReservationNotif";
+import useRoom from "../hooks/useRoom";
 
 const Room = () => {
+  const {schedule, showNotif} = useRoom()
   return (
-    <RoomProvider>
-      <main className="grid grid-cols-[400px_1fr] px-10 gap-6 transition-all duration-500">
-        <RoomNav/>
-        <ModelPlatform/>
-      </main>
-    </RoomProvider>
+    <main className="grid grid-cols-[380px_1fr] px-10 gap-6 transition-all duration-500">
+      <RoomNav/>
+      <ModelPlatform/>
+      {schedule.isConfirmed && <RoomReservationConfirm/>}
+      {showNotif && <RoomReservationNotif/>}
+    </main>
   )
 }
 export default Room

@@ -3,29 +3,14 @@ import Cloud from "../Shared/Cloud"
 const HomeBgOverlay = () => {
   return (
     <div className="overflow-hidden shadow-[inset_-10px_-4px_20px] shadow-gray-900/10 bg-gray-200/40 w-3/5 aspect-square rounded-full absolute -z-10 -top-[40%] -right-[10%]">
-          {/*
-          #OPTIONAL CLOUDS 
-          <Cloud width="19%" color="#84d1fa" bottom="51%" anim="anim-cloud-1" index="4"/>
-          <Cloud width="18%" color="#5eb0db" bottom="53%" anim="anim-cloud-3" index="3"/>
-          <Cloud width="16%" color="#72bae0" bottom="52%" anim="anim-cloud-2" index="2"/>
-          <Cloud width="14%" color="#61a8cf" bottom="54%" anim="anim-cloud-1" index="1"/>
-          <Cloud width="12%" color="#569abf" bottom="53%" anim="anim-cloud-3" index="1"/>
-
-          <Cloud width="19%" color="#84d1fa" bottom="52%" anim="anim-cloud-3" index="4"/>
-          <Cloud width="18%" color="#5eb0db" bottom="54%" anim="anim-cloud-1" index="3"/>
-          <Cloud width="16%" color="#72bae0" bottom="51%" anim="anim-cloud-3" index="2"/>
-          <Cloud width="14%" color="#61a8cf" bottom="52%" anim="anim-cloud-3" index="1"/>
-          <Cloud width="12%" color="#569abf" bottom="54%" anim="anim-cloud-2" index="1"/> */}
       
       <svg 
-        className="drop-shadow-gray-900/10 drop-shadow-xl absolute z-10 bottom-[24%] translate-y-1/2 left-1/2 -translate-x-1/2 aspect-square w-full"
+        className="drop-shadow-gray-900/10 drop-shadow-xl absolute z-10 bottom-[24%] translate-y-1/2 left-1/2 -translate-x-1/2 aspect-square w-[100%] "
         fill="#ffffff" 
         version="1.1" 
         id="Capa_1" 
         xmlns="http://www.w3.org/2000/svg" 
-        xmlnsXlink="http://www.w3.org/1999/xlink" 
-        width="600px" 
-        height="600px" 
+        xmlnsXlink="http://www.w3.org/1999/xlink"  
         viewBox="0 0 962 962" 
         xmlSpace="preserve">
         <g>

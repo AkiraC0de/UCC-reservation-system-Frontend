@@ -12,6 +12,7 @@ const ScheduleTableHeader = () => {
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
   const nextSevenDaysDate = getNextSevenDate()
+  const isTimeSelectionComplete = selectedTime.startingTime !== null && selectedTime.outTime !== null
 
   // Get the index of the day to day (Ex: monday = 1)
   // Then deduct 1 since the tables day start with monday add do not have Sunday Column
@@ -44,14 +45,19 @@ const ScheduleTableHeader = () => {
 
   const daysSpan = getDaysSpan(nextDayByWeekDay)
 
-  const headerCellClasses = "px-2 font-semibold text-gray-700"
+  const handleConfirmButton = () => {
+    handleSchedule(prev => ({...prev, isConfirmed: true}))
+  }
 
-  const nextWeekClasses = clsx(
-    "bg-green-300 h-5 text-center text-sm font-semibold text-white",
-  )
-  const thisWeekClasses = clsx(
-    "bg-green-400 h-5 text-center text-sm font-semibold text-white",
-  )
+  // CLASSES
+  const headerCellClasses = "px-2 font-semibold text-gray-700"
+  const nextWeekClasses = "bg-green-300 h-5 text-center text-sm font-semibold text-white"
+  const thisWeekClasses = "bg-green-400 h-5 text-center text-sm font-semibold text-white"
+  const confirmButtonClasses = clsx({
+    "bg-blue-500 text-white" : isTimeSelectionComplete,
+    "bg-gray-200 text-gray-400 line-through" : !isTimeSelectionComplete,
+  }, "cursor-pointer   px-3 py-1.5 text-xs rounded-xl font-medium")
+  
 
   return (
     <div>
@@ -66,17 +72,20 @@ const ScheduleTableHeader = () => {
         <div className="flex p-1 flex-1 justify-end gap-4">
           <div className="text-black-text text-xs">
             <h1>Starting Time: {selectedTime.startingTime !== null ? TIME_SLOTS_30_MIN[selectedTime.startingTime] : "00:00"}</h1>
-            <h1>Out Time: {selectedTime.startingTime !== null ? TIME_SLOTS_30_MIN[selectedTime.outTime + 1] : "00:00"}</h1>
+            <h1>Out Time: {selectedTime.outTime !== null ? TIME_SLOTS_30_MIN[selectedTime.outTime + 1] : "00:00"}</h1>
           </div>
-          <button className="cursor-pointer bg-blue-500 text-white px-3 py-1.5 text-xs rounded-xl font-medium">
-            Confirm Selected Time
+          <button 
+            onClick={handleConfirmButton}
+            className={confirmButtonClasses}
+          >
+              Confirm Selected Time
           </button>
         </div>
       </div>
       <div className="grid grid-cols-7 pr-[8px]">
         <h1 className="bg-green-300"></h1>
         <h1 style={{gridColumn: "span " + daysSpan.nextWeekSpan}} className={nextWeekClasses}>NEXT WEEK</h1>
-        <h1 style={{gridColumn: "span " + daysSpan.thisWeekSpan}}  className={thisWeekClasses}>THIS WEEK</h1>
+        {!daysSpan.thisWeekSpan || <h1 style={{gridColumn: "span " + daysSpan.thisWeekSpan}}  className={thisWeekClasses}>THIS WEEK</h1>}
       </div>
       <div className="grid grid-cols-7 mr-[8px] ">
       <h1 className="border-b border-b-gray-200 center font-medium border-r bg-white border-gray-300">TIME</h1>

@@ -106,3 +106,25 @@ export const getDaysSpan = (startingIndex) => {
   const nextWeekSpan = 6 - (6 - startingIndex)
   return ({thisWeekSpan, nextWeekSpan}) 
 }
+
+export const convertDateFormat = (dateString) => {
+    // Append T00:00:00 to the date string to prevent time zone conversion issues,
+    // ensuring the date object is created for the start of the day in UTC.
+    const date = new Date(dateString + 'T00:00:00');
+
+    // Define arrays for month and weekday abbreviations
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // Extract and format components
+    const month = monthNames[date.getMonth()];
+    // Get the day and pad with a leading zero if necessary
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    const weekday = dayNames[date.getDay()];
+
+    // Assemble the final string using a template literal
+    const convertedFormat = `${month}. ${day}, ${year} ${weekday}`;
+
+    return convertedFormat;
+}

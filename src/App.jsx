@@ -9,6 +9,7 @@ import About from "./pages/About"
 import VisionAndMission from "./components/About/VisionAndMission"
 import Purpose from "./components/About/Purpose"
 import MeetTheTeam from "./components/About/MeetTheTeam"
+import RoomProvider from "./provider/RoomProvider"
 
 function App() {
   return (
@@ -20,7 +21,11 @@ function App() {
         </ProtectedPage>
         }>
         <Route index element={<Home/> }></Route>
-        <Route path="/room" element={<Room/>}/>
+        <Route path="/room" element={
+          <RoomProvider>
+            <Room/>
+          </RoomProvider>
+        }/>
         <Route path="/projector" element={<Projector/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/mission&vision" element={<VisionAndMission/>}></Route>

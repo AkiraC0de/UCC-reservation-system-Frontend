@@ -53,7 +53,8 @@ export const ROOM_RESERVATION_DEFAULT_VALUE = {
   building: null,
   floor: 1,
   room: null,
-  date: null
+  date: null,
+  purpose: null
 }
 
 export const TIME_SLOTS = [
@@ -105,7 +106,7 @@ export const TIME_SLOTS_30_MIN = [
   "8:30 PM", 
   "9:00 PM", 
   "9:30 PM", 
-  "9:59 PM", 
+  "10:00 PM", 
 ];
 
 export const CONGRESSIONAL_ROOM_PROGRESS_ITEMS = [

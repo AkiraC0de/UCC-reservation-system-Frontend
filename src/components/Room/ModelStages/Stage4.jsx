@@ -5,14 +5,10 @@ import useRoom from "../../../hooks/useRoom"
 const Stage4 = () => {
   const {stage} = useRoom()
   return (
-    <motion.div 
-      key={stage}
-      initial={{scale: 0, opacity: 0.4}}
-      animate={{scale: 1, opacity: 1, }}
-      transition={{duration: 0.3}}
-      className="w-full">
+    <div 
+      className="w-full anim-scale">
       <ScheduleTable/>
-    </motion.div>
+    </div>
   )
 }
 export default Stage4

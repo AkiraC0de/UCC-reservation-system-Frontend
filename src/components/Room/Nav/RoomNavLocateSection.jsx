@@ -18,7 +18,7 @@ const RoomNavLocateSection = () => {
     if(!selectedFloorRooms) return
 
     const roomList = selectedFloorRooms.filter(room => room.available).map(room => {
-      if(room.available) return {label: room.no}
+      if(room.available) return {label: room.no, value: room.id}
     })
 
     return selectedFloorRooms ? roomList : []
@@ -34,11 +34,12 @@ const RoomNavLocateSection = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
-      <h2 className="text-sm px-2 text-black-text">Locate your room</h2>
-        <div className="flex justify-between items-start gap-2 transition-all duration-500 w-full">
+    <div className="flex flex-col gap-5 max-h-fit">
+      <h2 className="text-sm px-2 text-gray-500 italic">Locate your prefered room</h2>
+        <div className="flex max-h-[40px] items-start gap-4 transition-all duration-500 w-full">
             <Select 
               label="Building"
+              className="flex-1 bg-white z-50"
               placeholder="Select"
               Icon={BuildingIcon}
               valueAddress="building"
@@ -53,6 +54,7 @@ const RoomNavLocateSection = () => {
             />
             <Select 
               label="Floor"
+              className="bg-white z-50 w-30"
               unlock={reservation.building}
               Icon={BuildingIcon}
               valueAddress="floor"
@@ -70,23 +72,26 @@ const RoomNavLocateSection = () => {
                   handleIsRequired("building", true)
                 }, 10);
               }}
-            />
-            <Select 
-              label="Room"
-              unlock={reservation.building}
-              placeholder="Select"
-              Icon={BuildingIcon}
-              valueAddress="room"
-              value={reservation.room}
-              handleValue={handleReservation}
-              options={ROOM_SELECTIONS}
-              handleLock={() => {
-                handleIsRequired("building", false)
-                setTimeout(() => {
-                  handleIsRequired("building", true)
-                }, 10);
-              }}
-            />
+            />  
+        </div>
+        <div className="max-h-[40px]">
+          <Select 
+            label="Room"
+            className="flex-1 bg-white z-49"
+            unlock={reservation.building}
+            placeholder="Select"
+            Icon={BuildingIcon}
+            valueAddress="room"
+            value={reservation.room}
+            handleValue={handleReservation}
+            options={ROOM_SELECTIONS}
+            handleLock={() => {
+              handleIsRequired("building", false)
+              setTimeout(() => {
+                handleIsRequired("building", true)
+              }, 10);
+            }}
+          />
         </div>
     </div>
   )

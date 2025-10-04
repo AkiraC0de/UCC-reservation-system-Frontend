@@ -6,17 +6,68 @@ const STAGES = {
   building: 1,
   floor: 2,
   room: 3,
-  date: 4
+  date: 4,
+  confirmation: 5
 }
 
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
-    const [schedule, setSchedule] = useState({})
+    const [isLoading, setIsLoading] = useState()
+    const [serverResponse, setServerResponse] = useState()
+    const [showNotif, setShowNotif] = useState(false)
+    const [schedule, setSchedule] = useState({
+      focus: null,
+      isConfirmed: null
+    })
     const [selectedTime, setSelectedTime] = useState({
         startingTime: null, 
         outTime: null 
     })
+
+    const URL = "http://localhost:8080/api/reservation"
+    const OPTION= {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        type: "Reservation",
+        roomId: reservation.room,
+        date: reservation.date,
+        weekDay: schedule.focus,
+        startingTime: selectedTime.startingTime,
+        outTime: selectedTime.outTime,
+        purpose: reservation.purpose
+      })
+    }
+
+    const handleSendReservation = () => {
+      setIsLoading(true)
+      fetch(URL, OPTION)
+      .then(async res => {
+        const data = await res.json()
+
+        if(!data.success){
+          throw new Error(data)
+        }
+
+        setServerResponse(data)
+        handleResetReservation()
+        setShowNotif(true)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      .finally(() => {
+        setIsLoading(false)
+        setSchedule(prev => ({...prev, isConfirmed: false}))
+        setTimeout(() => {
+          setShowNotif(false)
+        }, 6000);
+      })
+    }
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
@@ -61,6 +112,11 @@ const RoomProvider = ({children}) => {
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
       setSchedule({})
+      setSelectedTime({
+        startingTime: null, 
+        outTime: null 
+      })
+      setStage(1)
     }
 
     const handleReservationUndo = () => {
@@ -74,6 +130,10 @@ const RoomProvider = ({children}) => {
       // reset the focus day to null 
       if(stage == 4){
         setSchedule(prev => ({...prev, focus: null}))
+        setSelectedTime({
+          startingTime: null, 
+          outTime: null 
+        })
       }
 
       // Then if the Last Input Value is NOT the same as its default
@@ -102,6 +162,10 @@ const RoomProvider = ({children}) => {
       setSelectedTime(val)
     }
 
+    const handleReservationPurpose = (val) => {
+      setReservation(prev => ({...prev, purpose: val}))
+    }
+
   return (
     <RoomContext.Provider value={{
           stage, 
@@ -111,8 +175,12 @@ const RoomProvider = ({children}) => {
           handleReservationDate, 
           handleResetReservation, 
           handleReservationUndo,
+          handleReservationPurpose,
           schedule, handleSchedule,
-          selectedTime, handleSelectedTime
+          selectedTime, handleSelectedTime,
+          handleSendReservation,
+          serverResponse, showNotif,
+          isLoading
         }}>
         {children}
     </RoomContext.Provider>
