@@ -7,17 +7,55 @@ import clsx from "clsx"
 const MAX_SELECTION_HOURS = 10; // The hard limit for selection
 
 const ScheduleTableColumnList = () => {
-    const { schedule, handleSchedule, selectedTime, handleSelectedTime } = useRoom() 
+    const { schedule, handleSchedule, reservation, selectedTime, handleSelectedTime } = useRoom() 
+    const [recievedData, setRecievedData] = useState({})
 
     // TEMPORARY: Pre-process mock data for quick lookup
     const MOCK_DATA = MOCK_DATA_RESERVATION
-    const data = useMemo(() => {
-        return MOCK_DATA.reduce((map, item) => {
-            // Key format: "rowIndex-colIndex"
-            map[`${item.startingTime}-${item.weekDay}`] = item;
+    // The key logic is here: combining arrays before reduction
+    const dataMap = useMemo(() => {
+        // 1. Get the fetched data array, defaulting to an empty array if not present
+        const fetchedArray = recievedData.data || [];
+
+        // 2. Combine the mock data and the fetched data into a single array
+        // Order matters: if there are conflicts, the elements later in the array (fetched data)
+        // will overwrite earlier elements (mock data) in the reduce step.
+        const combinedArray = [...MOCK_DATA, ...fetchedArray];
+
+        // 3. Reduce the combined array into the quick-lookup map
+        return combinedArray.reduce((map, item) => {
+            // Key format: "startingTime-weekDay"
+            // Example key: "9-3"
+            const key = `${item.startingTime}-${item.weekDay}`;
+            map[key] = item;
             return map;
-        }, {})
-    }, [MOCK_DATA])
+        }, {});
+    }, [MOCK_DATA, recievedData.data]);
+
+    const URL = `http://localhost:8080/api/all-reservation?roomId=${reservation.room}`;
+    const OPTION= {
+      method: "GET",
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      credentials: 'include',
+    }
+
+    useEffect(() => {
+      fetch(URL, OPTION)
+      .then(async res => {
+      const data = await res.json()
+
+      if(!data.success){
+          throw new Error(data.message)
+      }
+
+      setRecievedData(data)
+      })
+      .catch(err => {
+      console.log(err.message)
+      })
+    }, [])
 
     // --- NEW LOGIC: Determine the maximum selectable rows ---
     const maxSelectableRows = useMemo(() => {
@@ -33,7 +71,7 @@ const ScheduleTableColumnList = () => {
 
         // 1. Check from startingTime + 1 up to the MAX_SELECTION_HOURS limit
         for (let i = startingTime + 1; i <= maxLimit; i++) {
-            const matchedData = data[`${i}-${colIndex}`]
+            const matchedData = dataMap[`${i}-${colIndex}`]
             if (matchedData) {
                 // Found a reservation! Set the barrier to the cell *before* the reservation.
                 barrier = i
@@ -43,7 +81,7 @@ const ScheduleTableColumnList = () => {
         
         // The maximum selectable rowIndex is now the barrier
         return barrier;
-    }, [selectedTime, schedule.focus, data])
+    }, [selectedTime, schedule.focus, recievedData.data])
 
 
     // Updated handleCellClick function
@@ -97,7 +135,7 @@ const ScheduleTableColumnList = () => {
         return <div key={colIndex} className="grid grid-row-15">
             {
                 [...Array(30)].map((_, rowIndex) => {
-                    const matchedData = data[`${rowIndex}-${colIndex}`]
+                    const matchedData = dataMap[`${rowIndex}-${colIndex}`]
                     const height = `${matchedData?.hours * 200}%`
                     const isFocusColumn = colIndex === schedule.focus
                     const selectedStartingTime = rowIndex === selectedTime.startingTime && isFocusColumn

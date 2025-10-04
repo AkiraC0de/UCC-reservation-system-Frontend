@@ -26,7 +26,6 @@ const ReservationSection = ({ reservation12 }) => {
       }
 
       setRecievedData(data)
-      console.log(data)
     })
     .catch(err => {
       console.log(err)
@@ -59,10 +58,10 @@ const ReservationSection = ({ reservation12 }) => {
           Browse my reservations...
         </SecondaryButton>
       </div>
-      <div className="center gap-5 flex-row-reverse flex-1">
+      <div className="center gap-5 flex-1">
         {
           recievedData.data.map(reservation => (
-              <Card className={`${statusColors[reservation.status]} rounded-xl shadow-xl border-1 border-gray-300 w-50 overflow-hidden`}>
+              <Card key={reservation._id} className={`${statusColors[reservation.status]} rounded-xl shadow-xl border-1 border-gray-300 w-50 overflow-hidden`}>
                 <div className="w-full h-25 center  flex flex-col">
                   <h1 className="text-white font-bold text-xl capitalize">{reservation.status}</h1>
                   <h2 className="leading-2 text-xs font-semibold text-white">{reservation.roomId}</h2>
