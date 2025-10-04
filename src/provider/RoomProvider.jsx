@@ -15,7 +15,11 @@ const RoomProvider = ({children}) => {
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
     const [isLoading, setIsLoading] = useState()
     const [serverResponse, setServerResponse] = useState({})
+<<<<<<< HEAD
     const [showNotif, setShowNotif] = useState(false)
+=======
+    const [showNotif, setShowNotif] = useState(true)
+>>>>>>> 0792f11c76b81ce81675043253a4908c9ed6fc72
     const [schedule, setSchedule] = useState({
       focus: null,
       isConfirmed: null
