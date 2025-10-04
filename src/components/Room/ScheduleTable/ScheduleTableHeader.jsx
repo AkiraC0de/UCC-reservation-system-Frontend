@@ -7,7 +7,7 @@ import { TIME_SLOTS_30_MIN } from "../../../configs/Room.config"
 const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const ScheduleTableHeader = () => {
-  const {schedule, handleSchedule, selectedTime, handleReservationDate, reservation : {building, floor, room, date}} = useRoom()
+  const {schedule, handleSchedule, selectedTime, handleReservationDate, handleSelectedTime, reservation : {building, floor, room, date}} = useRoom()
   
   const numberByDaysOfNextSavenDays = getNextSevenDateNumbers()
   const monthNameOfNextSavenDays = getNextSevenDatesShortMonthNames()
@@ -101,6 +101,7 @@ const ScheduleTableHeader = () => {
               onClick={() => {
                 handleSchedule(prev => ({...prev, focus: index}))
                 handleReservationDate(sortedDate[index])
+                handleSelectedTime({startingTime: null, outTime: null})
               }} 
               className={buttonClasnames}>
               <h1 className={headerCellClasses}>
