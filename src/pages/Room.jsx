@@ -7,7 +7,7 @@ import useRoom from "../hooks/useRoom";
 const Room = () => {
   const {schedule, showNotif} = useRoom()
   return (
-    <main className="grid grid-cols-[380px_1fr] px-10 gap-6 transition-all duration-500">
+    <main className="grid grid-cols-[380px_1fr] px-10 gap-6 transition-all duration-500 shadow-2xl">
       <RoomNav/>
       <ModelPlatform/>
       {schedule.isConfirmed && <RoomReservationConfirm/>}
