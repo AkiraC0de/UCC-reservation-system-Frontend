@@ -1,9 +1,8 @@
 import { Link } from 'react-router';
 
 export default function MeetTheTeam() {
-  const titleStyles = `xl:text-4xl lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold mb-4 text-green-700`;
-  const subtitleStyles = `xl:text-2xl md:text-2xl sm:text-xl text-lg font-semibold text-green-600`;
-  const descriptionStyles = `xl:text-lg md:text-md sm:text-md text-sm text-gray-700 leading-relaxed text-justify`;
+  const titleStyles = `xl:text-3xl lg:text-4xl md:text-3xl sm:text-3xl text-2xl font-bold mb-4 text-green-700`;
+  const descriptionStyles = `xl:text-sm md:text-md sm:text-md text-sm text-gray-700 leading-relaxed text-justify`;
 
   return (
     <div className="flex justify-center items-center bg-gray-50 min-h-screen p-6">
@@ -42,8 +41,8 @@ export default function MeetTheTeam() {
         <ul className="list-disc list-inside text-gray-700 leading-relaxed">
           <li><strong>Mcraven Akira Fernandez</strong> – Team Leader / Full Stack Developer</li>
           <li><strong>Mary Sembrero</strong> – Quality Assurance / Front-end Developer</li>
-          <li><strong>Attila Sabiniano</strong> – Backend Developer</li>
-          <li><strong>Jan Aryan Bebania</strong> – UI/UX Designer</li>
+          <li><strong>Attila Sabiniano</strong> – UI Designer</li>
+          <li><strong>Jan Aryan Bebania</strong> – UI Designer</li>
         </ul>
       </div>
           </p>

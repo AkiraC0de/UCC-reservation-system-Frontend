@@ -2,10 +2,12 @@ import { useEffect, useState } from "react"
 import { TIME_SLOTS_30_MIN } from "../../configs/Room.config"
 import PrimaryButton from "../Shared/PrimaryButton"
 import SecondaryButton from "../Shared/SecondaryButton"
+import useAuth from "../../hooks/useAuth"
 
 
 const ReservationSection = ({ reservation12 }) => {
   const [recievedData, setRecievedData] = useState({data: []})
+  const {auth} = useAuth()
 
   const URL = "http://localhost:8080/api/reservation?limit=3"
   const OPTION= {
@@ -30,13 +32,13 @@ const ReservationSection = ({ reservation12 }) => {
     .catch(err => {
       console.log(err)
     })
-  }, [])
+  }, [auth.isLogin])
 
 
   const statusColors = {
     confirmed: "bg-green-gradient-2 text-green-700",
     pending: "bg-orange-gradient text-yellow-700",
-    cancelled: "bg-red-100 text-red-700"
+    cancelled: "bg-red-gradient text-red-700"
   }
 
   const textColors = {
@@ -47,18 +49,8 @@ const ReservationSection = ({ reservation12 }) => {
 
   return (
     <section className="w-full p-6 relative mt-5 flex justify-center">
-      <div className="text-center flex-1 center flex-col gap-5">
-        <h1 className="text-4xl font-bold text-black-text">Recent Reservations</h1>
-        <p className="text-black-text text-sm w-100 ">
-          Please understand that accepting a reservation takes time to review and confirm. We carefully go over each request to ensure all details are correct and that we can provide the best experience possible.
-
-          We appreciate your patience and will notify you as soon as the status of your reservation is updated.
-        </p>
-        <SecondaryButton>
-          Browse my reservations...
-        </SecondaryButton>
-      </div>
-      <div className="center gap-5 flex-1">
+      
+      <div className="center gap-5 flex-1 px-4">
         {
           recievedData.data.map(reservation => (
               <Card key={reservation._id} className={`${statusColors[reservation.status]} rounded-xl shadow-xl border-1 border-gray-300 w-50 overflow-hidden`}>
@@ -84,6 +76,17 @@ const ReservationSection = ({ reservation12 }) => {
               </Card>
           ))
         }
+      </div>
+      <div className="text-center flex-1 center items-end flex-col gap-5 ">
+        <h1 className="text-4xl font-bold text-black-text">Recent Reservations</h1>
+        <p className="text-black-text text-sm w-100 ">
+          Please understand that accepting a reservation takes time to review and confirm. We carefully go over each request to ensure all details are correct and that we can provide the best experience possible.
+
+          We appreciate your patience and will notify you as soon as the status of your reservation is updated.
+        </p>
+        <SecondaryButton>
+          Browse my reservations...
+        </SecondaryButton>
       </div>
     </section>
   )

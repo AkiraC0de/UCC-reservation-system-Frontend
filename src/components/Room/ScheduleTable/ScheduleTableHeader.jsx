@@ -84,7 +84,7 @@ const ScheduleTableHeader = () => {
       </div>
       <div className="grid grid-cols-7 pr-[8px]">
         <h1 className="bg-green-300"></h1>
-        <h1 style={{gridColumn: "span " + daysSpan.nextWeekSpan}} className={nextWeekClasses}>NEXT WEEK</h1>
+        {!daysSpan.nextWeekSpan || <h1 style={{gridColumn: "span " + daysSpan.nextWeekSpan}} className={nextWeekClasses}>NEXT WEEK</h1>}
         {!daysSpan.thisWeekSpan || <h1 style={{gridColumn: "span " + daysSpan.thisWeekSpan}}  className={thisWeekClasses}>THIS WEEK</h1>}
       </div>
       <div className="grid grid-cols-7 mr-[8px] ">

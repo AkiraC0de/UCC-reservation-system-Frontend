@@ -9,7 +9,6 @@ const Home = () => {
         <LeftSection/>
         <RightSection/>
       </div>
-      <ReservationSection/>
     </main>
   )
 }

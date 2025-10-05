@@ -12,6 +12,7 @@ const STAGES = {
 
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
+    const [isRequired, setIsRequired] = useState({})
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
     const [isLoading, setIsLoading] = useState()
     const [serverResponse, setServerResponse] = useState()
@@ -42,8 +43,13 @@ const RoomProvider = ({children}) => {
         purpose: reservation.purpose
       })
     }
-
+    console.log(isRequired)
     const handleSendReservation = () => {
+      if(!reservation.purpose){
+        setIsRequired(prev => ({...prev, purpose: true}))
+        return
+      }
+
       setIsLoading(true)
       fetch(URL, OPTION)
       .then(async res => {
@@ -67,6 +73,10 @@ const RoomProvider = ({children}) => {
           setShowNotif(false)
         }, 6000);
       })
+    }
+
+    const handleIsRequired = (val) => {
+      setIsRequired(val)
     }
 
     // Handle the reservation per input changes
@@ -180,6 +190,7 @@ const RoomProvider = ({children}) => {
           selectedTime, handleSelectedTime,
           handleSendReservation,
           serverResponse, showNotif,
+          isRequired, handleIsRequired,
           isLoading
         }}>
         {children}

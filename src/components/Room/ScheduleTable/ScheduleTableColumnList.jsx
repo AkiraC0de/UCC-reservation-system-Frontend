@@ -136,7 +136,7 @@ const ScheduleTableColumnList = () => {
             {
                 [...Array(30)].map((_, rowIndex) => {
                     const matchedData = dataMap[`${rowIndex}-${colIndex}`]
-                    const height = `${matchedData?.hours * 200}%`
+                    const height = `${matchedData?.hours * 100}%`
                     const isFocusColumn = colIndex === schedule.focus
                     const selectedStartingTime = rowIndex === selectedTime.startingTime && isFocusColumn
                     const selectedOutTime = rowIndex === selectedTime.outTime && isFocusColumn

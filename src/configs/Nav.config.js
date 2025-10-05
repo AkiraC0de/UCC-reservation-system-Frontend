@@ -11,7 +11,7 @@ export const NAV_ITEMS = [
     },
     {
         id: "nav_projector",
-        label: "Projector",
+        label: "Other",
         path: "/projector",
     },
     {

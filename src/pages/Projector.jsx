@@ -1,6 +1,6 @@
 const Projector = () => {
   return (
-    <div>Projector</div>
+    <div>Others</div>
   )
 }
 export default Projector

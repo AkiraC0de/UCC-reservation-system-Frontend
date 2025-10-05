@@ -17,6 +17,13 @@ const NavUser = () => {
 
   return (
     <div className="flex gap-2 items-center justify-end">
+      <div className="flex flex-col items-end">
+        <div className="flex gap-1 text-sm font-medium">
+          <h3>{auth?.userData?.firstName}</h3>
+          <h3>{auth?.userData?.lastName}</h3>
+        </div>
+        
+      </div>
       {auth.isLogin && 
       <>
         {/*<p className="text-sm text-black-text font-semibold ">{ auth.userData.firstName} { auth.userData.lastName}</p>*/}

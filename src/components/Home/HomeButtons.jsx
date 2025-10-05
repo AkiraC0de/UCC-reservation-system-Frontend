@@ -12,7 +12,7 @@ const HomeButtons = () => {
         </PrimaryButton>      
         <SecondaryButton>
           <Link to="/projector">
-            Reserve Projector
+            Reserve Other Items
            </Link>
         </SecondaryButton>
     </div>

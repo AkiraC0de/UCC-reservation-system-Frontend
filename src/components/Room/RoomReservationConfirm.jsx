@@ -17,7 +17,7 @@ const RoomReservationConfirm = () => {
 }
 
 const Form = () => {
-  const {reservation : {room, date, purpose}, handleSendReservation, handleReservationPurpose, handleSchedule, selectedTime} = useRoom()
+  const {reservation : {room, date, purpose}, isRequired, handleIsRequired, handleSendReservation, handleReservationPurpose, handleSchedule, selectedTime} = useRoom()
   const formatedDate = useMemo(() => {
     return convertDateFormat(date)
   }, [date])
@@ -28,6 +28,7 @@ const Form = () => {
 
   const handleCancel = () => {
     handleSchedule(prev => ({...prev, isConfirmed: false}))
+    handleIsRequired(prev => ({...prev, purpose: false}))
   }
 
   return(
@@ -67,7 +68,10 @@ const Form = () => {
       </div>
 
       <div className="flex flex-col gap-1">
-        <h2 className="font-semibold text-black-text">Purpose: <span className="text-xs font-light text-gray-500">* required</span></h2>
+        <div className="flex gap-2">
+          <h2 className="font-semibold text-black-text">Purpose:</h2>  
+          <span className={`${isRequired.purpose ? "text-red-400 anim-shake" : "text-gray-400"} text-xs`}>* required</span>
+        </div>
         <Input
           placeholder="Enter a valid purpose. Ex: Lecture"
           value={purpose}
