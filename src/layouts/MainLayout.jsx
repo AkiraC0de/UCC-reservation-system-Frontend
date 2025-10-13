@@ -6,7 +6,7 @@ const MainLayout = () => {
   const {pathname} = useLocation();
   return (
     <div 
-      className={`${pathname == "/room" && "bg-[#f5f5f7]"} grid grid-rows-[75px_1fr] overflow-hidden relative min-h-screen`}>
+      className={`${(pathname == "/room" || pathname == "/items") && "bg-[#f5f5f7]"} grid grid-rows-[75px_1fr] overflow-hidden relative min-h-screen`}>
         <Nav/>
         <Outlet/>
         { pathname == '/' && <HomeBgOverlay/>}

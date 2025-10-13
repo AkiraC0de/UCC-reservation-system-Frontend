@@ -4,7 +4,7 @@ import Home from "./pages/Home"
 import Room from "./pages/Room"
 import Auth from "./pages/Auth"
 import ProtectedPage from "./layouts/ProtectedPage"
-import Projector from "./pages/Projector"
+import Items from "./pages/Items"
 import About from "./pages/About"
 import VisionAndMission from "./components/About/VisionAndMission"
 import Purpose from "./components/About/Purpose"
@@ -26,7 +26,7 @@ function App() {
             <Room/>
           </RoomProvider>
         }/>
-        <Route path="/projector" element={<Projector/>}></Route>
+        <Route path="/items" element={<Items/>}></Route>
         <Route path="/about" element={<About/>}></Route>
         <Route path="/mission&vision" element={<VisionAndMission/>}></Route>
         <Route path="/purpose" element={<Purpose/>}></Route>

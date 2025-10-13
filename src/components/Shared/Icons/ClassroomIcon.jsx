@@ -1,7 +1,7 @@
-const ClassroomIcon = () => {
+const ClassroomIcon = ({className}) => {
   return (
     <svg
-              className="aspect-square"
+              className={className}
               width="100%"
               version="1.1"
               xmlns="http://www.w3.org/2000/svg"
