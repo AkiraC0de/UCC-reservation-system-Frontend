@@ -11,7 +11,7 @@ const HomeButtons = () => {
            </Link>
         </PrimaryButton>      
         <SecondaryButton>
-          <Link to="/projector">
+          <Link to="/items">
             Reserve Other Items
            </Link>
         </SecondaryButton>
