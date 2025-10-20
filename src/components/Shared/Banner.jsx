@@ -1,4 +1,4 @@
-const Banner = ({label, background = "#fe0808", fontColor = "white", fontSize = "12px"}) => {
+const Banner = ({label = "", background = "#fe0808", fontColor = "white", fontSize = "12px"}) => {
     const splitedLabel = label.split("")
   return (
     <ul 

@@ -24,3 +24,10 @@ export const PROJECTORS_DATA = [
     imgUrl: "./projectors/proj1.png"
   },
 ]
+
+export const TV_DATA = {
+  codeName: "Television (Thesis Presentation Priority)",
+  location: "3rd Floor MIS Office",
+  connection: "HDMI LAN",
+  imgUrl: "./projectors/tv.png"
+}

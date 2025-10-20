@@ -3,7 +3,7 @@ import LocateIcon from "../Shared/Icons/LocateIcon"
 
 const ProjectorCard = ({proj}) => {
   return (
-    <div className=" bg-white rounded-lg shadow-md overflow-hidden flex flex-col cursor-pointer group hover:border-1 w-80">
+    <div className=" bg-white rounded-lg shadow-md overflow-hidden flex flex-col cursor-pointer group hover:border-1 w-50">
       <div className="bg-gray-300 p-4 aspect-square w-full">
         <img src={proj.imgUrl} alt="projector" className="group-hover:scale-110 transition-all duration-300"/>
       </div>
