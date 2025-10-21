@@ -16,10 +16,10 @@ export default function AboutButtons() {
         Mission 
       </Link>
       <Link to="/purpose" className={buttonClass}>
-        Vission
+        Vision
       </Link>
       <Link to="/meettheteam" className={buttonClass}>
-        Meet the Team
+        Meet The Team
       </Link>
     </div>
   );
