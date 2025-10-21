@@ -6,9 +6,6 @@ import Auth from "./pages/Auth"
 import ProtectedPage from "./layouts/ProtectedPage"
 import Items from "./pages/Items"
 import About from "./pages/About"
-import VisionAndMission from "./components/About/VisionAndMission"
-import Purpose from "./components/About/Purpose"
-import MeetTheTeam from "./components/About/MeetTheTeam"
 import RoomProvider from "./provider/RoomProvider"
 
 function App() {
@@ -28,9 +25,6 @@ function App() {
         }/>
         <Route path="/items" element={<Items/>}></Route>
         <Route path="/about" element={<About/>}></Route>
-        <Route path="/mission&vision" element={<VisionAndMission/>}></Route>
-        <Route path="/purpose" element={<Purpose/>}></Route>
-        <Route path="/meettheteam" element={<MeetTheTeam/>}></Route>
       </Route>
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
