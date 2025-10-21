@@ -15,11 +15,11 @@ const TvCard = () => {
         <h2 className="font-medium text-lg uppercase ">{codeName}</h2>
         <div className="flex items-center gap-1 text-gray-500">
           <ConnectionIcon className="w-7 fill-gray-500"/>
-          <p>{location}</p>
+          <p>{connection}</p>
         </div>
         <div className="flex items-center gap-1 text-gray-500">
           <LocateIcon className="w-6 fill-gray-500"/>
-          <p>{connection}</p>
+          <p>{location}</p>
         </div>
       </div>
       <Banner label="NEW" background="#008236" fontSize="12px"/>
