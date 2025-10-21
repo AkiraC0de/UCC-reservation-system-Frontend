@@ -31,3 +31,30 @@ export const TV_DATA = {
   connection: "HDMI LAN",
   imgUrl: "./projectors/tv.png"
 }
+
+export const PERIPERALS_DATA = [
+  {
+    id: "perp001",
+    codeName: "hdmi cable 1m",
+    location: "3rd floor MIS Office",
+    imgUrl: "./periperals/hdmiCable.png"
+  },
+  {
+    id: "perp002",
+    codeName: "vga cable 1m",
+    location: "3rd floor MIS Office",
+    imgUrl: "./periperals/vgaCable.png"
+  },
+  {
+    id: "perp003",
+    codeName: "vga cable 1m",
+    location: "3rd floor MIS Office",
+    imgUrl: "./periperals/keyboard.png"
+  },
+  {
+    id: "perp004",
+    codeName: "vga cable 1m",
+    location: "3rd floor MIS Office",
+    imgUrl: "./periperals/mouse.png"
+  },
+]
