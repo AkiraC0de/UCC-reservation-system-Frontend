@@ -7,7 +7,7 @@ import ProtectedPage from "./layouts/ProtectedPage"
 import Items from "./pages/Items"
 import About from "./pages/About"
 import RoomProvider from "./provider/RoomProvider"
-import ItemDetail from "./components/Items/ItemDetail/ItemDetail"
+import ItemDetail from "./pages/ItemDetail"
 
 function App() {
   return (

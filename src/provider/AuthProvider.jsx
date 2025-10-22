@@ -9,10 +9,12 @@ const AuthProvider = ({children}) => {
   const [auth, setAuth] = useState({
     email: null,
     password : null,
+    userData: null,
     isLogin: true
   })
 
-  
+
+  console.log(auth)
   const handleLogin = () => {
     // #1 Extract the user Input 
     const {email, password} = auth

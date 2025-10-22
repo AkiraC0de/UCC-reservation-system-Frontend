@@ -43,7 +43,6 @@ const RoomProvider = ({children}) => {
         purpose: reservation.purpose
       })
     }
-    console.log(isRequired)
     const handleSendReservation = () => {
       if(!reservation.purpose){
         setIsRequired(prev => ({...prev, purpose: true}))

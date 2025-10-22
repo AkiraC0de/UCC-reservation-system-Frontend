@@ -3,7 +3,7 @@ export const ITEMS_DATA = [
     id: "proj01",
     type: "projector",
     codeName: "proj 01",
-    model: "Epson EB-X06",
+    model: "BenQ TH585",
     connection: "HDMI, VGA",
     location: "3rd Floor MIS Office",
     imgUrl: "/projectors/proj1.png"
@@ -12,19 +12,19 @@ export const ITEMS_DATA = [
     id: "proj02",
     type: "projector",
     codeName: "proj 02",
-    model: "BenQ TH585",
+    model: "ViewSonic PA503S",
     connection: "HDMI, VGA",
     location: "3rd Floor MIS Office",
-    imgUrl: "/projectors/proj1.png"
+    imgUrl: "/projectors/proj2.png"
   },
   {
     id: "proj03",
     type: "projector",
     codeName: "proj 03",
-    model: "BenQ TH585",
+    model: "Epson EB-X06",
     connection: "HDMI, VGA, LAN",
     location: "3rd Floor MIS Office",
-    imgUrl: "/projectors/proj1.png"
+    imgUrl: "/projectors/proj3.png"
   },
   {
     id: "perp001",
@@ -43,14 +43,14 @@ export const ITEMS_DATA = [
   {
     id: "perp003",
     type: "periperals",
-    codeName: "vga cable 1m",
+    codeName: "keyboard",
     location: "3rd floor MIS Office",
     imgUrl: "/periperals/keyboard.png"
   },
   {
     id: "perp004",
     type: "periperals",
-    codeName: "vga cable 1m",
+    codeName: "mouse",
     location: "3rd floor MIS Office",
     imgUrl: "/periperals/mouse.png"
   },
