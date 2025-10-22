@@ -13,8 +13,6 @@ const AuthProvider = ({children}) => {
     isLogin: true
   })
 
-
-  console.log(auth)
   const handleLogin = () => {
     // #1 Extract the user Input 
     const {email, password} = auth

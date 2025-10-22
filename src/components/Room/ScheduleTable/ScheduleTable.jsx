@@ -1,6 +1,7 @@
 import ScheduleTableTimeList from "./ScheduleTableTimeList"
-import ScheduleTableHeader from "./ScheduleTableHeader"
+import ScheduleTableColumnName from "./ScheduleTableColumnName"
 import ScheduleTableColumnList from "./ScheduleTableColumnList"
+import RoomHeader from "./RoomHeader"
 
 const ScheduleTable = () => {
   const tableClass = "bg-white w-full relative max-w-4xl mx-auto rounded-lg shadow-sm overflow-y-hidden overflow-x-clip"
@@ -8,7 +9,8 @@ const ScheduleTable = () => {
   
   return(
     <div className={tableClass}>
-      <ScheduleTableHeader/>
+      <RoomHeader/>
+      <ScheduleTableColumnName/>
       <div className={tableContentClass}>
         {/* #1 Column: Time table list */}
         <ScheduleTableTimeList/>

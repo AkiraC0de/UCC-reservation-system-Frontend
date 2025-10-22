@@ -8,7 +8,7 @@ const NorthCongressModelV2 = () => {
       <div className="z-30 relative">
         <ModelHoverOverlay/>
         <img
-          className="w-140 "
+          className="w-150 "
           src="/campus/north_congress/northCampusModel3d.webp" 
           alt="north-congress-img" 
         />
@@ -70,7 +70,7 @@ const ModelHoverOverlay = () => {
 const BGoverlay = () => {
   return(
     <>
-      <div className="cp-1 absolute top-80 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-120 z-20 cube-2 bg-green-gradient-2"></div>
+      <div className="cp-1 absolute top-87 left-1/2 -translate-x-1/2 -translate-y-1/2 w-158 h-125 z-20 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[32%] left-[14%]  w-70 h-9 z-20 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[12%] left-[22%]  w-50 h-5 z-20 cube-2 bg-green-gradient-2"></div>
       <div className="absolute top-[4%] left-[70%]  w-180 h-22 z-19 cube-2 bg-green-gradient-2"></div>
