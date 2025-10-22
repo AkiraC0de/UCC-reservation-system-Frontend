@@ -1,5 +1,4 @@
 import clsx from "clsx"
-import { useState } from "react"
 
 const ScheduledTimeSlot = ({data, height}) => {
   const {purpose, prof, program, section, type, reservedBy} = data
