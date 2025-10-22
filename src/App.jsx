@@ -7,6 +7,7 @@ import ProtectedPage from "./layouts/ProtectedPage"
 import Items from "./pages/Items"
 import About from "./pages/About"
 import RoomProvider from "./provider/RoomProvider"
+import ItemDetail from "./components/Items/ItemDetail/ItemDetail"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </RoomProvider>
         }/>
         <Route path="/items" element={<Items/>}></Route>
+        <Route path="/items/:type/:id" element={<ItemDetail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
       </Route>
       <Route path="*" element={<div>404 Not Found</div>} />

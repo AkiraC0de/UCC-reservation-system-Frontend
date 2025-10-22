@@ -19,7 +19,7 @@ const Nav = () => {
   const navClasses = clsx({
     "bg-[#f5f5f7]" : scrolled,
     "bg-transparent" : !scrolled,
-  }, "grid grid-cols-3 items-center justify-between px-6 z-200 fixed top-0 h-[75px] w-full")
+  }, "grid grid-cols-3 items-center justify-between px-6 z-200 fixed top-0 h-[75px] w-full transition-all duration-300")
 
   return (
     <div className={navClasses}>

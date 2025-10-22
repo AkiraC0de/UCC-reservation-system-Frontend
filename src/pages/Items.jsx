@@ -1,4 +1,5 @@
 import Banner from "../components/Items/Banner"
+import Form from "../components/Items/Form"
 import Periperals from "../components/Items/Periperals"
 import Projectors from "../components/Items/Projectors"
 

@@ -2,10 +2,10 @@ import ConnectionIcon from "../Shared/Icons/ConnectionIcon"
 import LocateIcon from "../Shared/Icons/LocateIcon"
 import Banner from "../Shared/Banner"
 
-import { TV_DATA } from "../../configs/Items.config"
+import { ITEMS_DATA } from "../../configs/Items.config"
 
 const TvCard = () => {
-  const { codeName, location, connection, imgUrl } = TV_DATA
+  const { codeName, location, connection, imgUrl } = ITEMS_DATA.find(item => item.type == "television")
   return (
     <div className="bg-white flex-1 min-w-60 rounded-lg overflow-hidden shadow-lg relative cursor-pointer hover:border-1 group">
       <div className="max-h-62 min-h-50 w-full center bg-gray-300 overflow-hidden">
