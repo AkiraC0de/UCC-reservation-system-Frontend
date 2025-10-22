@@ -12,14 +12,15 @@ export default function AboutButtons() {
 
   return (
     <div className="flex gap-6 mt-6 justify-left flex-wrap">
+      {/*Replace these links for the actual section link. */}
       <Link to="/mission&vision" className={buttonClass}>
         Mission 
       </Link>
       <Link to="/purpose" className={buttonClass}>
-        Vission
+        Vision
       </Link>
       <Link to="/meettheteam" className={buttonClass}>
-        Meet the Team
+        Meet The Team
       </Link>
     </div>
   );
