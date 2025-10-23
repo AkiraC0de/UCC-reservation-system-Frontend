@@ -1,8 +1,8 @@
 import { useScheduleContext } from "./ScheduleTable"
 import clsx from "clsx"
 
-const TableCell = ({rowIndex, colIndex}) => {
-  const { scheduleData, handleScheduleData, sortedData, focus, handleFocus } = useScheduleContext()
+const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave}) => {
+  const { focus } = useScheduleContext()
   
   // const cellVariantClasses = clsx({
   //     "bg-gray-100 hover:bg-gray-200": isFocusColumn && !matchedData && !isSelectableRange,
@@ -14,43 +14,6 @@ const TableCell = ({rowIndex, colIndex}) => {
   //     "hover:bg-gray-100": !isFocusColumn && !matchedData,
   // })
 
-  const handleCellClick = () => {
-    if(colIndex != focus){
-        handleScheduleData("date", sortedData.date.find((_,index) => index == colIndex))
-        handleScheduleData("startingTime", null)
-        handleScheduleData("outTime", null)
-        return
-    }
-    
-    // Apply new restriction based on calculated limit
-    if (scheduleData.startingTime !== null && scheduleData.outTime === null) {
-        if (rowIndex < scheduleData.startingTime) {
-            handleScheduleData("startingTime", rowIndex)
-            handleScheduleData("outTime", null)
-            return // Cannot select time before the start time
-        }
-        // if (rowIndex >= maxSelectableRows) {
-        //     return // Cannot select time at or after the barrier (max limit or existing reservation)
-        // }
-    }
-
-    // 1. Set starting time (if neither is set)
-    if (scheduleData.startingTime === null && scheduleData.outTime === null) { 
-      handleScheduleData("startingTime", rowIndex)
-      handleScheduleData("outTime", null)
-    } 
-    // 2. Set ending time (if starting is set, but ending isn't)
-    else if (scheduleData.startingTime !== null && scheduleData.outTime === null) { 
-      handleScheduleData("startingTime", rowIndex)
-    } 
-    // 3. Reset and start a new selection
-    else {
-      // Clear the old range and start a new one
-      handleScheduleData("startingTime", rowIndex)
-      handleScheduleData("outTime", null)
-    }
-  }
-
   const isOnColumnFocus = colIndex == focus
 
   const cellClasses = "w-full h-8 border-x-1 border-gray-100 cursor-pointer hover:bg-gray-100"
@@ -61,7 +24,9 @@ const TableCell = ({rowIndex, colIndex}) => {
   return (
     <div 
       className={`${cellClasses} ${cellVariantClasses}`}
-      onClick={handleCellClick}
+      onClick={() => onClick(colIndex, rowIndex)}
+      onMouseEnter={() => onMouseEnter(rowIndex)}
+      onMouseLeave={onMouseLeave}
     >
 
     </div>

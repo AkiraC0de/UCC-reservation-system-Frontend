@@ -8,10 +8,20 @@ const ScheduleContext = createContext();
 
 const ScheduleTable = ({scheduleData, handleScheduleData}) => {
   const [focus, setFocus] = useState(null)
+  const [cellBeingHovered, setCellBeingHovered] = useState(null)
+  const [isOnStartingTimeSelection, setIsOnStartingTimeSelection] = useState(true)
 
-  const handleFocus = (value) => {
-    setFocus(value)
+  const handleCellBeingHovered = (value) => {
+    setCellBeingHovered(value)
   }
+
+  useEffect(() => {
+    if(scheduleData.outTime)
+      setIsOnStartingTimeSelection(false)
+    else {
+      setIsOnStartingTimeSelection(true)
+    }
+  }, [scheduleData.startingTime, scheduleData.outTime])
 
   useEffect(() => {
     const weekFocus = sortedData.date.findIndex(item => item == scheduleData.date)
@@ -44,7 +54,9 @@ const ScheduleTable = ({scheduleData, handleScheduleData}) => {
   return (
     <ScheduleContext.Provider value={
       { scheduleData, handleScheduleData, 
-        sortedData, focus, handleFocus}
+        cellBeingHovered, handleCellBeingHovered,
+        isOnStartingTimeSelection,
+        sortedData, focus}
     }>
       <TableWrapper>
           <TableHeader/>
