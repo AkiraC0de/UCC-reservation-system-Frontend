@@ -6,11 +6,11 @@ import { useScheduleContext } from "./ScheduleTable.jsx"
 
 const TableContent = () => {
   const { scheduleData, 
-      handleScheduleData, 
-      sortedData, 
-      focus, 
-      handleCellBeingHovered
-    } = useScheduleContext()
+    handleScheduleData, 
+    sortedData, 
+    focus, 
+    handleCellBeingHovered
+  } = useScheduleContext()
 
   const handleCellClick = (colIndex, rowIndex) => {
     if(colIndex != focus){

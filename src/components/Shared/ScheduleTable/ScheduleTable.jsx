@@ -10,23 +10,26 @@ const ScheduleTable = ({scheduleData, handleScheduleData}) => {
   const [focus, setFocus] = useState(null)
   const [cellBeingHovered, setCellBeingHovered] = useState(null)
   const [isOnStartingTimeSelection, setIsOnStartingTimeSelection] = useState(true)
-
+  console.log(isOnStartingTimeSelection)
+  console.log(scheduleData)
   const handleCellBeingHovered = (value) => {
     setCellBeingHovered(value)
   }
 
   useEffect(() => {
-    if(scheduleData.outTime)
-      setIsOnStartingTimeSelection(false)
-    else {
+    if(scheduleData.startingTime === null)
       setIsOnStartingTimeSelection(true)
+    else {
+      setIsOnStartingTimeSelection(false)
     }
-  }, [scheduleData.startingTime, scheduleData.outTime])
+  }, [scheduleData.startingTime, scheduleData.outTime, scheduleData.date])
 
   useEffect(() => {
     const weekFocus = sortedData.date.findIndex(item => item == scheduleData.date)
+    handleScheduleData("startingTime", null)
+    handleScheduleData("outTime", null)
     setFocus(weekFocus)
-  }, [scheduleData.startingTime, scheduleData.outTime, scheduleData.date])
+  }, [scheduleData.date])
   
   // Get the Day based on week. Example Mon = 1, Tue = 2
   const nextDayByWeekDay = getDay()
