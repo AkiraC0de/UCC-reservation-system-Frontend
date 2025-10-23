@@ -3,6 +3,9 @@ import TableColumn from "./TableColumn"
 import TableCell from "./TableCell"
 import { TIME_SLOTS_30_MIN } from "../../../configs/Room.config.js"
 import { useScheduleContext } from "./ScheduleTable.jsx"
+import { useMemo } from "react"
+
+const MAX_SELECTION_HOURS = 5
 
 const TableContent = () => {
   const { scheduleData, 
@@ -11,6 +14,31 @@ const TableContent = () => {
     focus, 
     handleCellBeingHovered
   } = useScheduleContext()
+
+  const maxSelectableRows = useMemo(() => {
+      const { startingTime, outTime } = scheduleData
+
+      if (startingTime === null || outTime !== null) {
+          return Infinity; // No starting time set, or selection is complete
+      }
+
+      let maxLimit = startingTime + MAX_SELECTION_HOURS * 2
+      let barrier = maxLimit
+
+      // 1. Check from startingTime + 1 up to the MAX_SELECTION_HOURS limit
+      for (let i = startingTime + 1; i <= maxLimit; i++) {
+          const matchedData = false
+          //const matchedData = dataMap[`${i}-${colIndex}`]
+          if (matchedData) {
+              // Found a reservation! Set the barrier to the cell *before* the reservation.
+              barrier = i
+              break
+          }
+      }
+      
+      // The maximum selectable rowIndex is now the barrier
+      return barrier;
+  }, [scheduleData])
 
   const handleCellClick = (colIndex, rowIndex) => {
     if(colIndex != focus){
@@ -27,9 +55,9 @@ const TableContent = () => {
             handleScheduleData("outTime", null)
             return // Cannot select time before the start time
         }
-        // if (rowIndex >= maxSelectableRows) {
-        //     return // Cannot select time at or after the barrier (max limit or existing reservation)
-        // }
+        if (rowIndex >= maxSelectableRows) {
+            return // Cannot select time at or after the barrier (max limit or existing reservation)
+        }
     }
 
     // 1. Set starting time (if neither is set)
@@ -39,7 +67,7 @@ const TableContent = () => {
     } 
     // 2. Set ending time (if starting is set, but ending isn't)
     else if (scheduleData.startingTime !== null && scheduleData.outTime === null) { 
-      handleScheduleData("startingTime", rowIndex)
+      handleScheduleData("outTime", rowIndex)
     } 
     // 3. Reset and start a new selection
     else {
@@ -70,6 +98,7 @@ const TableContent = () => {
                 onClick={handleCellClick}
                 onMouseEnter={handleCellOnMouseEnter}
                 onMouseLeave={handleCellOnMouseLeave}
+                maxSelectableRows={maxSelectableRows}
                 colIndex={colIndex} 
                 rowIndex={rowIndex}
               />

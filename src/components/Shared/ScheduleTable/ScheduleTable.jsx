@@ -10,8 +10,7 @@ const ScheduleTable = ({scheduleData, handleScheduleData}) => {
   const [focus, setFocus] = useState(null)
   const [cellBeingHovered, setCellBeingHovered] = useState(null)
   const [isOnStartingTimeSelection, setIsOnStartingTimeSelection] = useState(true)
-  console.log(isOnStartingTimeSelection)
-  console.log(scheduleData)
+
   const handleCellBeingHovered = (value) => {
     setCellBeingHovered(value)
   }
