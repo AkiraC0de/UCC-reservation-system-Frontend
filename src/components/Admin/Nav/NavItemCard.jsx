@@ -1,17 +1,33 @@
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import clsx from "clsx"
 
-const NavItemCard = ({label, Icon, iconClasses, isActive}) => {
-  const itemClasses = clsx({
-    [iconClasses?.active] : isActive,
-    [iconClasses?.default] : !isActive
-  }, "transition-all duration-300")
-  console.log(iconClasses)
+const NavItemCard = ({ label, Icon, to }) => {
+  const location = useLocation()
+  const isActive = location.pathname === to
+
+  const itemClasses = clsx(
+    isActive ? "w-8 fill-green-500 stroke-green-500" : "w-10 stroke-gray-400 p-2 fill-gray-400 bg-white rounded-lg shadow-md",
+    "transition-all duration-300"
+  )
+
+  const buttonClasses = clsx(
+    "flex items-center gap-2 py-2 px-3  rounded-xl transition-all duration-300 m-4 hover:bg-gray-200" ,
+    isActive ? "bg-white text-green-500 shadow-md" : " text-black-text"
+  )
+
   return (
-    <Link className="flex items-center gap-2 p-2 px-3 pb-2.5">
-      <Icon className={itemClasses}/>
-      <p className="font-medium text-sm">{label}</p>
+    <Link
+      to={to}
+      className={buttonClasses}
+    >
+      <Icon className={itemClasses} />
+      <p
+        className="font-medium text-sm"
+      >
+        {label}
+      </p>
     </Link>
   )
 }
+
 export default NavItemCard

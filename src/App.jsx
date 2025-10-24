@@ -40,6 +40,8 @@ function App() {
         </ProtectedPage>
       }>
         <Route index element={<Dashboard/>}/>
+        <Route path="/admin/registrations" element={<Dashboard/>}/>
+        <Route path="/admin/reservations" element={<Dashboard/>}/>
       </Route> 
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>

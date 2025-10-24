@@ -4,7 +4,7 @@ import useAdmin from "../../../hooks/useAdmin"
 import NavItemCard from "./NavItemCard"
 
 const NavList = () => {
-  const {activePage} = useAdmin()
+  
   return (
     <div>
       <h2 className="font-semibold text-sm ml-6 text-gray-400">MAIN</h2>
@@ -12,8 +12,8 @@ const NavList = () => {
         <NavItemCard 
           key={item.id}
           label={item.label}
+          to={item.to}
           Icon={item.icon}
-          iconClasses={item.iconClasses}
         />
       ))}
       <h2 className="font-semibold text-sm ml-6 text-gray-400">ROOM</h2>

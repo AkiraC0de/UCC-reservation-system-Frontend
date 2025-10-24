@@ -2,7 +2,7 @@ import { useState } from "react"
 import { AdminContext } from "../context/adminContext"
 
 const AdminProvider = ({children}) => {
-  const [activePage, setActivePage] = useState("")
+  const [activePage, setActivePage] = useState("nav_dashboard")
 
   return (
     <AdminContext.Provider value={{
