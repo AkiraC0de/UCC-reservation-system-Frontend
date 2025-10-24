@@ -7,7 +7,10 @@ const ReservationSchedule = () => {
 
   return (
     <div className="px-2 py-2 space-y-3 text-black-text text-sm">
-      <h1 className="font-semibold">RESERVATION SCHEDULE</h1>
+      <div>
+        <h1 className="font-semibold ">RESERVATION SCHEDULE</h1>
+        <h3 className="text-xs px-2 my-2 leading-4 text-gray-500 italic">• Reservations can only be made up to one week in advance.</h3>
+      </div>
       <div className="flex gap-2">
         <div className="flex w-90 gap-1 flex-1 text-sm relative text-black-text px-4 rounded-lg py-3 border border-gray-500 ">
           <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.startingTime] || "00:00"}</h2>

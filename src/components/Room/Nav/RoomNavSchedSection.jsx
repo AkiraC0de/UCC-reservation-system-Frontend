@@ -10,7 +10,7 @@ const RoomNavSchedSection = () => {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <h2 className="text-sm px-2 text-gray-500 italic">Select your Schedule & Time</h2>
+        <h2 className="text-sm px-2 text-gray-500 italic">Select your Schedules Date & Time</h2>
         <h3 className="text-xs px-2 leading-4 text-gray-500 italic">• Reservations can only be made up to one week in advance.</h3>
         <h3 className="text-xs px-2 leading-4 text-gray-500 italic">• Please use the table to select your prefered time</h3>
       </div>

@@ -7,7 +7,7 @@ const ItemDetialRoomPicker = () => {
   const { min, max } = ROOM_RESERVATION_DAY_AVAILABLE  
   const {selectedSchedule, handleSelectedSchedule} = useItemDetail()
   const today = new Date()
-        console.log(selectedSchedule.date)
+
   const minDay = new Date(today)
   minDay.setDate(today.getDate() + min)
 

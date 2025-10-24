@@ -2,19 +2,18 @@ import { useMemo } from "react"
 import { ITEMS_DATA } from "../../configs/Items.config"
 import { useParams } from "react-router"
 import ReservationSchedule from "./ReservationSchedule"
+import SubmitButton from "../Shared/SubmitButton"
+import useItemDetail from "../../hooks/useItemDetail"
 
 const LeftSection = () => {
   const { type, id } = useParams()
+  const {selectedSchedule} = useItemDetail()
+  console.log(selectedSchedule)
   const selectedItem = useMemo(() => ITEMS_DATA.find(item => item.id == id))
-  const buttonClasses = `
-    relative shadow-md border-2 border-[#9fcc56] 
-    text-green-700 text-sm font-semibold py-3 px-4 rounded-lg mt-2
-    transition-all duration-300 ease-in-out w-full
-    hover:text-white hover:scale-105 hover:shadow-lg
-    hover:bg-gradient-to-r hover:from-green-500 hover:to-lime-400
-  `
+  const isTheTimeSelectionDone = selectedSchedule.date !== null && selectedSchedule.outTime !== null
+  console.log(isTheTimeSelectionDone)
   return (
-    <div className="overflow-hidden">
+    <div>
       <div className="bg-white shadow-md rounded-2xl p-4">
         <div className="bg-gray-200 w-full center h-50 p-10 relative rounded-xl">
           <img className="object-cover z-10 drop-shadow-2xl drop-shadow-greem-800" src={selectedItem.imgUrl} alt={selectedItem.codeName} />
@@ -27,9 +26,11 @@ const LeftSection = () => {
           <p>Pickup Location: {selectedItem.location}</p>
         </div>
         <ReservationSchedule/>
-        <button className={buttonClasses}>
-          Submit Reservation
-        </button>
+        <SubmitButton
+          disabled={!isTheTimeSelectionDone}
+        >
+          Confirm Selected Schedule
+        </SubmitButton>
       </div>
     </div>
   )
