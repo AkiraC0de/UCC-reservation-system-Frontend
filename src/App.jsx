@@ -8,6 +8,9 @@ import Items from "./pages/Items"
 import About from "./pages/About"
 import RoomProvider from "./provider/RoomProvider"
 import ItemDetail from "./pages/ItemDetail"
+import AdminLayout from "./layouts/AdminLayout"
+import Dashboard from "./pages/Admin/Dashboard"
+import AdminProvider from "./provider/AdminProvider"
 
 function App() {
   return (
@@ -28,6 +31,16 @@ function App() {
         <Route path="/items/:type/:id" element={<ItemDetail/>}></Route>
         <Route path="/about" element={<About/>}></Route>
       </Route>
+
+      <Route path="/admin" element={
+        <ProtectedPage>
+          <AdminProvider>
+            <AdminLayout/>
+          </AdminProvider>
+        </ProtectedPage>
+      }>
+        <Route index element={<Dashboard/>}/>
+      </Route> 
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
   )

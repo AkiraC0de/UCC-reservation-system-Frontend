@@ -10,7 +10,7 @@ const AuthProvider = ({children}) => {
     email: null,
     password : null,
     userData: null,
-    isLogin: true
+    isLogin: false
   })
 
   const handleLogin = () => {
@@ -98,7 +98,7 @@ const AuthProvider = ({children}) => {
   }
 
   // AUTO LOGIN
-  useEffect(() => {
+  const autoLogin = () => {
     handleLoading(true)
 
     fetch(URL_REFRESH, OPTION_REFRESH)
@@ -124,7 +124,13 @@ const AuthProvider = ({children}) => {
     .finally(() => {
       handleLoading(false)
     })
+  }
+
+  useEffect(() => {
+    autoLogin()
   }, [])
+
+ 
 
   const handleAuth = (inputName, value) => {
     setAuth(prev => ({

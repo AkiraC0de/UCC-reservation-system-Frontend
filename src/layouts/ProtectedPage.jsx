@@ -7,11 +7,11 @@ import useAuth from "../hooks/useAuth"
 const ProtectedPage = ({children}) => {
   // PORTABLE
   const {auth} = useAuth()
-  
+
   return (
     <>
-      {children}
       {!auth.isLogin && <Auth />}
+      {children}
     </>
   )
 }
