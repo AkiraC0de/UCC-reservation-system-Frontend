@@ -7,12 +7,16 @@ const SubmitButton = ({children, disabled, className, onClick = () => {}}) => {
     cursor-pointer
   `,{
     "line-through text-gray-400 ": disabled,
-    "text-green-700 hover:bg-gradient-to-r hover:from-green-500 hover:to-lime-400 hover:text-white hover:scale-105 hover:shadow-lg": !disabled
+    "text-green-700 hover:bg-gradient-to-r hover:from-green-400 hover:to-lime-500 hover:text-white hover:scale-103 hover:shadow-lg": !disabled
   }, className)
+  const handleClick = () => {
+    if(disabled) return
+    onClick()
+  }
   return (
     <button
       className={buttonClasses}
-      onClick={onClick}  
+      onClick={handleClick}  
     >
       {children}
     </button>

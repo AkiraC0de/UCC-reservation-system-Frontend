@@ -15,7 +15,7 @@ const ReservationSchedule = () => {
         <div className="flex w-90 gap-1 flex-1 text-sm relative text-black-text px-4 rounded-lg py-3 border border-gray-500 ">
           <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.startingTime] || "00:00"}</h2>
           <span>-</span>
-          <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.outTime] || "00:00"}</h2>
+          <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.outTime + 1] || "00:00"}</h2>
           <h1 className="absolute -top-2 px-2 bg-white text-gray-400 text-xs">
             Time
           </h1>

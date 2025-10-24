@@ -1,15 +1,16 @@
 import LeftSection from "../components/ItemDetail/LeftSection"
 import RightSection from "../components/ItemDetail/RightSection"
-import { useState } from "react"
 import ItemDetailProvider from "../provider/ItemDetailProvider"
+import Confirmation from "../components/ItemDetail/Confirmation"
+import Layout from "../components/ItemDetail/Layout"
 
 const ItemDetail = () => {
   return (
     <ItemDetailProvider>
-      <div className="grid grid-cols-[360px_1fr] px-10 py-5 gap-10">
-          <LeftSection/>
+      <Layout>
+         <LeftSection/>
           <RightSection/>
-      </div>
+      </Layout>
     </ItemDetailProvider>
   )
 }

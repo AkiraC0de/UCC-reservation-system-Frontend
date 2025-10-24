@@ -7,16 +7,15 @@ import useItemDetail from "../../hooks/useItemDetail"
 
 const LeftSection = () => {
   const { type, id } = useParams()
-  const {selectedSchedule} = useItemDetail()
-  console.log(selectedSchedule)
-  const selectedItem = useMemo(() => ITEMS_DATA.find(item => item.id == id))
+  const {selectedSchedule, selectedItem, toggleConfirmation} = useItemDetail()
+
   const isTheTimeSelectionDone = selectedSchedule.date !== null && selectedSchedule.outTime !== null
-  console.log(isTheTimeSelectionDone)
+
   return (
     <div>
       <div className="bg-white shadow-md rounded-2xl p-4">
         <div className="bg-gray-200 w-full center h-50 p-10 relative rounded-xl">
-          <img className="object-cover z-10 drop-shadow-2xl drop-shadow-greem-800" src={selectedItem.imgUrl} alt={selectedItem.codeName} />
+          <img className="object-cover z-10 drop-shadow-2xl drop-shadow-greem-800" src={selectedItem?.imgUrl} alt={selectedItem?.codeName} />
         </div>
         <div className="px-2 py-2 space-y-2 text-black-text text-sm">
           <h1 className="font-semibold">ITEM DETAILS</h1>
@@ -28,6 +27,7 @@ const LeftSection = () => {
         <ReservationSchedule/>
         <SubmitButton
           disabled={!isTheTimeSelectionDone}
+          onClick={toggleConfirmation}
         >
           Confirm Selected Schedule
         </SubmitButton>
