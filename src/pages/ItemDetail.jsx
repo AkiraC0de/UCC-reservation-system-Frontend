@@ -6,7 +6,7 @@ import ItemDetailProvider from "../provider/ItemDetailProvider"
 const ItemDetail = () => {
   return (
     <ItemDetailProvider>
-      <div className="grid grid-cols-[355px_1fr] px-10 py-5 gap-10">
+      <div className="grid grid-cols-[360px_1fr] px-10 py-5 gap-10">
           <LeftSection/>
           <RightSection/>
       </div>
