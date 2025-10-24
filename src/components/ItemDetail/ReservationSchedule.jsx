@@ -12,7 +12,8 @@ const ReservationSchedule = () => {
         <h3 className="text-xs px-2 my-2 leading-4 text-gray-500 italic">• Reservations can only be made up to one week in advance.</h3>
       </div>
       <div className="flex gap-2">
-        <div className="flex w-90 gap-1 flex-1 text-sm relative text-black-text px-4 rounded-lg py-3 border border-gray-500 ">
+        <ItemDetialRoomPicker/>
+        <div className="flex w-90 gap-1 flex-1 text-sm relative text-black-text px-2 rounded-lg py-3 border border-gray-500 ">
           <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.startingTime] || "00:00"}</h2>
           <span>-</span>
           <h2 className="w-15 text-center">{TIME_SLOTS_30_MIN[selectedSchedule.outTime + 1] || "00:00"}</h2>
@@ -20,7 +21,7 @@ const ReservationSchedule = () => {
             Time
           </h1>
         </div>
-        <ItemDetialRoomPicker/>
+        
       </div>
     </div>
   )

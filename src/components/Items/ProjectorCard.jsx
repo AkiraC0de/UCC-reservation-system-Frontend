@@ -7,11 +7,11 @@ const ProjectorCard = ({proj}) => {
   return (
     <Link
       to={`/items/${type}/${id}`} 
-      className=" bg-white rounded-lg shadow-md overflow-hidden flex flex-col cursor-pointer group hover:border-1 w-50">
+      className=" bg-white rounded-lg shadow-md overflow-hidden flex flex-col cursor-pointer group hover:border-1 w-51">
       <div className="bg-gray-300 p-4 aspect-square w-full center">
         <img src={imgUrl} alt="projector" className="group-hover:scale-110 transition-all duration-300"/>
       </div>
-      <div className="p-3 pt-1 space-y-2 text-black-text">
+      <div className="p-3 pt-1 space-y-2 text-black-text text-sm">
         <div>
           <h2 className="font-medium text-lg uppercase ">{codeName}</h2>
           <h3 className="text-sm">Model: {model}</h3>

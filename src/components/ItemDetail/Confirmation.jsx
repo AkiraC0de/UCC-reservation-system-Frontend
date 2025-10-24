@@ -43,7 +43,7 @@ const Confirmation = () => {
               <p>End Time</p>
               <p>{outTimeString}</p>
             </div>
-            <div className="py-3 px-2 border-b border-gray-400 flex justify-between">
+            <div className="py-3 px-2 flex justify-between">
               <p>Duration</p>
               <p>{scheduleTimeDuration} hr/s</p>
             </div>
@@ -65,12 +65,14 @@ const Confirmation = () => {
         </div>
 
         <div className="flex gap-4">
-          <SubmitButton>
-            Submit Reservation
-          </SubmitButton>
           <CancelConfirmationButton
             onClick={toggleConfirmation}
           />
+          <SubmitButton
+            className="flex-1"
+          >
+            Submit
+          </SubmitButton>
         </div>
 
       </div>
