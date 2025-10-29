@@ -12,14 +12,36 @@ const TableContent = () => {
     handleScheduleData, 
     sortedData, 
     focus, 
-    handleCellBeingHovered
+    handleCellBeingHovered,
+    recievedScheduleData
   } = useScheduleContext()
+
+  const dataMap = useMemo(() => {
+      // 1. Get the fetched data array, defaulting to an empty array if not present
+      const fetchedArray = recievedScheduleData || [];
+
+      // 2. Combine the mock data and the fetched data into a single array
+      // Order matters: if there are conflicts, the elements later in the array (fetched data)
+      // will overwrite earlier elements (mock data) in the reduce step.
+
+      // 3. Reduce the combined array into the quick-lookup map
+      return fetchedArray.reduce((map, item) => {
+          // Key format: "startingTime-weekDay"
+          // Example key: "9-3"
+          const key = `${item.startingTime}-${sortedData.date.findIndex(date => date == item.date)}`;
+          map[key] = item;
+          return map;
+      }, {});
+  }, [ recievedScheduleData])
+
 
   const maxSelectableRows = useMemo(() => {
       const { startingTime, outTime } = scheduleData
+       const colIndex = sortedData.date.findIndex((data) => data == scheduleData.date)
+       console.log(colIndex)
 
       if (startingTime === null || outTime !== null) {
-          return Infinity; // No starting time set, or selection is complete
+          return Infinity; 
       }
 
       let maxLimit = startingTime + MAX_SELECTION_HOURS * 2
@@ -27,8 +49,7 @@ const TableContent = () => {
 
       // 1. Check from startingTime + 1 up to the MAX_SELECTION_HOURS limit
       for (let i = startingTime + 1; i <= maxLimit; i++) {
-          const matchedData = false
-          //const matchedData = dataMap[`${i}-${colIndex}`]
+          const matchedData = dataMap[`${i}-${colIndex}`]
           if (matchedData) {
               // Found a reservation! Set the barrier to the cell *before* the reservation.
               barrier = i
@@ -101,6 +122,7 @@ const TableContent = () => {
                 maxSelectableRows={maxSelectableRows}
                 colIndex={colIndex} 
                 rowIndex={rowIndex}
+                matchedData={dataMap[`${rowIndex}-${colIndex}`]}
               />
               ))}
           </TableColumn>

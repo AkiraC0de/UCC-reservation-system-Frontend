@@ -11,8 +11,8 @@ const NavItemCard = ({ label, Icon, to }) => {
   )
 
   const buttonClasses = clsx(
-    "flex items-center gap-2 py-2 px-3  rounded-xl transition-all duration-300 m-4 hover:bg-gray-200" ,
-    isActive ? "bg-white text-green-500 shadow-md" : " text-black-text"
+    "flex items-center gap-2 py-2 px-3  rounded-xl transition-all duration-300 m-4" ,
+    isActive ? "bg-white text-green-500 shadow-md" : " text-black-text hover:bg-gray-200"
   )
 
   return (

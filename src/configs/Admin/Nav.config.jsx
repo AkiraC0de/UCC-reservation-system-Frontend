@@ -23,16 +23,21 @@ export const NAV_ITEMS = [
     },
     label: "Registrations"
   },  
+]
+
+export const NAV_RESERVATION_ITEMS = [
   {
-    id: "nav_reserv",
+    id: "nav_reserv_room",
     icon: Schedule2Icon,
-    to: "/admin/reservations",
-    iconClasses: {
-      default: "w-10 stroke-gray-400 p-2 fill-gray-400 bg-white rounded-lg shadow-md",
-      active: "w-10 p-2 fill-white bg-green-500 rounded-lg "
-    },
-    label: "Reservations"
+    to: "/admin/reservations/room",
+    label: "Room"
   },
+  {
+    id: "nav_reserv_item",
+    icon: Schedule2Icon,
+    to: "/admin/reservations/item",
+    label: "Item"
+  }
 ]
 
 export const NAV_ROOM_ITEMS = [

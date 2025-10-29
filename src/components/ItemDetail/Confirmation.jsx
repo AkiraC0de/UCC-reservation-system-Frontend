@@ -6,9 +6,10 @@ import { convertDateFormat } from "../../Utils/utils"
 import { useMemo } from "react"
 import SubmitButton from "../Shared/SubmitButton"
 import CancelConfirmationButton from "./CancelConfirmationButton"
+import { SyncLoader } from "react-spinners"
 
 const Confirmation = () => {
-  const {selectedSchedule, selectedItem, toggleConfirmation} = useItemDetail()
+  const {selectedSchedule, selectedItem, toggleConfirmation, handleSubmitReservation, purpose, setPurpose, isSubmitting} = useItemDetail()
   const startingTimeString = TIME_SLOTS_30_MIN[selectedSchedule.startingTime]
   const outTimeString = TIME_SLOTS_30_MIN[selectedSchedule.outTime + 1]
   const scheduleTimeDuration = (selectedSchedule.outTime - selectedSchedule.startingTime + 1) / 2
@@ -55,12 +56,16 @@ const Confirmation = () => {
           <select 
             className="w-full py-3 px-2 border rounded-lg border-gray-400 cursor-pointer focus:outline-0"
             name="purpose"
+            value={purpose}
+            onChange={(e) => {
+              setPurpose(e.target.value)
+            }}
           >
-            <option value="">Lecture</option>
-            <option value="">Presentation</option>
-            <option value="">Meeting</option>
-            <option value="">Defense</option>
-            <option value="">Exhibit</option>
+            <option value="Lecture">Lecture</option>
+            <option value="Presentation">Presentation</option>
+            <option value="Meeting">Meeting</option>
+            <option value="Defense">Defense</option>
+            <option value="Exhibit">Exhibit</option>
           </select>
         </div>
 
@@ -70,8 +75,10 @@ const Confirmation = () => {
           />
           <SubmitButton
             className="flex-1"
+            onClick={handleSubmitReservation}
           >
-            Submit
+            {!isSubmitting && "Submit"}
+            {<SyncLoader loading={isSubmitting} color="green" size={10}/>}
           </SubmitButton>
         </div>
 

@@ -1,18 +1,10 @@
 import { useScheduleContext } from "./ScheduleTable"
+import ScheduledTimeSlot from "../../Room/ScheduleTable/ScheduledTimeSlot"
 import clsx from "clsx"
 
-const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, maxSelectableRows}) => {
+const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, maxSelectableRows, matchedData}) => {
   const { focus, scheduleData } = useScheduleContext()
-  
-  // const cellVariantClasses = clsx({
-  //     "bg-gray-100 hover:bg-gray-200": isFocusColumn && !matchedData && !isSelectableRange,
-  //     "bg-blue-500 text-white": selectedStartingTime || selectedOutTime, 
-  //     "hover:bg-blue-400": selectedOutTime,
-  //     "bg-blue-200/50 hover:bg-blue-300/70": isSelectableRange,
-  //     "bg-red-100 cursor-not-allowed": isOverLimit && !matchedData,
-  //     "shimmer": isSelectableRange,
-  //     "hover:bg-gray-100": !isFocusColumn && !matchedData,
-  // })
+  const height = `${matchedData?.hours * 200}%`
 
   const isOnColumnFocus = colIndex == focus
   const isTheStartingTime = rowIndex == scheduleData.startingTime
@@ -65,6 +57,10 @@ const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, max
             </>
           }
         </>
+      }
+      {
+          matchedData &&
+          <ScheduledTimeSlot data={matchedData} height={height}/>
       }
     </div>
   )

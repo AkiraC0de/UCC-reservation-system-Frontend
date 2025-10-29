@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import ReservationCard from '../../components/Admin/Reservations/ReservationCard';
+import ItemReservationCard from '../../components/Admin/Reservations/ItemReservationCard';
 import { SyncLoader } from 'react-spinners';
 
 export default function Reservations() {
@@ -11,7 +11,7 @@ export default function Reservations() {
   const fetchReservations = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:8080/api/all-reservation/admin", {
+      const response = await fetch("http://localhost:8080/api/item-reservation", {
         method: "GET",
         credentials: "include", 
       });
@@ -31,7 +31,7 @@ export default function Reservations() {
 
   const autoFetchReservations = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/all-reservation/admin", {
+      const response = await fetch("http://localhost:8080/api/item-reservation", {
         method: "GET",
         credentials: "include", 
       });
@@ -45,7 +45,6 @@ export default function Reservations() {
     } catch (err) {
       console.error("Error fetching reservations:", err.message);
     }
-    console.log("YES")
   };
 
   useEffect(() => {
@@ -77,10 +76,9 @@ export default function Reservations() {
 
   // Update reservation status
   const updateStatus = async (id, data ,newStatus) => {
-    console.log(`http://localhost:8080/api/all-reservation/admin/update/${id}`)
     try {
       // 1. Send update request to backend
-      const response = await fetch(`http://localhost:8080/api/all-reservation/admin/update/${id}`, {
+      const response = await fetch(`http://localhost:8080/api/item-reservation/${id}`, {
         method: "PUT",
         credentials: "include",
         headers: {
@@ -105,7 +103,7 @@ export default function Reservations() {
       );
 
       // 3. Re-fetch all reservations to ensure latest data from backend
-      const refetch = await fetch("http://localhost:8080/api/all-reservation/admin", {
+      const refetch = await fetch("http://localhost:8080/api/item-reservation", {
         method: "GET",
         credentials: "include",
       });
@@ -122,6 +120,7 @@ export default function Reservations() {
     }
   };
 
+  console.log(reservations)
 
   // Count reservations by status
   const statusCounts = useMemo(() => {
@@ -142,7 +141,7 @@ export default function Reservations() {
         <div className='sticky top-0 bg-[#f5f5f7]'>
           <h1 className="text-sm font-semibold py-8 ">
             <span className="text-gray-400">Page /</span>
-            <span className="text-black-text"> Reservation / Room</span>
+            <span className="text-black-text"> Reservation / Item</span>
           </h1>
           {/* Filter Controls */}
           <div className="bg-white rounded-lg shadow-md p-4 mb-6 ">
@@ -220,21 +219,21 @@ export default function Reservations() {
           <div className='w-full h-100 center'> 
             <SyncLoader color='green' size={10}/> 
           </div> :
-          filteredReservations.length === 0 ? (
-            <div className="bg-white rounded-lg shadow-md p-12 text-center">
-              <span className="text-6xl mb-4 block">📭</span>
-              <p className="text-gray-500 text-lg">No {statusFilter.toLowerCase()} reservations found</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-2">
-              {filteredReservations.map((reservation, index) => (
-                <ReservationCard 
-                  key={reservation._id}
-                  reservation={reservation} 
-                  index={index} 
-                  updateStatus={updateStatus}
-                />
-              ))}
+         filteredReservations.length === 0 ? (
+          <div className="bg-white rounded-lg shadow-md p-12 text-center">
+            <span className="text-6xl mb-4 block">📭</span>
+            <p className="text-gray-500 text-lg">No {statusFilter.toLowerCase()} reservations found</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-2">
+            {filteredReservations.map((reservation, index) => (
+              <ItemReservationCard 
+                key={reservation._id}
+                reservation={reservation} 
+                index={index} 
+                updateStatus={updateStatus}
+              />
+            ))}
           </div>
         )}
       </main>

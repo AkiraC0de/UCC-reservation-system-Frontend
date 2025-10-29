@@ -111,6 +111,24 @@
   }
 }
 
+@keyframes popFromUpperRight {
+  0% {
+    opacity: 0;
+    transform: translate(100%, -100%) scale(0);
+  }
+  60% {
+    transform: translate(0, 0) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+.pop-animation {
+  animation: popFromUpperRight 0.5s;
+}
+
 @keyframes fade-in-top {
   from{
     opacity: 0;

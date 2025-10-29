@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth"
 const Auth = () => {
   const {isAutoLoginAtProgress} = useAuth()
   return (
-    <div className="w-screen h-screen overflow-y-auto fixed top-0 left-0 bottom-0 right-0 z-200 backdrop-blur-sm bg-green-900/10">
+    <div className="w-screen h-screen z-999 overflow-y-auto fixed top-0 left-0 bottom-0 right-0 backdrop-blur-sm bg-green-900/10">
         {isAutoLoginAtProgress ? <ClipLoader color="green" cssOverride={{position: "absolute" , bottom: "50%", right: "50%"}} size={40}/> : <AuthForm/>}
     </div>
   )

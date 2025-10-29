@@ -6,7 +6,7 @@ import { getDay, getSorted, getNextSevenDate, getNextSevenDateNumbers, getNextSe
 
 const ScheduleContext = createContext();
 
-const ScheduleTable = ({scheduleData, handleScheduleData}) => {
+const ScheduleTable = ({scheduleData, handleScheduleData, recievedScheduleData}) => {
   const [focus, setFocus] = useState(null)
   const [cellBeingHovered, setCellBeingHovered] = useState(null)
   const [isOnStartingTimeSelection, setIsOnStartingTimeSelection] = useState(true)
@@ -58,7 +58,9 @@ const ScheduleTable = ({scheduleData, handleScheduleData}) => {
       { scheduleData, handleScheduleData, 
         cellBeingHovered, handleCellBeingHovered,
         isOnStartingTimeSelection,
-        sortedData, focus}
+        sortedData, focus,  
+        recievedScheduleData
+      }
     }>
       <TableWrapper>
           <TableHeader/>

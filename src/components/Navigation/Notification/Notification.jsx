@@ -23,7 +23,7 @@ export default function Notification() {
 
               {showNotifications &&
               <NotificationCard
-              className="absolute left-1 -translate-x-1/2 mt-2 border border-green-800/50 h-[88vh] w-[18rem] overflow-y-auto rounded-xl shadow-lg bg-white p-2"
+              className="absolute pop-animation -left-24 -translate-x-1/2 mt-2 border border-green-800/50 h-[88vh] w-[18rem] overflow-y-auto rounded-xl shadow-lg bg-white p-2"
             />
 
               }

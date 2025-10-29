@@ -3,12 +3,21 @@ import { AuthContext } from "../context/authContext"
 
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState("login")
+  const [signUpFor, setSignUpFor] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isAutoLoginAtProgress, setIsAutoLoginAtProgress] = useState(true)
   const [error, setError] = useState({})
+  const [signUpError, setSignUpError] = useState({})
   const [auth, setAuth] = useState({
     email: null,
     password : null,
+    firstName : null,
+    lastName: null,
+    program: null,
+    section: null,
+    middleName: null,
+    yearLevel: null,
+    studentNo : null,
     userData: null,
     isLogin: false
   })
@@ -146,6 +155,13 @@ const AuthProvider = ({children}) => {
     }))
   }
 
+  const handleSignUpError = (name, value) => {
+    setSignUpError(prev => ({
+      ...prev,
+      [name] : value
+    }))
+  }
+
   const handleLoading = (value) => {
     setIsLoading(value)
   }
@@ -161,13 +177,19 @@ const AuthProvider = ({children}) => {
     setAuthState(prev => prev === "login" ? "signup" : "login")
   }
 
+  const resetSignUpError = () => {
+    setSignUpError({})
+  }
+
   return (
     <AuthContext.Provider value={{
       auth, handleAuth,
       handleLogin, handleLogout, isAutoLoginAtProgress,
       isLoading, handleLoading,
       error, handleError, resetError,
-      authState, handleAuthState
+      authState, handleAuthState,
+      signUpFor, setSignUpFor,
+      signUpError, handleSignUpError, resetSignUpError
     }}>
       {children}
     </AuthContext.Provider>

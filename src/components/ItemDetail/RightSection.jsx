@@ -3,10 +3,10 @@ import useItemDetail from "../../hooks/useItemDetail"
 
 
 const RightSection = () => {
-  const {selectedSchedule, handleSelectedSchedule} = useItemDetail()
+  const {selectedSchedule, handleSelectedSchedule, recievedScheduleData} = useItemDetail()
   return (
     <div>
-      <ScheduleTable scheduleData={selectedSchedule} handleScheduleData={handleSelectedSchedule}/>
+      <ScheduleTable scheduleData={selectedSchedule} handleScheduleData={handleSelectedSchedule} recievedScheduleData={recievedScheduleData}/>
     </div>
   )
 }

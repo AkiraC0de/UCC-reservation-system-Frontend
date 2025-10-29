@@ -1,7 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { notifications, STATUS } from '../../../configs/Nav.config'
+import useAuth from '../../../hooks/useAuth';
 
 export default function NotificationCard({className}) {
+  const [fetchedData, setFetchedData] = useState([])
+
+  const getReservations = async () => {
+    try {
+      const response = await fetch("http://localhost:8080//api/reservation", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        throw new Error(`HTTP error! status: ${data.message}`);
+      }
+
+      
+      setFetchedData(data)
+      return data;
+    } catch (error) {
+      console.error("Error fetching reservations:", error);
+    }
+  };
+
+  useEffect(() => {
+    getReservations()
+  }, [])
+
+  console.log(fetchedData)
 
   return (
   <div className={`p-4 bg-white rounded-xl shadow-lg border w-[17rem] ${className}`}>
@@ -11,7 +43,6 @@ export default function NotificationCard({className}) {
         {notifications.map((notif) => {
           const stats = notif.status.toUpperCase();
           const s = STATUS[stats];
-          console.log(s);
 
           return (
             <div
