@@ -1,27 +1,24 @@
 import DatePicker from "../../Shared/DatePicker"
 import { formatDate } from "../../../Utils/utils"
 import useRoom from "../../../hooks/useRoom"
-import { ROOM_RESERVATION_DAY_AVAILABLE } from "../../../configs/Room.config"
 
 const RoomDatePicker = () => {
-  const {stage, schedule, reservation, handleReservationDate} = useRoom()
-  const { min, max } = ROOM_RESERVATION_DAY_AVAILABLE
-
+  const {stage, selectedSchedule, handleSelectedSchedule} = useRoom()
   const today = new Date()
         
   const minDay = new Date(today)
-  minDay.setDate(today.getDate() + min)
+  minDay.setDate(today.getDate() + 1)
 
   const maxDay = new Date(today);
-  maxDay.setDate(today.getDate() + max)
+  maxDay.setDate(today.getDate() + 7)
   
   return (
     <DatePicker
       minDate={formatDate(minDay)}
       maxDate={formatDate(maxDay)}
       disabled={stage < 4}
-      value={reservation.date}
-      onChange={(e) => handleReservationDate(e.target.value)}
+      value={selectedSchedule.date}
+      onChange={(e) => handleSelectedSchedule("date", e.target.value)}
     />
   )
 }

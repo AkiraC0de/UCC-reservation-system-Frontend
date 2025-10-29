@@ -6,7 +6,6 @@ import SubmitButton from "../Shared/SubmitButton"
 import useItemDetail from "../../hooks/useItemDetail"
 
 const LeftSection = () => {
-  const { type, id } = useParams()
   const {selectedSchedule, selectedItem, toggleConfirmation} = useItemDetail()
 
   const isTheTimeSelectionDone = selectedSchedule.date !== null && selectedSchedule.outTime !== null

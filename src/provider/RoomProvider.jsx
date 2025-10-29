@@ -12,20 +12,22 @@ const STAGES = {
 
 const RoomProvider = ({children}) => {
     const [stage, setStage] = useState(1)
-    const [isRequired, setIsRequired] = useState({})
     const [reservation, setReservation] = useState(ROOM_RESERVATION_DEFAULT_VALUE)
-    const [isLoading, setIsLoading] = useState()
-    const [serverResponse, setServerResponse] = useState()
-    const [showNotif, setShowNotif] = useState(false)
-    const [schedule, setSchedule] = useState({
-      focus: null,
-      isConfirmed: null
-    })
     const [selectedSchedule, setSelectedSchedule] = useState({
         startingTime: null, 
         outTime: null,
         date: null
     })
+    const [isRequired, setIsRequired] = useState({})
+    const [isLoading, setIsLoading] = useState()
+    const [showConfirmation, setShowConfirmation] = useState(false)
+    const [showNotification, setShowNotification] = useState(false)
+    const [serverResponse, setServerResponse] = useState()
+    const [schedule, setSchedule] = useState({
+      focus: null,
+      isConfirmed: null
+    })
+
 
     const URL = "http://localhost:8080/api/reservation"
     const OPTION= {
@@ -61,16 +63,16 @@ const RoomProvider = ({children}) => {
 
         setServerResponse(data)
         handleResetReservation()
-        setShowNotif(true)
+        setShowNotification(true)
       })
       .catch(err => {
         console.log(err)
       })
       .finally(() => {
         setIsLoading(false)
-        setSchedule(prev => ({...prev, isConfirmed: false}))
+        setShowConfirmation(true)
         setTimeout(() => {
-          setShowNotif(false)
+          setShowNotification(false)
         }, 6000);
       })
     }
@@ -113,10 +115,6 @@ const RoomProvider = ({children}) => {
       // Lastly, set the stage to the next
       // THIS PART MIGHT REQUIRE FUTURE UPDATES
       setStage(STAGES[inputName] + 1 || 1);
-    }
-
-    const handleReservationDate = (val) => {
-      setReservation(prev => ({...prev, date: val}))
     }
 
     const handleResetReservation = () => {
@@ -183,14 +181,14 @@ const RoomProvider = ({children}) => {
           handleStage,
           reservation, 
           handleReservation,
-          handleReservationDate, 
           handleResetReservation, 
           handleReservationUndo,
           handleReservationPurpose,
           schedule, handleSchedule,
           selectedSchedule, handleSelectedSchedule,
           handleSendReservation,
-          serverResponse, showNotif,
+          showConfirmation, showNotification,
+          serverResponse,
           isRequired, handleIsRequired,
           isLoading
         }}>

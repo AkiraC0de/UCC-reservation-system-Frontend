@@ -5,13 +5,13 @@ import RoomReservationNotif from "../components/Room/RoomReservationNotif";
 import useRoom from "../hooks/useRoom";
 
 const Room = () => {
-  const {schedule, showNotif} = useRoom()
+  const {showConfirmation, showNotification} = useRoom()
   return (
     <main className="grid grid-cols-[380px_1fr] px-10 gap-6 transition-all duration-500">
       <RoomNav/>
       <ModelPlatform/>
-      {schedule.isConfirmed && <RoomReservationConfirm/>}
-      {showNotif && <RoomReservationNotif/>}
+      {showConfirmation && <RoomReservationConfirm/>}
+      {showNotification && <RoomReservationNotif/>}
     </main>
   )
 }

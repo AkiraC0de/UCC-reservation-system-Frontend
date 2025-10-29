@@ -35,7 +35,7 @@ const RoomNavLocateSection = () => {
 
   return (
     <div className="flex flex-col gap-5 max-h-fit">
-      <h2 className="text-sm px-2 text-gray-500 italic">Locate your prefered room</h2>
+      <h2 className="font-semibold uppercase text-sm text-black-text">Locate your prefered room</h2>
         <div className="flex max-h-[40px] items-start gap-4 transition-all duration-500 w-full">
             <Select 
               label="Building"
