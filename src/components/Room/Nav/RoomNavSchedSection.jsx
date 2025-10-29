@@ -4,9 +4,9 @@ import RoomDatePicker from "./RoomDatePicker"
 
 
 const RoomNavSchedSection = () => {
-  const {selectedTime} = useRoom()
-  const startingTime = TIME_SLOTS_30_MIN[selectedTime.startingTime]
-  const outTime = selectedTime.outTime !== null ? TIME_SLOTS_30_MIN[selectedTime.outTime + 1] : ""
+  const {selectedSchedule} = useRoom()
+  const startingTime = TIME_SLOTS_30_MIN[selectedSchedule.startingTime]
+  const outTime = selectedSchedule.outTime !== null ? TIME_SLOTS_30_MIN[selectedSchedule.outTime + 1] : ""
   return (
     <div className="flex flex-col gap-4">
       <div>

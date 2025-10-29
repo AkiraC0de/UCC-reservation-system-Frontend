@@ -38,7 +38,6 @@ const TableContent = () => {
   const maxSelectableRows = useMemo(() => {
       const { startingTime, outTime } = scheduleData
        const colIndex = sortedData.date.findIndex((data) => data == scheduleData.date)
-       console.log(colIndex)
 
       if (startingTime === null || outTime !== null) {
           return Infinity; 

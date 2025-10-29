@@ -4,9 +4,9 @@ import useRoom from "../../../hooks/useRoom"
 import { Fragment } from "react"
 
 const RoomHeaderStages = () => {
-  const {stage, selectedTime} = useRoom()
+  const {stage, selectedSchedule} = useRoom()
 
-  const isOnConfirmation = selectedTime.startingTime !== null && selectedTime.outTime !== null
+  const isOnConfirmation = selectedSchedule.startingTime !== null && selectedSchedule.outTime !== null
   
   const LAST_INDEX = useMemo(() => {
     return CONGRESSIONAL_ROOM_PROGRESS_ITEMS.length - 1

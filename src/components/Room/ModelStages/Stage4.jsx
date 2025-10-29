@@ -1,13 +1,19 @@
 import { motion } from "motion/react"
-import ScheduleTable from "../ScheduleTable/ScheduleTable"
+import ScheduleTable from "../../Shared/ScheduleTable/ScheduleTable"
 import useRoom from "../../../hooks/useRoom"
 
 const Stage4 = () => {
-  const {stage} = useRoom()
+  const {selectedSchedule, handleSelectedSchedule} = useRoom()
+
+  const recivedData = []
   return (
     <div 
       className="w-full anim-scale">
-      <ScheduleTable/>
+      <ScheduleTable 
+        scheduleData={selectedSchedule} 
+        handleScheduleData={handleSelectedSchedule} 
+        recievedScheduleData={recivedData}
+      />
     </div>
   )
 }

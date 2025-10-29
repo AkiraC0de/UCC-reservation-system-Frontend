@@ -21,9 +21,10 @@ const RoomProvider = ({children}) => {
       focus: null,
       isConfirmed: null
     })
-    const [selectedTime, setSelectedTime] = useState({
+    const [selectedSchedule, setSelectedSchedule] = useState({
         startingTime: null, 
-        outTime: null 
+        outTime: null,
+        date: null
     })
 
     const URL = "http://localhost:8080/api/reservation"
@@ -38,8 +39,8 @@ const RoomProvider = ({children}) => {
         roomId: reservation.room,
         date: reservation.date,
         weekDay: schedule.focus,
-        startingTime: selectedTime.startingTime,
-        outTime: selectedTime.outTime,
+        startingTime: selectedSchedule.startingTime,
+        outTime: selectedSchedule.outTime,
         purpose: reservation.purpose
       })
     }
@@ -121,9 +122,10 @@ const RoomProvider = ({children}) => {
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
       setSchedule({})
-      setSelectedTime({
+      setSelectedSchedule({
         startingTime: null, 
-        outTime: null 
+        outTime: null,
+        date: null,
       })
       setStage(1)
     }
@@ -139,7 +141,7 @@ const RoomProvider = ({children}) => {
       // reset the focus day to null 
       if(stage == 4){
         setSchedule(prev => ({...prev, focus: null}))
-        setSelectedTime({
+        setSelectedSchedule({
           startingTime: null, 
           outTime: null 
         })
@@ -167,8 +169,8 @@ const RoomProvider = ({children}) => {
       setSchedule(val)
     }
 
-    const handleSelectedTime = (val) => {
-      setSelectedTime(val)
+    const handleSelectedSchedule = (name, value) => {
+      setSelectedSchedule(prev => ({ ...prev, [name]: value }))
     }
 
     const handleReservationPurpose = (val) => {
@@ -186,7 +188,7 @@ const RoomProvider = ({children}) => {
           handleReservationUndo,
           handleReservationPurpose,
           schedule, handleSchedule,
-          selectedTime, handleSelectedTime,
+          selectedSchedule, handleSelectedSchedule,
           handleSendReservation,
           serverResponse, showNotif,
           isRequired, handleIsRequired,
