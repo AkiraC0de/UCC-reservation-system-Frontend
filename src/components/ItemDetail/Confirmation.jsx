@@ -5,7 +5,7 @@ import { TIME_SLOTS_30_MIN } from "../../configs/Room.config"
 import { convertDateFormat } from "../../Utils/utils"
 import { useMemo } from "react"
 import SubmitButton from "../Shared/SubmitButton"
-import CancelConfirmationButton from "./CancelConfirmationButton"
+import CancelConfirmationButton from "../Shared/CancelConfirmationButton"
 import { SyncLoader } from "react-spinners"
 
 const Confirmation = () => {

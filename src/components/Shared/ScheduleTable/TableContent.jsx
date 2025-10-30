@@ -47,7 +47,7 @@ const TableContent = () => {
       let barrier = maxLimit
 
       // 1. Check from startingTime + 1 up to the MAX_SELECTION_HOURS limit
-      for (let i = startingTime + 1; i <= maxLimit; i++) {
+      for (let i = startingTime; i <= maxLimit; i++) {
           const matchedData = dataMap[`${i}-${colIndex}`]
           if (matchedData) {
               // Found a reservation! Set the barrier to the cell *before* the reservation.

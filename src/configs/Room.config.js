@@ -54,7 +54,7 @@ export const ROOM_RESERVATION_DEFAULT_VALUE = {
   floor: 1,
   room: null,
   date: null,
-  purpose: null
+  purpose: "Lecture"
 }
 
 export const TIME_SLOTS = [

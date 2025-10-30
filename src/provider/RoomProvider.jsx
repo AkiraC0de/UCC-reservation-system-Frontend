@@ -23,11 +23,6 @@ const RoomProvider = ({children}) => {
     const [showConfirmation, setShowConfirmation] = useState(false)
     const [showNotification, setShowNotification] = useState(false)
     const [serverResponse, setServerResponse] = useState()
-    const [schedule, setSchedule] = useState({
-      focus: null,
-      isConfirmed: null
-    })
-
 
     const URL = "http://localhost:8080/api/reservation"
     const OPTION= {
@@ -39,8 +34,7 @@ const RoomProvider = ({children}) => {
       body: JSON.stringify({
         type: "Reservation",
         roomId: reservation.room,
-        date: reservation.date,
-        weekDay: schedule.focus,
+        date: selectedSchedule.date,
         startingTime: selectedSchedule.startingTime,
         outTime: selectedSchedule.outTime,
         purpose: reservation.purpose
@@ -77,12 +71,19 @@ const RoomProvider = ({children}) => {
       })
     }
 
-    const handleIsRequired = (val) => {
-      setIsRequired(val)
+    const handleIsRequired = (inputName, value) => {
+      setIsRequired(prev => ({...prev, [inputName]: value}))
     }
 
     // Handle the reservation per input changes
     const handleReservation = (inputName, value) => {
+      if(inputName == "room") {
+        setSelectedSchedule({
+          startingTime : null,
+          outTime: null,
+          date: null
+        })
+      }
 
       // GET the Inputname Index to Stages
       const inputStage = STAGES[inputName] - 1
@@ -112,14 +113,15 @@ const RoomProvider = ({children}) => {
         }
       ))
       
-      // Lastly, set the stage to the next
+      // Lastly, set the stage to the next if the stage is 
       // THIS PART MIGHT REQUIRE FUTURE UPDATES
-      setStage(STAGES[inputName] + 1 || 1);
+      if(stage < 5){
+        setStage(prev => STAGES[inputName] ? STAGES[inputName] + 1 : prev)
+      }
     }
 
     const handleResetReservation = () => {
       setReservation(ROOM_RESERVATION_DEFAULT_VALUE)
-      setSchedule({})
       setSelectedSchedule({
         startingTime: null, 
         outTime: null,
@@ -138,10 +140,10 @@ const RoomProvider = ({children}) => {
       // IF the current Stage is in the Stage 4 (Schedule Table)
       // reset the focus day to null 
       if(stage == 4){
-        setSchedule(prev => ({...prev, focus: null}))
         setSelectedSchedule({
           startingTime: null, 
-          outTime: null 
+          outTime: null,
+          date: null
         })
       }
 
@@ -162,17 +164,13 @@ const RoomProvider = ({children}) => {
     const handleStage = (val) => {
       setStage(val)
     }
-  
-    const handleSchedule = (val) => {
-      setSchedule(val)
-    }
 
     const handleSelectedSchedule = (name, value) => {
       setSelectedSchedule(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleReservationPurpose = (val) => {
-      setReservation(prev => ({...prev, purpose: val}))
+    const toggleConfirmation = () => {
+      setShowConfirmation(prev => !prev)
     }
 
   return (
@@ -183,11 +181,10 @@ const RoomProvider = ({children}) => {
           handleReservation,
           handleResetReservation, 
           handleReservationUndo,
-          handleReservationPurpose,
-          schedule, handleSchedule,
           selectedSchedule, handleSelectedSchedule,
           handleSendReservation,
-          showConfirmation, showNotification,
+          showConfirmation, toggleConfirmation,
+          showNotification,
           serverResponse,
           isRequired, handleIsRequired,
           isLoading

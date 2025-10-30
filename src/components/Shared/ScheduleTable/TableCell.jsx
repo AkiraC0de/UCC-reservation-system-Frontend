@@ -33,10 +33,16 @@ const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, max
   const selectedStartingTimeLineClasses = "translate-y-1/2 z-100 w-full absolute h-0.5 bg-blue-500"
   const selectedOutTimeLineClasses = "-bottom-0 z-100 w-full absolute h-0.5 bg-blue-500"
 
+  const handleCellClick = () => {
+    if(!matchedData){
+      onClick(colIndex, rowIndex)
+    }
+  }
+
   return (
     <div 
       className={`${cellClasses} ${cellVariantClasses}`}
-      onClick={() => onClick(colIndex, rowIndex)}
+      onClick={handleCellClick}
       onMouseEnter={() => onMouseEnter(rowIndex)}
       onMouseLeave={onMouseLeave}
     >
