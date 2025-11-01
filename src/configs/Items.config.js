@@ -28,31 +28,31 @@ export const ITEMS_DATA = [
   },
   {
     id: "perp001",
-    type: "periperals",
+    type: "peripheral",
     codeName: "hdmi cable 1m",
     location: "3rd floor MIS Office",
-    imgUrl: "/periperals/hdmiCable.png"
+    imgUrl: "/peripheral/hdmiCable.png"
   },
   {
     id: "perp002",
-    type: "periperals",
+    type: "peripheral",
     codeName: "vga cable 1m",
     location: "3rd floor MIS Office",
-    imgUrl: "/periperals/vgaCable.png"
+    imgUrl: "/peripheral/vgaCable.png"
   },
   {
     id: "perp003",
-    type: "periperals",
+    type: "peripheral",
     codeName: "keyboard",
     location: "3rd floor MIS Office",
-    imgUrl: "/periperals/keyboard.png"
+    imgUrl: "/peripheral/keyboard.png"
   },
   {
     id: "perp004",
-    type: "periperals",
+    type: "peripheral",
     codeName: "mouse",
     location: "3rd floor MIS Office",
-    imgUrl: "/periperals/mouse.png"
+    imgUrl: "/peripheral/mouse.png"
   },
   {
     id: "tv01",

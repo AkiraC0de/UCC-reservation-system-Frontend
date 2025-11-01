@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-const ScheduledTimeSlot = ({data, height}) => {
+const MatchedDataCard = ({data, height}) => {
   const {purpose, prof, program, section, type, reservedBy} = data
 
   const mainClass = clsx({
@@ -30,4 +30,4 @@ const ScheduledTimeSlot = ({data, height}) => {
   )
 }
 
-export default ScheduledTimeSlot
+export default MatchedDataCard

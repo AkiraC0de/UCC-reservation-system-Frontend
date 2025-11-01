@@ -1,6 +1,6 @@
 import { useScheduleContext } from "./ScheduleTable"
-import ScheduledTimeSlot from "../../Room/ScheduleTable/ScheduledTimeSlot"
 import clsx from "clsx"
+import MatchedDataCard from "./MatchedDataCard"
 
 const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, maxSelectableRows, matchedData}) => {
   const { focus, scheduleData } = useScheduleContext()
@@ -66,7 +66,7 @@ const TableCell = ({rowIndex, colIndex, onClick, onMouseEnter, onMouseLeave, max
       }
       {
           matchedData &&
-          <ScheduledTimeSlot data={matchedData} height={height}/>
+          <MatchedDataCard data={matchedData} height={height}/>
       }
     </div>
   )

@@ -1,12 +1,12 @@
 import { Link } from "react-router"
 import LocateIcon from "../Shared/Icons/LocateIcon"
 
-const PeriperalCard = ({periperal}) => {
-  const {id, type, codeName, location, imgUrl} = periperal
+const PeriperalCard = ({peripheral}) => {
+  const {id, type, codeName, location, imgUrl} = peripheral
   return (
     <Link 
       to={`/items/${type}/${id}`}
-      className="w-50 bg-white shadow-md rounded-lg text-sm overflow-hidden group hover:border-1 cursor-pointer ">
+      className="w-full bg-white shadow-md rounded-lg text-sm overflow-hidden group hover:border-1 cursor-pointer ">
       <div className="bg-gray-300">
         <img className="group-hover:scale-110 transition-all duration-300 aspect-square" src={imgUrl} alt="" />
       </div>

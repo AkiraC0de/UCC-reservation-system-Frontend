@@ -1,7 +1,7 @@
 const Banner = () => {
   return (
-    <div className="w-full grid-rows-[auto] bg-white rounded-lg overflow-hidden flex shadow-md">
-      <div className="flex-2 flex flex-col p-9 space-y-5 h-full text-[#303135] relative pr-15">
+    <section className="w-full grid-rows-[auto] overflow-hidden flex">
+      <div className="flex-2 flex flex-col py-9 space-y-5 h-full text-[#303135] relative pr-15">
         <h1 className=" text-5xl font-bold text-green-700">Level Up Your Lessons & Presentations!</h1>
         <h2 className="text-lg font-medium">Turn any class engaging, reserve a projector or TV and make your ideas shine.</h2>
         <svg 
@@ -16,7 +16,7 @@ const Banner = () => {
       <div className="flex-2 flex justify-center p-2">
         <img src="logo/banner.webp" className="w-1/2 object-contain" alt="banner" />
       </div>
-    </div>
+    </section>
   )
 }
 export default Banner
