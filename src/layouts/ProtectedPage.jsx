@@ -1,19 +1,18 @@
-import { useLocation, useNavigate } from "react-router"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import Auth from "../pages/Auth"
 import useAuth from "../hooks/useAuth"
 
 // WILL REQUIRE REFACTORING ONCE THE GLOBAL AUTH PROVIDER HAS BEEN ESTABLISHED
 const ProtectedPage = ({children}) => {
-  // PORTABLE
   const {auth} = useAuth()
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if(auth.isLogin) return
-  //   console.log(auth.isLogin)
-  //   navigate("/")
-  // }, [])
+  useEffect(() => {
+    if(!auth.isLogin){
+       navigate("/")
+    }
+  }, [])
 
   return (
     <>
