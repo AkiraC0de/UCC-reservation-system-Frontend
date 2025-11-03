@@ -1,29 +1,21 @@
 import { useState, useEffect } from "react"
 import useAuth from "../../hooks/useAuth"
 import PrimaryButton from "../Shared/PrimaryButton"
-import SecondaryButton from "../Shared/SecondaryButton"
-import Input from "../Shared/Input"
-import AuthNameInputs from "./AuthNameInputs"
-import AuthStudentDatInputs from "./AuthStudentDatInputs"
+import Stage1 from "./SignUpStages/Stage1"
+import Stage2 from "./SignUpStages/Stage2"
+import Stage3 from "./SignUpStages/Stage3"
 
 const AuthSignupForm = () => {
+  const {signUpStage} = useAuth()
+
   const [stage, setStage] = useState(1)
   const [verificationCode, setVerificationCode] = useState(["", "", "", "", "", ""])
   const [timer, setTimer] = useState(30)
   const [isVerifying, setIsVerifying] = useState(false)
   const [isVerified, setIsVerified] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [userId, setUserId] = useState(null)
 
   const {
     auth,
-    signUpError,
-    setSignUpError,
-    resetSignUpError,
-    handleSignUpError,
-    handleAuth,
-    setSignUpFor,
-    signUpFor,
     handleAuthState
   } = useAuth()
 
@@ -34,213 +26,6 @@ const AuthSignupForm = () => {
     const countdown = setInterval(() => setTimer(prev => prev - 1), 1000)
     return () => clearInterval(countdown)
   }, [timer, stage])
-
-  /** HANDLERS */
-  const handleStage = (value) => setStage(value)
-
-  // --- STAGE 1: SELECT ROLE ---
-  const renderRoleSelection = () => (
-    <>
-      <h2 className="font-medium text-gray-500 text-sm uppercase tracking-wide mb-3">
-        - Select your role
-      </h2>
-      <div className="flex gap-4">
-        {["student", "faculty"].map(role => (
-          <PrimaryButton
-            key={role}
-            onClick={() => {
-              setSignUpFor(role)
-              handleStage(2)
-            }}
-            className="flex-1"
-          >
-            {role.charAt(0).toUpperCase() + role.slice(1)}
-          </PrimaryButton>
-        ))}
-      </div>
-    </>
-  )
-
-  // --- STAGE 2: STUDENT/FACULTY DETAILS ---
-  const handleNextStage2 = () => {
-    resetSignUpError()
-    const requiredFields = ["firstName", "lastName", "section", "studentNo"]
-    let hasError = false
-
-    requiredFields.forEach(field => {
-      if (!auth[field]?.trim()) {
-        handleSignUpError(field, `${field.replace(/([A-Z])/g, " $1")} is required`)
-        hasError = true
-      }
-    })
-
-    if (hasError) return
-    handleStage(3)
-  }
-
-  const renderStudentDetails = () => (
-    <>
-      <h2 className="font-medium text-gray-500 text-sm uppercase tracking-wide">
-        - {signUpFor} details
-      </h2>
-      <AuthNameInputs />
-      <AuthStudentDatInputs />
-
-      <div className="flex justify-end gap-2">
-        <SecondaryButton onClick={() => handleStage(1)}>BACK</SecondaryButton>
-        <PrimaryButton onClick={handleNextStage2} className="flex-1">
-          NEXT
-        </PrimaryButton>
-      </div>
-    </>
-  )
-
-  // --- STAGE 3: ACCOUNT DETAILS ---
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
-  const handleEmail = (e) => {
-    const value = e.target.value
-    handleAuth("email", value)
-    
-    if (value && !validateEmail(value)) {
-      handleSignUpError("email", "Invalid email format")
-    } else {
-      handleSignUpError("email", "")
-    }
-  }
-
-  const handlePassword = (e) => {
-    const value = e.target.value
-    handleAuth("password", value)
-    
-    // Match backend validation: 8+ chars, uppercase, lowercase, number
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
-    const errorMsg = passwordRegex.test(value) 
-      ? "" 
-      : "Password must be at least 8 characters with uppercase, lowercase, and number"
-    
-    handleSignUpError("password", errorMsg)
-  }
-
-  const handleConfirmPassword = (e) => {
-    const value = e.target.value
-    handleAuth("confirmPassword", value)
-    
-    const errorMsg = value !== auth.password ? "Passwords do not match" : ""
-    handleSignUpError("confirmPassword", errorMsg)
-  }
-
-  const handleNextStage3 = async () => {
-    // Validate required fields
-    if (!auth.email || !auth.password || !auth.confirmPassword) {
-      // Use handleSignUpError instead of setSignUpError
-      if (!auth.email) handleSignUpError("email", "Email is required")
-      if (!auth.password) handleSignUpError("password", "Password is required")
-      if (!auth.confirmPassword) handleSignUpError("confirmPassword", "Confirm your password")
-      return
-    }
-
-    // Check for existing errors
-    if (signUpError.email || signUpError.password || signUpError.confirmPassword) return
-
-    setIsSubmitting(true)
-
-    try {
-      // Prepare signup data - ensure all required fields are present
-      const signupData = {
-        firstName: auth.firstName?.trim(),
-        lastName: auth.lastName?.trim(),
-        program: auth.program?.trim() || auth.course?.trim() || "N/A",
-        yearLevel: auth.yearLevel?.trim() || auth.year?.trim() || "N/A",
-        section: auth.section?.trim(),
-        email: auth.email?.trim(),
-        password: auth.password,
-        role: signUpFor,
-      }
-
-      const response = await fetch("http://localhost:8080/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(signupData),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        // Handle specific error cases using handleSignUpError
-        if (response.status === 409) {
-          handleSignUpError("email", "Email is already registered")
-        } else if (response.status === 400) {
-          handleSignUpError("email", data.message || "Please check your input")
-        } else {
-          alert(data.message || "Signup failed. Please try again.")
-        }
-        return
-      }
-
-      // Success - store user ID and move to verification
-      setUserId(data.data.id)
-      handleStage(4)
-      
-    } catch (error) {
-      console.error("Signup error:", error)
-      alert("Network error. Please check your connection and try again.")
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const renderAccountDetails = () => (
-    <>
-      <h2 className="font-medium text-gray-500 text-sm uppercase tracking-wide">
-        - Account details
-      </h2>
-      <div className="flex flex-col gap-5">
-        <Input
-          label="Email *"
-          className="bg-white"
-          value={auth.email}
-          error={signUpError.email}
-          onChange={handleEmail}
-          placeholder="Enter your email"
-          type="email"
-        />
-        <Input
-          label="Password *"
-          className="bg-white"
-          value={auth.password}
-          error={signUpError.password}
-          onChange={handlePassword}
-          placeholder="Enter your preferred password"
-          type="password"
-        />
-        <Input
-          label="Confirm Password *"
-          className="bg-white"
-          value={auth.confirmPassword}
-          error={signUpError.confirmPassword}
-          onChange={handleConfirmPassword}
-          placeholder="Confirm your password"
-          type="password"
-        />
-      </div>
-
-      <div className="flex justify-end gap-2 mt-4">
-        <SecondaryButton onClick={() => handleStage(2)} disabled={isSubmitting}>
-          BACK
-        </SecondaryButton>
-        <PrimaryButton 
-          onClick={handleNextStage3} 
-          className="flex-1"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? "CREATING ACCOUNT..." : "NEXT"}
-        </PrimaryButton>
-      </div>
-    </>
-  )
 
   // --- STAGE 4: EMAIL VERIFICATION ---
   const handleCodeInput = (e, index) => {
@@ -392,13 +177,13 @@ const AuthSignupForm = () => {
 
   /** RENDER CURRENT STAGE */
   const renderStage = () => {
-    switch (stage) {
+    switch (signUpStage) {
       case 1:
-        return renderRoleSelection()
+        return <Stage1/>
       case 2:
-        return renderStudentDetails()
+        return <Stage2/>
       case 3:
-        return renderAccountDetails()
+        return <Stage3/>
       case 4:
         return renderVerification()
       default:

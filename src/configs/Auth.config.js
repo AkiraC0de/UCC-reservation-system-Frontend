@@ -41,3 +41,18 @@ export const YEAR_LEVEL_CHOICES = [
     value: 4
   },
 ]
+
+export const SECTION_CHOICES = [
+  {
+    label: "A",
+  },
+  {
+    label: "B",
+  },
+  {
+    label: "C",
+  },
+  {
+    label: "D",
+  },
+]

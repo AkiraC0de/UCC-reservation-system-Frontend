@@ -13,7 +13,7 @@ const LeftSection = () => {
   return (
     <div>
       <div className="bg-white shadow-md rounded-2xl p-4">
-        <div className="bg-gray-200 w-full center h-50 p-10 relative rounded-xl">
+        <div className="bg-gray-200 w-full center h-50 p-10 relative rounded-xl overflow-hidden">
           <img className="object-cover z-10 drop-shadow-2xl drop-shadow-greem-800" src={selectedItem?.imgUrl} alt={selectedItem?.codeName} />
         </div>
         <div className="px-2 py-2 space-y-2 text-black-text text-sm">

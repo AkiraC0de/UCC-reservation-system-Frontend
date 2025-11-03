@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Input = ({ label, type = "text", placeholder, className = "", value, onChange = () => {}, error }) => {
+const Input = ({ label, type = "text", confirmPassword, placeholder, className = "", value, onChange = () => {}, error }) => {
   const [show, setShow] = useState(false)
   const isPassword = type === "password"
   const inputType = isPassword && show ? "text" : type
@@ -20,6 +20,7 @@ const Input = ({ label, type = "text", placeholder, className = "", value, onCha
         placeholder={placeholder}
         className={inputClass}
         type={inputType}
+        onPaste={(e) => e.preventDefault()}
       />
       <label
         htmlFor={id}
@@ -35,7 +36,7 @@ const Input = ({ label, type = "text", placeholder, className = "", value, onCha
           className="peer-focus:stroke-green-400 stroke-[#7f7f7f] w-6 absolute right-3 bottom-1/2 translate-y-1/2 cursor-pointer"
           onClick={() => setShow(prev => !prev)}
         >
-          {show ? <EyeIcon /> : <EyeOffIcon />}
+          {!show ? <EyeIcon /> : <EyeOffIcon />}
         </button>
       )}
     </div>

@@ -1,24 +1,27 @@
 import Input from "../Shared/Input"
 import SelectV2 from "../Shared/SelectV2"
-import { PROGRAM_CHOICES, YEAR_LEVEL_CHOICES } from "../../configs/Auth.config"
+import { PROGRAM_CHOICES, YEAR_LEVEL_CHOICES, SECTION_CHOICES } from "../../configs/Auth.config"
 import useAuth from "../../hooks/useAuth"
 
 const AuthStudentDatInputs = () => {
   const {auth, signUpError , handleAuth} = useAuth()
-      const handleStudentno = (e) => {
+
+  const handleStudentno = (e) => {
     handleAuth("studentNo", e.target.value)
   }
 
-      const handleYear = (e) => {
+  const handleYear = (e) => {
     handleAuth("yearLevel", e.target.value)
   }
 
-      const handleSection = (e) => {
+  const handleSection = (e) => {
     handleAuth("section", e.target.value)
   }
-      const handleProgram = (e) => {
+
+  const handleProgram = (e) => {
     handleAuth("program", e.target.value)
   }
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex gap-3">
@@ -39,14 +42,13 @@ const AuthStudentDatInputs = () => {
           value={auth.yearLevel || ""}
           onChange={handleYear}
         />
-        <Input
+        <SelectV2 
           className="flex-3"
-          label="Section *"
-          value={auth.section}
-          error={signUpError.section}
+          label="Year *"
+          placeholder=""
+          options={SECTION_CHOICES}
+          value={auth.section || ""}
           onChange={handleSection}
-          placeholder="Ex: 1A"
-          type="Text"
         />
       </div>
       <div className="flex gap-3">

@@ -8,19 +8,27 @@ const AuthProvider = ({children}) => {
   const [isAutoLoginAtProgress, setIsAutoLoginAtProgress] = useState(true)
   const [error, setError] = useState({})
   const [signUpError, setSignUpError] = useState({})
+  const [userId, setUserId] = useState("")
   const [auth, setAuth] = useState({
     email: null,
     password : null,
     firstName : null,
     lastName: null,
-    program: null,
-    section: null,
+    program: "BSCS",
+    section: "A",
     middleName: null,
-    yearLevel: null,
+    yearLevel: "1",
     studentNo : null,
     userData: null,
     isLogin: false
   })
+
+  //SIGNUP STATES
+  const [signUpStage, setSignUpStage] = useState(1)
+  const [verificationCode, setVerificationCode] = useState(["", "", "", "", "", ""])
+  const [timer, setTimer] = useState(30)
+  const [isVerifying, setIsVerifying] = useState(false)
+  const [isVerified, setIsVerified] = useState(false)
 
   const handleLogin = () => {
     // #1 Extract the user Input 
@@ -139,8 +147,6 @@ const AuthProvider = ({children}) => {
     autoLogin()
   }, [])
 
- 
-
   const handleAuth = (inputName, value) => {
     setAuth(prev => ({
       ...prev,
@@ -188,8 +194,10 @@ const AuthProvider = ({children}) => {
       isLoading, handleLoading,
       error, handleError, resetError,
       authState, handleAuthState,
+      signUpStage, setSignUpStage,
       signUpFor, setSignUpFor,
-      signUpError, handleSignUpError, resetSignUpError
+      signUpError, handleSignUpError, resetSignUpError,
+      userId, setUserId,
     }}>
       {children}
     </AuthContext.Provider>
