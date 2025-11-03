@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import { AuthContext } from "../context/authContext"
+import { useNavigate } from "react-router-dom"
 
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState("login")
+  const [signUpStage, setSignUpStage] = useState(1)
   const [signUpFor, setSignUpFor] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [isAutoLoginAtProgress, setIsAutoLoginAtProgress] = useState(true)
@@ -22,13 +24,8 @@ const AuthProvider = ({children}) => {
     userData: null,
     isLogin: false
   })
-
-  //SIGNUP STATES
-  const [signUpStage, setSignUpStage] = useState(1)
-  const [verificationCode, setVerificationCode] = useState(["", "", "", "", "", ""])
-  const [timer, setTimer] = useState(30)
-  const [isVerifying, setIsVerifying] = useState(false)
-  const [isVerified, setIsVerified] = useState(false)
+  
+  const navigate = useNavigate()
 
   const handleLogin = () => {
     // #1 Extract the user Input 
@@ -97,7 +94,7 @@ const AuthProvider = ({children}) => {
         throw new Error("Something went wrong")
       }
       setAuth({})
-
+      navigate("/")
     })
     .catch(err => console.log("Logout error: ",err.message))
     .finally(() => {

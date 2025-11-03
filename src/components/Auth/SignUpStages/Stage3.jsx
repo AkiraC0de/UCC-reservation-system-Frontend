@@ -81,8 +81,6 @@ const Stage3 = () => {
           role: signUpFor,
         }
 
-        console.log(signupData)
-
         const response = await fetch("http://localhost:8080/api/auth/signup", {
           method: "POST",
           headers: {
@@ -92,8 +90,6 @@ const Stage3 = () => {
         })
 
         const data = await response.json()
-
-        console.log(data)
 
         if(!data.success){
             throw new Error(data)

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"
 import LogoutConfirmation from "../Shared/LogoutConfirmation"
 import Notification from "./Notification/Notification.jsx"
@@ -14,6 +15,7 @@ const NavUser = () => {
   const handleConfirm = () => {
     toggleShowLogoutConfirm()
     handleLogout()
+    goToHome()
   }
 
   return (
