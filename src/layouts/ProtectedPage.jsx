@@ -3,7 +3,6 @@ import { useEffect } from "react"
 import Auth from "../pages/Auth"
 import useAuth from "../hooks/useAuth"
 
-// WILL REQUIRE REFACTORING ONCE THE GLOBAL AUTH PROVIDER HAS BEEN ESTABLISHED
 const ProtectedPage = ({children}) => {
   const {auth} = useAuth()
   const navigate = useNavigate()
@@ -13,6 +12,12 @@ const ProtectedPage = ({children}) => {
        navigate("/")
     }
   }, [])
+
+  useEffect(() => {
+    if(auth.isLogin && auth?.userData?.role == "admin"){
+       navigate("/admin")
+    }
+  }, [auth.isLogin])
 
   return (
     <>

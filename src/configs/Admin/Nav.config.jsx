@@ -1,52 +1,64 @@
-import DashboardIcon from "../../components/Shared/Icons/DashboardIcon"
-import Schedule2Icon from "../../components/Shared/Icons/Schedule2Icon"
-import ScheduleIcon from "../../components/Shared/Icons/ScheduleIcon"
+import {LayoutDashboard, Calendar, Package, Users, Clock, Settings } from 'lucide-react';
 
-export const NAV_ITEMS = [
+export const MENU_ITEMS = [
   {
-    id: "nav_dashboard",
-    icon: DashboardIcon,
-    to: "/admin",
-    label: "Dashboard",
-    iconClasses: {
-      default: "",
-      active: "w-10 bg-black"
-    }
+    id: 'dashboard',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
+    type: 'single',
+    to: '/admin'
   },
   {
-    id: "nav_regis",
-    to: "/admin/registrations",
-    icon: ScheduleIcon,
-    iconClasses: {
-      default: "w-10 stroke-gray-400 p-2 fill-gray-400 bg-white rounded-lg shadow-md",
-      active: "w-10 p-2 stroke-white bg-green-500 shadow-md rounded-lg"
-    },
-    label: "Registrations"
-  },  
-]
-
-export const NAV_RESERVATION_ITEMS = [
-  {
-    id: "nav_reserv_room",
-    icon: Schedule2Icon,
-    to: "/admin/reservations/room",
-    label: "Room"
+    id: 'reservations',
+    label: 'Reservations',
+    icon: Calendar,
+    type: 'section',
+    items: [
+      { id: 'all-reservations', label: 'All Reservations', to: '/admin/reservation-all' },
+      { id: 'pending-approvals', label: 'Pending Approvals',  to: '/admin/reservation-pending' }
+    ]
   },
   {
-    id: "nav_reserv_item",
-    icon: Schedule2Icon,
-    to: "/admin/reservations/item",
-    label: "Item"
-  }
-]
-
-export const NAV_ROOM_ITEMS = [
-  {
-    icon: DashboardIcon,
-    label: "Status"
+    id: 'management',
+    label: 'Management',
+    icon: Package,
+    type: 'section',
+    items: [
+      { id: 'manage-equipment', label: 'Manage Equipment',  to: '/admin/manage-items' },
+      { id: 'manage-rooms', label: 'Manage Rooms',  to: '/admin/manage-rooms' },
+    ]
   },
   {
-    icon: DashboardIcon,
-    label: "Plotted Schedule"
+    id: 'users',
+    label: 'Users',
+    icon: Users,
+    type: 'section',
+    items: [
+      { id: 'user-list', label: 'User List',  to: '/admin/user-list' },
+      { id: 'roles-permissions', label: 'Roles & Permissions', to: '/admin/user-roles' },
+      { id: 'reports', label: 'Reports', to: '/admin/user-reports' }
+    ]
   },
+  {
+    id: 'logs',
+    label: 'Logs & History',
+    icon: Clock,
+    type: 'section',
+    items: [
+      { id: 'calendar', label: 'Calendar', to: '/admin/calendar' },
+      { id: 'activity-logs', label: 'Activity Logs', to: '/admin/activity-logs' },
+      { id: 'history', label: 'History', to: '/admin/history' }
+    ]
+  },
+  // {
+  //   id: 'settings',
+  //   label: 'Settings',
+  //   icon: Settings,
+  //   type: 'section',
+  //   items: [
+  //     { id: 'system-settings', label: 'System Settings' },
+  //     { id: 'notifications', label: 'Notifications' },
+  //     { id: 'backup-restore', label: 'Backup & Restore' }
+  //   ]
+  // }
 ]

@@ -1,16 +1,19 @@
 import useAuth from "../../../hooks/useAuth"
+import { Building2 } from "lucide-react"
 
 const Header = () => {
   const userData = useAuth().auth.userData
 
   return (
-    <div className="flex items-center gap-2 text-black-text mb-8">
-      <div className="w-12 aspect-square bg-white border-2 border-green-500 rounded-full">
-        <img className="aspect-square border-4 border-white rounded-full"src="/admin/profile.png" alt="admin-image" />
-      </div>
-      <div>
-        <p className="text-sm font-medium">{userData?.firstName} {userData?.lastName}</p>
-        <p className="text-xs text-gray-400">Admin</p>
+    <div className="p-3 border-b border-gray-200">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+          <Building2 className="text-white" size={24} />
+        </div>
+        <div>
+          <h1 className="text-lg font-bold text-gray-900">UniReserve</h1>
+          <p className="text-xs text-gray-500">Admin Panel</p>
+        </div>
       </div>
     </div>
   )

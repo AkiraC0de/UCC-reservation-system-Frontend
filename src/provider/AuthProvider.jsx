@@ -62,8 +62,8 @@ const AuthProvider = ({children}) => {
           ...prev,
           isLogin: true,
           userData: data.data,
-          email: "",
-          password: ""
+          email: null,
+          password: null
         }))
       }
     })

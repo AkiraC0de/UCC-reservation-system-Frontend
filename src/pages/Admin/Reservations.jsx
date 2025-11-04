@@ -5,12 +5,12 @@ import { SyncLoader } from 'react-spinners';
 export default function Reservations() {
   const [reservations, setReservations] = useState([])
   const [statusFilter, setStatusFilter] = useState('Pending')
-  const [loading, setLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [dateFilter, setDateFilter] = useState('')
 
   const fetchReservations = async () => {
     try {
-      setLoading(true);
+      setIsLoading(true)
       const response = await fetch("http://localhost:8080/api/all-reservation/admin", {
         method: "GET",
         credentials: "include", 
@@ -18,14 +18,14 @@ export default function Reservations() {
 
       const result = await response.json();
       if (result.success) {
-        setReservations(result.data);
+        setReservations(result.data)
       } else {
         throw new Error(result.message || "Failed to fetch reservations");
       }
     } catch (err) {
-      console.error("Error fetching reservations:", err.message);
+      console.log("Error fetching reservations:", err.message);
     } finally {
-      setLoading(false);
+      setIsLoading(false)
     }
   };
 
@@ -43,9 +43,7 @@ export default function Reservations() {
         throw new Error(result.message || "Failed to fetch reservations");
       }
     } catch (err) {
-      console.error("Error fetching reservations:", err.message);
     }
-    console.log("YES")
   };
 
   useEffect(() => {
@@ -135,6 +133,8 @@ export default function Reservations() {
   }, [reservations]);
 
 
+
+
   return (
     <div className="min-h-screen">
       {/* Main Content */}
@@ -216,7 +216,7 @@ export default function Reservations() {
 
 
         {/* Reservations Grid */}
-        { loading ? 
+        { isLoading ? 
           <div className='w-full h-100 center'> 
             <SyncLoader color='green' size={10}/> 
           </div> :

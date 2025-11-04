@@ -40,9 +40,21 @@ function App() {
         </ProtectedPage>
       }>
         <Route index element={<Dashboard/>}/>
-        <Route path="/admin/registrations" element={<Dashboard/>}/>
-        <Route path="/admin/reservations/room" element={<Reservations/>}/>
-        <Route path="/admin/reservations/item" element={<ItemReservation/>}/>
+
+        <Route path="/admin/reservation-all" element={<Reservations />} />
+        <Route path="/admin/reservation-pending" element={<Dashboard />} />
+
+        <Route path="/admin/manage-items" element={<Dashboard />} />
+        <Route path="/admin/manage-rooms" element={<Dashboard />} />
+
+        <Route path="/admin/user-list" element={<Dashboard />} />
+        <Route path="/admin/user-roles" element={<Dashboard />} />
+        <Route path="/admin/user-reports" element={<Dashboard />} />
+        
+        <Route path="/admin/calendar" element={<Dashboard />} />
+        <Route path="/admin/activity-logs" element={<Dashboard />} />
+        <Route path="/admin/history" element={<Dashboard />} />
+
       </Route> 
       <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>

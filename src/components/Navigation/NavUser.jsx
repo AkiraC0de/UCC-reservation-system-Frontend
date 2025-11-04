@@ -25,7 +25,7 @@ const NavUser = () => {
           <h3>{auth?.userData?.firstName}</h3>
           <h3>{auth?.userData?.lastName}</h3>
         </div>
-        
+        <h3 className="text-xs text-gray-text leading-2">{auth?.userData?.role}</h3>
       </div>
       {auth.isLogin && 
       <>
