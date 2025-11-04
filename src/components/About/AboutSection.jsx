@@ -4,16 +4,19 @@ import AboutMRERS from './AboutMRERS'
 
 export default function AboutSection() {
   return (
-    <div className="grid grid-cols-2 gap-30 py-20">
-        <div className='bg-green-gradient-opaque rounded-xl p-2 w-max h-max'>
-        <img  
-        src="/about-page-images/aboutMRERSimg.svg"
-        alt="About MRERS illustration"
-        width={600}
-        height={300}
-        />
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 py-12 items-center">
+        <div className=" order-2 lg:order-1 flex justify-center md:justify-center xl:justify-start">
+          <div className=' bg-green-gradient-opaque rounded-xl p-3 w-full max-w-md sm:max-w-lg lg:max-w-xl'>
+            <img  
+            src="/about-page-images/aboutMRERSimg.svg"
+            alt="About MRERS illustration"
+            className='w-full h-auto rounded-lg object-contain'
+            />
+          </div>
         </div>
-        <AboutMRERS/>
+        <div className='mt-5 lg:mt-0 order-1 lg:order-2 '>
+          <AboutMRERS/>
+        </div>
     </div>
   )
 }
