@@ -40,6 +40,7 @@ const RoomProvider = ({children}) => {
         purpose: reservation.purpose
       })
     }
+    
     const handleSendReservation = () => {
       if(!reservation.purpose){
         setIsRequired(prev => ({...prev, purpose: true}))
@@ -52,7 +53,7 @@ const RoomProvider = ({children}) => {
         const data = await res.json()
 
         if(!data.success){
-          throw new Error(data)
+          throw new Error(data.message)
         }
 
         setServerResponse(data)
@@ -64,7 +65,7 @@ const RoomProvider = ({children}) => {
       })
       .finally(() => {
         setIsLoading(false)
-        setShowConfirmation(true)
+        setShowConfirmation(false)
         setTimeout(() => {
           setShowNotification(false)
         }, 6000);

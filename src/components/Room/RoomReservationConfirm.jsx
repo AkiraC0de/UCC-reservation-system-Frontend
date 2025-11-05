@@ -8,7 +8,7 @@ import SubmitButton from "../Shared/SubmitButton"
 import { SyncLoader } from "react-spinners"
 
 const RoomReservationConfirm = () => {
-  const {reservation, selectedSchedule, handleReservation, toggleConfirmation} = useRoom()
+  const {reservation, isLoading, handleSendReservation, selectedSchedule, handleReservation, toggleConfirmation} = useRoom()
   const startingTimeString = TIME_SLOTS_30_MIN[selectedSchedule.startingTime]
   const outTimeString = TIME_SLOTS_30_MIN[selectedSchedule.outTime + 1]
   const scheduleTimeDuration = (selectedSchedule.outTime - selectedSchedule.startingTime + 1) / 2
@@ -76,11 +76,14 @@ const RoomReservationConfirm = () => {
           />
           <SubmitButton
             className="flex-1"
-            onClick={() => {}}
+            disabled={isLoading}
+            onClick={handleSendReservation}
           >
-            Submit
-            {/* {!isSubmitting && "Submit"}
-            {<SyncLoader loading={isSubmitting} color="green" size={10}/>} */}
+            {
+              !isLoading ? 
+              "Submit" :
+              <SyncLoader loading={isLoading} color="green" size={10}/>
+            }
           </SubmitButton>
         </div>
 
