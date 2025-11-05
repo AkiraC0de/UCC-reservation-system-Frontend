@@ -4,20 +4,14 @@ import Auth from "../pages/Auth"
 import useAuth from "../hooks/useAuth"
 
 const ProtectedPage = ({children}) => {
-  const {auth} = useAuth()
+  const {auth, isAutoLoginAtProgress} = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
-    if(!auth.isLogin){
+    if(!isAutoLoginAtProgress && !auth.isLogin){
        navigate("/")
     }
-  }, [])
-
-  useEffect(() => {
-    if(auth.isLogin && auth?.userData?.role == "admin"){
-       navigate("/admin")
-    }
-  }, [auth.isLogin])
+  }, [isAutoLoginAtProgress])
 
   return (
     <>

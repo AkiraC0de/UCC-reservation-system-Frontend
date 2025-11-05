@@ -8,6 +8,8 @@ const NavUser = () => {
   const {handleLogout, auth} = useAuth()
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 
+  const navigate = useNavigate()
+
   const toggleShowLogoutConfirm = () => {
     setShowLogoutConfirm(prev => !prev)
   }
@@ -15,7 +17,7 @@ const NavUser = () => {
   const handleConfirm = () => {
     toggleShowLogoutConfirm()
     handleLogout()
-    goToHome()
+    navigate("/")
   }
 
   return (

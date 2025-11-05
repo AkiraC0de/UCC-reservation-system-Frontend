@@ -15,7 +15,7 @@ const AuthVerified = () => {
       </div>
       <h3 className="text-lg font-semibold text-green-600">Email Verified!</h3>
       <p className="text-sm text-gray-500 mb-4">
-        Your account has been verified successfully.
+        Your email has been verified successfully. You will be notified once your account has been fully verified by the admin. <br/> (1-3 working days)
       </p>
       <PrimaryButton onClick={handleClick} className="w-full">
         CONTINUE

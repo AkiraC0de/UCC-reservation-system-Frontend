@@ -92,7 +92,7 @@ const Stage3 = () => {
         const data = await response.json()
 
         if(!data.success){
-            throw new Error(data)
+            throw new Error(data.message)
         }
 
         // Success - store user ID and move to verification
@@ -101,7 +101,6 @@ const Stage3 = () => {
 
       } catch (error) {
         console.error("Signup error:", error)
-        alert("Network error. Please check your connection and try again.")
       } finally {
         setIsSubmitting(false)
       }

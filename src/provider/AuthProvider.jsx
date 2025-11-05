@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { AuthContext } from "../context/authContext"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import NavItemCard from "../components/Admin/Nav/NavItemCard"
 
 const AuthProvider = ({children}) => {
   const [authState, setAuthState] = useState("login")
@@ -66,6 +67,10 @@ const AuthProvider = ({children}) => {
           password: null
         }))
       }
+
+      if(data.data.role == "admin"){
+        navigate("/admin")
+      }
     })
     .catch((err) => {
       console.error("fetch error:", err)
@@ -121,13 +126,15 @@ const AuthProvider = ({children}) => {
       setIsAutoLoginAtProgress(false)
 
       if (!res.ok) {
-          throw new Error('AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING'); 
+          throw new Error('AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING')
       }
 
-      if(data.success){    
-        handleAuth("isLogin", true)
-        handleAuth("userData", data.data)
+      if(!data.success){
+        throw new Error(data.message) 
       }
+
+      handleAuth("isLogin", true)
+      handleAuth("userData", data.data)
     })
     .catch(err => {
       if (err.message !== 'AUTH_REFRESH_TOKEN_EXPIRED_OR_MISSING') {
