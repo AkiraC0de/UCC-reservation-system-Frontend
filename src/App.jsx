@@ -12,6 +12,8 @@ import Dashboard from "./pages/Admin/Dashboard"
 import AdminProvider from "./provider/AdminProvider"
 import Reservations from "./pages/Admin/Reservations"
 import ItemReservation from "./pages/Admin/ItemReservation"
+import Applications from "./pages/Admin/Applications"
+import UserList from "./pages/Admin/UserList"
 
 function App() {
   return (
@@ -47,8 +49,8 @@ function App() {
         <Route path="/admin/manage-items" element={<Dashboard />} />
         <Route path="/admin/manage-rooms" element={<Dashboard />} />
 
-        <Route path="/admin/user-list" element={<Dashboard />} />
-        <Route path="/admin/user-application" element={<Dashboard />} />
+        <Route path="/admin/user-list" element={<UserList />} />
+        <Route path="/admin/user-application" element={<Applications />} />
         <Route path="/admin/user-reports" element={<Dashboard />} />
         
         <Route path="/admin/calendar" element={<Dashboard />} />
