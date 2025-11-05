@@ -35,7 +35,7 @@ export const MENU_ITEMS = [
     type: 'section',
     items: [
       { id: 'user-list', label: 'User List',  to: '/admin/user-list' },
-      { id: 'roles-permissions', label: 'Roles & Permissions', to: '/admin/user-roles' },
+      { id: 'user-application', label: 'Applications', to: '/admin/user-application' },
       { id: 'reports', label: 'Reports', to: '/admin/user-reports' }
     ]
   },

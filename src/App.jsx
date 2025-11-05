@@ -48,7 +48,7 @@ function App() {
         <Route path="/admin/manage-rooms" element={<Dashboard />} />
 
         <Route path="/admin/user-list" element={<Dashboard />} />
-        <Route path="/admin/user-roles" element={<Dashboard />} />
+        <Route path="/admin/user-application" element={<Dashboard />} />
         <Route path="/admin/user-reports" element={<Dashboard />} />
         
         <Route path="/admin/calendar" element={<Dashboard />} />

@@ -1,17 +1,15 @@
-import { useState } from "react"
-import { 
-  LayoutDashboard, ClipboardList, FolderCog,
-  Users, ListTree, Settings, User, LogOut
-} from "lucide-react"
-
 import Header from "./Header"
 import NavList from "./NavList"
+import NavActions from "./NavActions"
 
 const Nav = () => {
   return (
-    <aside className="sticky h-screen top-0 p-3 bg-white shadow-md">
+    <aside className="sticky h-screen top-0 p-3 bg-white shadow-md flex flex-col">
       <Header/>
-      <NavList/>
+      <div className="flex flex-col justify-between flex-1">
+        <NavList/>
+        <NavActions/>     
+      </div>
     </aside>
   )
 }

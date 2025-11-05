@@ -5,12 +5,14 @@ import useAuth from "../hooks/useAuth"
 
 const AdminLayout = () => {  
   return (
-    <div>
-      <div className="grid grid-cols-[280px_1fr] gap-4 bg-[#f5f5f7]">
+    <>
+      <div className="grid grid-cols-[280px_1fr] gap-4 bg-gray-50">
         <Nav/>
-        <Outlet/>
+        <main className="pr-4">
+          <Outlet/>
+        </main>
       </div>
-    </div>
+    </>
   )
 }
 export default AdminLayout
