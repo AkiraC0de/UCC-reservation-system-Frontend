@@ -326,24 +326,9 @@
   clip-path: polygon(17% 20%, 17% 0, 100% 0, 100% 17%, 100% 100%, 17% 100%, 17% 36%, 0 36%, 0 20%);
 }
 
-.scroll-bar-1::-webkit-scrollbar-button {
-  display: none;
-}
 
-/* You might also want to style the track and thumb */
-::-webkit-scrollbar {
-  width: 8px; /* Adjust as needed */
-}
-
-.scroll-bar-1::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.scroll-bar-1::-webkit-scrollbar-thumb {
-  background: #e0dfdd;
-  border-radius: 4px;
-}
-
-.scroll-bar-1::-webkit-scrollbar-thumb:hover {
-  background: #b1b9be;
-}
+html { scrollbar-width: thin; scrollbar-color: #9ca3af #ededed; }
+html::-webkit-scrollbar { width: 8px; }
+html::-webkit-scrollbar-track { background: #ededed; }
+html::-webkit-scrollbar-thumb { background: #9ca3af; border-radius:6px; }
+html::-webkit-scrollbar-button { display: none; }

@@ -18,7 +18,7 @@ const AdminLayout = () => {
     <>
       <div className="grid grid-cols-[280px_1fr] gap-4 bg-gray-50">
         <Nav/>
-        <main className="pr-4">
+        <main className="pr-4 ">
           {auth?.userData?.role == "admin" && <Outlet/>}
         </main>
       </div>

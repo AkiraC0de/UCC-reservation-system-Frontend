@@ -128,3 +128,8 @@ export const convertDateFormat = (dateString) => {
 
     return convertedFormat;
 }
+
+export const formatDBTime = (timeString) => {
+  const date = timeString.slice(0, 10)
+  return date
+}
