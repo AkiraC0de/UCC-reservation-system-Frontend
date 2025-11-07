@@ -16,16 +16,30 @@ const Nav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [])
 
+  // const navClasses = clsx({
+  //   "bg-[#f5f5f7]" : scrolled,
+  //   "bg-transparent" : !scrolled,
+  // }, "grid grid-cols-[200px_600px] items-center  px-6 z-200 fixed top-0 h-[75px] w-full transition-all duration-300")
+
   const navClasses = clsx({
     "bg-[#f5f5f7]" : scrolled,
     "bg-transparent" : !scrolled,
-  }, "grid grid-cols-3 items-center justify-between px-6 z-200 fixed top-0 h-[75px] w-full transition-all duration-300")
+  }, "flex justify-between items-center px-6 z-200 fixed top-0 h-[75px] w-full transition-all duration-300 ")
+
+  const rightNavClasses = clsx({
+    "bg-[#f5f5f7]" : scrolled,
+    "bg-transparent" : !scrolled,
+  }, "flex lg:flex-2 md:flex-3 justify-between items-center ")
 
   return (
     <div className={navClasses}>
-        <Logo/>
-        <NavItems/>
-        <NavUser/>
+        <div className="flex-1 sm:basis-0 lg:basis-25">
+          <Logo/>
+        </div>
+        <div className={rightNavClasses}>
+          <NavItems/>
+          <NavUser/>
+        </div>
     </div>
   )
 }
