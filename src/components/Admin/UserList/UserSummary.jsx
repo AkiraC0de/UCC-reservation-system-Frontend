@@ -1,5 +1,5 @@
 import {Users, UserPen, UserStar} from "lucide-react"
-import UserSummayCard from "./UserSummayCard"
+import UserSummayCard from "../../Shared/UserSummayCard"
 import useUserList from "../../../hooks/Admin/useUserList"
 
 

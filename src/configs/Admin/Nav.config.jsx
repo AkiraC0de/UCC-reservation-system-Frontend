@@ -34,9 +34,8 @@ export const MENU_ITEMS = [
     icon: Users,
     type: 'section',
     items: [
-      { id: 'user-list', label: 'User List',  to: '/admin/user-list' },
+      { id: 'user-list', label: 'User Management',  to: '/admin/user-management' },
       { id: 'user-application', label: 'Applications', to: '/admin/user-application' },
-      { id: 'reports', label: 'Reports', to: '/admin/user-reports' }
     ]
   },
   {

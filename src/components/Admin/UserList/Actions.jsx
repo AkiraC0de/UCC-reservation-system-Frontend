@@ -3,7 +3,7 @@ import PrimaryButton from "../../Shared/PrimaryButton"
 import useUserList from "../../../hooks/Admin/useUserList"
 
 const Actions = () => {
-  const {users, searchQuery, setSearchQuery, roleFilter, setRoleFilter, yearLevelFilter, setYearLevelFilter} = useUserList()
+  const {setIsAddUserOpen, searchQuery, setSearchQuery, roleFilter, setRoleFilter, yearLevelFilter, setYearLevelFilter} = useUserList()
 
   return (
     <div className="bg-white rounded-lg shadow-md p-4 mb-6 text-sm anim-fade-pop-top">
@@ -59,7 +59,9 @@ const Actions = () => {
           </div>
 
           {/* Add User Button */}
-          <button className="flex text-nowrap items-center justify-center gap-2 bg-green-gradient-2 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+          <button 
+            onClick={() => setIsAddUserOpen(true)}
+            className="flex text-nowrap items-center justify-center gap-2 bg-green-gradient-2 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
             <Plus size={20} />
             <span className="hidden sm:inline">Add User</span>
           </button>

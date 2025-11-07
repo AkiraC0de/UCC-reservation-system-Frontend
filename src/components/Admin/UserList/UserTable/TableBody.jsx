@@ -51,7 +51,7 @@ const TableBody = () => {
             <div className="max-w-[200px] truncate">{user.email}</div>
           </td>
           <td className="py-4 px-4">{getRoleBadge(user.role)}</td>
-          <td className="py-4 px-4 text-sm text-gray-700 hidden lg:table-cell">{user.program}</td>
+          <td className="py-4 px-4 text-sm text-gray-700 hidden lg:table-cell">{user.program || "N/A"}</td>
           <td className="py-4 px-4 text-sm text-gray-700 hidden xl:table-cell">
             {user.yearLevel ? `${user.yearLevel} - ${user.section}` : 'N/A'}
           </td>

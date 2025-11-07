@@ -49,7 +49,7 @@ function App() {
         <Route path="/admin/manage-items" element={<Dashboard />} />
         <Route path="/admin/manage-rooms" element={<Dashboard />} />
 
-        <Route path="/admin/user-list" element={<UserList />} />
+        <Route path="/admin/user-management" element={<UserList />} />
         <Route path="/admin/user-application" element={<Applications />} />
         <Route path="/admin/user-reports" element={<Dashboard />} />
         

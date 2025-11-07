@@ -6,18 +6,15 @@ import { useState } from "react"
 import { SyncLoader } from "react-spinners"
 
 const UserDetailsModal = () => {
-  
   const {isUserDetailOpen, selectedUser, setIsUserDetailOpen, setSelectedUser, fetchUsers} = useUserList()
-
-  if(!isUserDetailOpen){
-    return
-  }
-  
 
   const [isEditMode, setIsEditMode] = useState(false)
   const [editedUser, setEditedUser] = useState({})
   const [isLoading, setIsLoading] = useState(false)
-
+  
+  if(!isUserDetailOpen){
+    return
+  }
 
   const handleInputChange = (field, value) => {
     setEditedUser({ ...editedUser, [field]: value });
@@ -93,7 +90,7 @@ const UserDetailsModal = () => {
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen w-screen bg-black/10">
-      <div className="absolute right-1/50 top-1/40 h-38/40 shadow-xl bg-white p-1 rounded-2xl overflow-hidden anim-fade-pop-top">
+      <div className="absolute right-1/50 top-1/40 h-38/40 shadow-xl bg-white p-1 rounded-2xl overflow-hidden anim-slide-to-left">
         <div className="overflow-hidden  h-full w-full sm:w-96 bg-white">
           <div className="h-full flex flex-col ">
 

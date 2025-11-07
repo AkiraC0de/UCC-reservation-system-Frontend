@@ -2,9 +2,10 @@ import Input from "../Shared/Input"
 import SelectV2 from "../Shared/SelectV2"
 import { PROGRAM_CHOICES, YEAR_LEVEL_CHOICES, SECTION_CHOICES } from "../../configs/Auth.config"
 import useAuth from "../../hooks/useAuth"
+import ErrorTxt from "../Shared/ErrorTxt"
 
 const AuthStudentDatInputs = () => {
-  const {auth, signUpError , handleAuth} = useAuth()
+  const {auth, signUpError , handleAuth, setFileUpload, fileUpload} = useAuth()
 
   const handleStudentno = (e) => {
     handleAuth("studentNo", e.target.value)
@@ -23,17 +24,8 @@ const AuthStudentDatInputs = () => {
   }
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4">
       <div className="flex gap-3">
-        <Input
-          className="flex-4"
-          label="Student No. *"
-          error={signUpError.studentNo}
-          value={auth.studentNo}
-          onChange={handleStudentno}
-          placeholder="Ex: 00000000-A"
-          type="Text"
-        />
         <SelectV2 
           className="flex-3"
           label="Year *"
@@ -44,7 +36,7 @@ const AuthStudentDatInputs = () => {
         />
         <SelectV2 
           className="flex-3"
-          label="Year *"
+          label="Section *"
           placeholder=""
           options={SECTION_CHOICES}
           value={auth.section || ""}
@@ -61,6 +53,19 @@ const AuthStudentDatInputs = () => {
           onChange={handleProgram}
         />
         
+      </div>
+      <div>
+        <p className="text-xs text-gray-text mb-1">- Upload a picture of you Student ID</p>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setFileUpload(e.target.files[0])}
+          className="block w-full text-xs text-gray-600 file:mr-4 file:py-1 file:px-3
+                    file:rounded-md file:border-0 file:text-xs file:font-medium
+                    file:bg-lime-500 file:text-white hover:file:bg-lime-600
+                    cursor-pointer border rounded-md"
+        />
+        <ErrorTxt>{signUpError?.fileUpload}</ErrorTxt>
       </div>
     </div>
   )
