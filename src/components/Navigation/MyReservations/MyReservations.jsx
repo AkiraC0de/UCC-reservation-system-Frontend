@@ -1,5 +1,6 @@
 import {useState} from 'react'
-import NotificationCard from './NotificationCard'
+import NotificationCard from './MyReservationsCard'
+import { Calendar } from 'lucide-react';
 
 export default function Notification() {
   
@@ -9,9 +10,9 @@ export default function Notification() {
     setShowNotifications(prev=> !prev);
   }
 
-  const notifClickedStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer bg-green-700/40 transition-all duration-300`
+  const notifClickedStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-2xl px-3 py-1.5 cursor-pointer bg-green-700/40 transition-all duration-300`
 
-  const notifButtonStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer hover:bg-green-700/20 transition-all duration-300`
+  const notifButtonStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-2xl px-3 py-1.5 cursor-pointer hover:bg-green-700/20 transition-all duration-300`
 
 
   return (
@@ -20,10 +21,7 @@ export default function Notification() {
               <button 
               onClick={toggleShowNotification}
               className={showNotifications ? `${notifClickedStyles} `: `${notifButtonStyles}`}>
-                  <img
-                  src="icons/notifIcon.svg"
-                  width={15}
-                  />
+                  <Calendar size={16} />
               </button>
 
               {showNotifications &&

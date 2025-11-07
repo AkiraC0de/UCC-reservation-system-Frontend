@@ -2,7 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"
 import LogoutConfirmation from "../Shared/LogoutConfirmation"
-import Notification from "./Notification/Notification.jsx"
+import Notification from "./MyReservations/MyReservations.jsx"
+import { LogOut } from 'lucide-react';
 
 const NavUser = () => {
   const {handleLogout, auth} = useAuth()
@@ -20,9 +21,9 @@ const NavUser = () => {
     navigate("/")
   }
 
-  const logOutBtnStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer hover:bg-green-700/20 transition-all duration-300`
+  const logOutBtnStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-2xl px-3 py-1.5 cursor-pointer hover:bg-green-700/20 transition-all duration-300`
 
-  const logOutBtnActive = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer bg-green-700/40 transition-all duration-300`
+  const logOutBtnActive = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-2xl px-3 py-1.5 cursor-pointer bg-green-700/40 transition-all duration-300`
 
   return (
     <div className="flex gap-2 items-center justify-end">
@@ -40,10 +41,7 @@ const NavUser = () => {
         <button 
           onClick={toggleShowLogoutConfirm}
           className={showLogoutConfirm ? `${logOutBtnActive}`: `${logOutBtnStyles}`}>
-            <img
-            src="icons/logoutIcon.svg"
-            width={15}
-            />
+            <LogOut size={16}/>
         </button>
       </>}
       {showLogoutConfirm && <LogoutConfirmation onConfirm={handleConfirm} onCancel={toggleShowLogoutConfirm}/>}
