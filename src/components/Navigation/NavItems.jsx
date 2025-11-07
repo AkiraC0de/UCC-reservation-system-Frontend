@@ -16,7 +16,7 @@ export default function NavItems(){
         {NAV_ITEMS.map(item => (
             <div 
                 key={item.id}
-                className={`${pathname == item.path ? 'font-bold text-green-700' : 'font-medium'} transition-all duration-300 uppercase text-xs`}>
+                className={`${pathname == item.path ? 'font-bold text-green-700' : 'font-medium'} transition-all duration-300 uppercase text-xs hover:text-green-700`}>
                 <Link to={item.path}>
                     {item.label}
                 </Link>
@@ -29,7 +29,7 @@ export default function NavItems(){
          {NAV_ITEMS.map(item => (
             <div 
                 key={item.id}
-                className={`${pathname == item.path ? 'font-bold text-green-700' : 'font-medium'} transition-all duration-300 uppercase text-xs`}>
+                className={`${pathname == item.path ? 'font-bold text-green-700' : 'font-medium'} transition-all duration-300 uppercase text-xs hover:text-green-700`}>
                 <button onClick={()=> setMenuOpen(!menuOpen)}>
                   <Link to={item.path}>
                     {item.label.toUpperCase()}
