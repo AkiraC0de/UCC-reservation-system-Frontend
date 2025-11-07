@@ -12,7 +12,7 @@ export default function NavItems(){
        <Menu color="#15803d" className="md:hidden hover:cursor-pointer" onClick={()=> setMenuOpen(!menuOpen)}/>
 
 
-  <div className="hidden md:flex justify-evenly gap-[50%] ">
+  <div className="hidden md:flex justify-evenly gap-[30%] ">
         {NAV_ITEMS.map(item => (
             <div 
                 key={item.id}
@@ -25,7 +25,7 @@ export default function NavItems(){
     </div>
 
     {menuOpen && (
-      <div className="md:hidden flex flex-col items-center gap-4 text-black py-6 rounded-b-lg z-[100] absolute top-full left-0 right-0  bg-[#f5f5f7] shadow-sm ">
+      <div className="md:hidden flex flex-col items-center gap-2.5 text-black py-6 rounded-b-lg z-[100] absolute top-full left-0 right-0  bg-white shadow-sm ">
          {NAV_ITEMS.map(item => (
             <div 
                 key={item.id}

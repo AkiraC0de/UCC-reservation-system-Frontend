@@ -7,7 +7,7 @@ import Banner from "../Shared/Banner"
 
 const RightSection = ({children}) => {
   return (
-    <section className="flex px-6 gap-2 flex-col">
+    <section className="hidden md:flex px-6 gap-2 flex-col ">
       <HomeCardContainer>
         <HomeCard 
           label="Room Availables"
