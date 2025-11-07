@@ -105,7 +105,7 @@ const TableContent = () => {
     handleCellBeingHovered(null)
   }
 
-  const tableContentClass = "grid grid-cols-7 max-h-[calc(100vh-220px)] overflow-y-scroll overflow-x-clip scroll-bar-1"
+  const tableContentClass = "grid grid-cols-7 max-h-[calc(100vh-220px)] overflow-y-scroll overflow-x-clip scroll-bar-custom"
   return (
     <div className={tableContentClass}>
       <TableTimeList/>

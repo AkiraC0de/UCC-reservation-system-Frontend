@@ -133,3 +133,15 @@ export const formatDBTime = (timeString) => {
   const date = timeString.slice(0, 10)
   return date
 }
+
+export const formatDBTime2 = (timeString) => {
+  const formattedDate = new Date(timeString).toLocaleString("en-PH", {
+    timeZone: "Asia/Manila",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  })
+  return formattedDate
+}
