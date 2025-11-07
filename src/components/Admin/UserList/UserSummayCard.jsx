@@ -2,7 +2,7 @@ const UserSummayCard = ({userCount = 0, label = "", Icon, iconColor = "#fff", ic
   return (
     <div>
       <div 
-        className="bg-white rounded-lg flex items-center gap-4 shadow-md py-2 px-4 border-l-4"
+        className="bg-white rounded-lg flex items-center gap-4 shadow-md py-2 px-4 border-l-4 anim-fade-pop-top"
         style={{borderColor: iconColor}}
       >
         <div className="flex items-center gap-3 mb-2">

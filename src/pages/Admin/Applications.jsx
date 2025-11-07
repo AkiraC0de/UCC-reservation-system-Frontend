@@ -475,7 +475,6 @@ const Applications = () => {
               </tbody>
             </table>
           </div>
-
           {/* ============================================ */}
           {/* PAGINATION */}
           {/* ============================================ */}
@@ -528,7 +527,7 @@ const Applications = () => {
         <div className="fixed inset-0 z-50 overflow-hidden">
           {/* Backdrop */}
           <div 
-            className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
+            className="absolute inset-0 bg-black/20 bg-opacity-50 transition-opacity"
             onClick={closeDrawer}
           ></div>
 

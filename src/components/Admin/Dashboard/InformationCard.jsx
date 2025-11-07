@@ -2,7 +2,7 @@ import {ArrowUpRight} from 'lucide-react'
 
 const InformationCard = ({label = "", data = 0, Icon, iconColor = ""}) => {
   return (
-    <button className=" hover:scale-104 transition-all duration-300 cursor-pointer w-full px-4 py-2.5 shadow-md rounded-lg flex items-center gap-4 text-start">
+    <button className="anim-fade-pop-top hover:scale-104 transition-all duration-300 cursor-pointer w-full px-4 py-2.5 shadow-md rounded-lg flex items-center gap-4 text-start">
       <div 
         className="w-12 h-12 center rounded-lg"
         style={{background: iconColor}}

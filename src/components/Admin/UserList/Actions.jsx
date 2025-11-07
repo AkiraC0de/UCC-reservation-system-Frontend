@@ -6,7 +6,7 @@ const Actions = () => {
   const {users, searchQuery, setSearchQuery, roleFilter, setRoleFilter, yearLevelFilter, setYearLevelFilter} = useUserList()
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-4 mb-6 text-sm">
+    <div className="bg-white rounded-lg shadow-md p-4 mb-6 text-sm anim-fade-pop-top">
       <div className="flex flex-col lg:flex-row gap-4">
         {/* Search Bar */}
         <div className="flex-1">

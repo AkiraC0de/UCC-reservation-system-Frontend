@@ -6,11 +6,13 @@ const UserListProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(true)
   const [filteredUsers, setFilteredUsers] = useState(users)
 
-  console.log(filteredUsers)
 
   const [searchQuery, setSearchQuery] = useState("")
   const [roleFilter, setRoleFilter] = useState("all")
   const [yearLevelFilter, setYearLevelFilter] = useState("all")
+
+  const [isUserDetailOpen, setIsUserDetailOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState(false)
 
   useEffect(() => {
     if(isLoading){
@@ -89,7 +91,11 @@ const UserListProvider = ({children}) => {
       filteredUsers,
       setSearchQuery,
       setRoleFilter,
-      setYearLevelFilter
+      setYearLevelFilter,
+      isUserDetailOpen,
+      setIsUserDetailOpen,
+      selectedUser,
+      setSelectedUser
     }}>
       <main className="max-w-7xl mx-auto">
         {children}

@@ -6,6 +6,25 @@
   --color-gray-text: rgb(125, 125, 125);
 }
 
+@layer utilities {
+  .scroll-bar-custom::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scroll-bar-custom::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scroll-bar-custom::-webkit-scrollbar-thumb {
+    background: #d3d3d3;
+    border-radius: 6px;
+  }
+
+  .scroll-bar-custom::-webkit-scrollbar-button {
+    display: none;
+  }
+}
+
 
 :root {
   font-family: "Poppins", Arial, sans-serif;
@@ -145,7 +164,7 @@
 @keyframes fade-pop-top {
   from{
     opacity: 0;
-    transform: translateY(100%);
+    transform: translateY(20px);
   }
 
   to{
@@ -327,8 +346,8 @@
 }
 
 
-html { scrollbar-width: thin; scrollbar-color: #9ca3af #ededed; }
+
 html::-webkit-scrollbar { width: 8px; }
 html::-webkit-scrollbar-track { background: #ededed; }
-html::-webkit-scrollbar-thumb { background: #9ca3af; border-radius:6px; }
+html::-webkit-scrollbar-thumb { background: #d4d2d2; border-radius:6px; }
 html::-webkit-scrollbar-button { display: none; }

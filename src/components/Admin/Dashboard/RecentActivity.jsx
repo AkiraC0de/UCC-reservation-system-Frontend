@@ -25,7 +25,7 @@ const RecentActivity = () => {
   }
 
   return (
-     <div className="bg-white rounded-lg shadow-md p-6">
+     <div className="bg-white rounded-lg shadow-md p-6 anim-fade-pop-top">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold text-black-text">Recent Activity</h2>
         <button className="text-green-600 hover:text-green-700 text-sm font-medium">View All</button>

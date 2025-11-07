@@ -3,6 +3,7 @@ import Actions from "../../components/Admin/UserList/Actions"
 import Header from "../../components/Admin/UserList/Header"
 import UserSummary from "../../components/Admin/UserList/UserSummary"
 import UserListProvider from "../../provider/Admin/UserListProvider"
+import UserDetailsModal from "../../components/Admin/UserList/UserTable/UserDetailsModal"
 
 const UserList = () => {
   
@@ -14,6 +15,7 @@ const UserList = () => {
           <Actions/>
           <Table/>
         </div>
+        <UserDetailsModal/>
     </UserListProvider>
   )
 }

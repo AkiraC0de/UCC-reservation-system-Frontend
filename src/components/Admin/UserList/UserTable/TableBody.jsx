@@ -7,9 +7,7 @@ import {Eye, Trash2, Clock} from 'lucide-react';
 
 
 const TableBody = () => {
-  const {users, searchQuery, roleFilter, filteredUsers} = useUserList()
-
-  console.log(filteredUsers)
+  const {setIsUserDetailOpen, setSelectedUser, filteredUsers} = useUserList()
 
   const getRoleBadge = (role) => {
     const styles = {
@@ -22,6 +20,11 @@ const TableBody = () => {
         {role.charAt(0).toUpperCase() + role.slice(1)}
       </span>
     )
+  }
+
+  const handleViewUser = (user) => {
+    setSelectedUser(user)
+    setIsUserDetailOpen(true)
   }
 
   return (

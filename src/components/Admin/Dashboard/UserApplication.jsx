@@ -2,7 +2,7 @@ import { ClipboardMinus, ArrowUpRight } from 'lucide-react'
 
 const UserApplication = ({data = 0}) => {
   return (
-    <button className="flex flex-col text-start w-full min-h-40 h-full bg-green-gradient-2 rounded-3xl relative p-4 shadow-md hover:scale-104 transition-all duration-300 cursor-pointer">
+    <button className="anim-fade-pop-top flex flex-col text-start w-full min-h-40 h-full bg-green-gradient-2 rounded-3xl relative p-4 shadow-md hover:scale-104 transition-all duration-300 cursor-pointer">
     <div className="bg-lime-500 w-13 aspect-square rounded-full center absolute top-4 left-4">
       <ClipboardMinus size={35} color="white"/>
     </div>
