@@ -59,10 +59,10 @@ const Actions = () => {
           </div>
 
           {/* Add User Button */}
-          <PrimaryButton className="flex text-nowrap items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+          <button className="flex text-nowrap items-center justify-center gap-2 bg-green-gradient-2 cursor-pointer text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
             <Plus size={20} />
             <span className="hidden sm:inline">Add User</span>
-          </PrimaryButton>
+          </button>
         </div>
 
       </div>

@@ -42,42 +42,44 @@ const UserListProvider = ({children}) => {
     facultyUsers: users.filter(u => u.role === 'faculty').length
   }), [users])
 
+  const URL_REFRESH = "http://localhost:8080/api/admin/all-user"
+  const OPTION_REFRESH = {
+    method: "GET",
+    credentials: 'include',
+    headers: {
+        "Content-Type": "application/json"
+    },
+  }
+
+  const fetchUsers = () => {
+    setIsLoading(true)
+    fetch(URL_REFRESH, OPTION_REFRESH)
+    .then(async res => {
+      const data = await res.json()
+
+      if (!res.ok) {
+          throw new Error('CANT_FETCH_ALL_USERS_DATA')
+      }
+
+      if(!data.success){
+        throw new Error(data.message) 
+      }
+
+      const userThatIsNotArchived = data.data.filter(user => user.status != "archived")
+
+      setUsers(userThatIsNotArchived)
+      setFilteredUsers(userThatIsNotArchived)
+    })
+    .catch(err => {
+        console.error("Fetching User Data critical error:", err);
+    })
+    .finally(() => {
+      setIsLoading(false)
+    })
+  }
+
   // Auto fetch the users data
   useEffect(() => {
-    const URL_REFRESH = "http://localhost:8080/api/admin/all-user"
-    const OPTION_REFRESH = {
-      method: "GET",
-      credentials: 'include',
-      headers: {
-          "Content-Type": "application/json"
-      },
-    }
-
-    const fetchUsers = () => {
-      setIsLoading(true)
-      fetch(URL_REFRESH, OPTION_REFRESH)
-      .then(async res => {
-        const data = await res.json()
-
-        if (!res.ok) {
-            throw new Error('CANT_FETCH_ALL_USERS_DATA')
-        }
-
-        if(!data.success){
-          throw new Error(data.message) 
-        }
-
-        setUsers(data.data)
-        setFilteredUsers(data.data)
-      })
-      .catch(err => {
-          console.error("Fetching User Data critical error:", err);
-      })
-      .finally(() => {
-        setIsLoading(false)
-      })
-    }
-
     fetchUsers()
   }, [])
 
@@ -95,7 +97,8 @@ const UserListProvider = ({children}) => {
       isUserDetailOpen,
       setIsUserDetailOpen,
       selectedUser,
-      setSelectedUser
+      setSelectedUser,
+      fetchUsers
     }}>
       <main className="max-w-7xl mx-auto">
         {children}
