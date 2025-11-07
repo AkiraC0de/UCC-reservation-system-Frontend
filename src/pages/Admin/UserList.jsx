@@ -4,6 +4,7 @@ import Header from "../../components/Admin/UserList/Header"
 import UserSummary from "../../components/Admin/UserList/UserSummary"
 import UserListProvider from "../../provider/Admin/UserListProvider"
 import UserDetailsModal from "../../components/Admin/UserList/UserTable/UserDetailsModal"
+import AddNewUser from "../../components/Admin/UserList/AddNewUser"
 
 const UserList = () => {
   
@@ -16,6 +17,7 @@ const UserList = () => {
           <Table/>
         </div>
         <UserDetailsModal/>
+        <AddNewUser/>
     </UserListProvider>
   )
 }

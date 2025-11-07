@@ -14,6 +14,8 @@ const UserListProvider = ({children}) => {
   const [isUserDetailOpen, setIsUserDetailOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState(false)
 
+  const [isAddUserOpen, setIsAddUserOpen] = useState(false)
+
   useEffect(() => {
     if(isLoading){
       return
@@ -98,7 +100,9 @@ const UserListProvider = ({children}) => {
       setIsUserDetailOpen,
       selectedUser,
       setSelectedUser,
-      fetchUsers
+      fetchUsers,
+      isAddUserOpen,
+      setIsAddUserOpen
     }}>
       <main className="max-w-7xl mx-auto">
         {children}

@@ -6,18 +6,15 @@ import { useState } from "react"
 import { SyncLoader } from "react-spinners"
 
 const UserDetailsModal = () => {
-  
   const {isUserDetailOpen, selectedUser, setIsUserDetailOpen, setSelectedUser, fetchUsers} = useUserList()
-
-  if(!isUserDetailOpen){
-    return
-  }
-  
 
   const [isEditMode, setIsEditMode] = useState(false)
   const [editedUser, setEditedUser] = useState({})
   const [isLoading, setIsLoading] = useState(false)
-
+  
+  if(!isUserDetailOpen){
+    return
+  }
 
   const handleInputChange = (field, value) => {
     setEditedUser({ ...editedUser, [field]: value });
