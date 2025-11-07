@@ -42,7 +42,7 @@ export default function Developers() {
             {devs.map((dev)=>{
               return (   
                 <div className='flex flex-col'>
-                <div className={devContainer}>
+                <div key={dev.id} className={devContainer}>
                     <img
                     src={images[dev.surname]}
                     alt={dev.surname}
