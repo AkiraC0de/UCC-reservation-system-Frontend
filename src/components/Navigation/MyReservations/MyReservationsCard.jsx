@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { notifications, STATUS } from '../../../configs/Nav.config'
 import useAuth from '../../../hooks/useAuth';
+import { X } from 'lucide-react';
+
 
 export default function NotificationCard({className}) {
   const [fetchedData, setFetchedData] = useState([])
@@ -37,7 +39,7 @@ export default function NotificationCard({className}) {
 
   return (
   <div className={`p-4 bg-white rounded-xl shadow-lg border w-[15rem] md:w-[17rem] ${className}`}>
-      <p className='text-xl font-semibold mb-2'>Notifications</p>
+      <p className='text-xl font-semibold mb-2'>My Reservations</p>
 
       <div className='flex flex-col'>
         {notifications.map((notif) => {
@@ -65,11 +67,30 @@ export default function NotificationCard({className}) {
                 <p className='text-xs text-gray-500 mt-0.5'>📅 {notif.date} • {notif.time} </p>
                 <p className='text-xs text-gray-400 mt-1'>{notif.timeAgo}</p>
 
-                <span
+                {notif.status !== 'Pending' &&(
+                  <span
                   className={`inline-block mt-2 text-xs px-2 py-0.5 rounded-full border ${s.color}`}
                 >
                   {s.label}
                 </span>
+                )}
+              {notif.status === 'Pending' && (
+                <div className='flex items-center gap-[5%]'>
+                  <span
+                    className={`inline-block mt-2 text-xs px-2 py-0.5 rounded-full border ${s.color}`}
+                  >
+                    {s.label}
+                  </span>
+                    
+                  <button
+                    className='flex items-center mt-2 gap-1 text-xs px-3 py-1 rounded-full text-red-600 border border-red-300 
+                    bg-red-50 hover:bg-red-100 hover:cursor-pointer active:bg-red-200 transition-all'
+                  >
+                    <X className='w-3 h-3' />
+                    Cancel
+                  </button>
+                </div>
+                  )}
               </div>
             </div>
           );
