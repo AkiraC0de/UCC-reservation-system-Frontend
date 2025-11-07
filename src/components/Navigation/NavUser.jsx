@@ -20,6 +20,10 @@ const NavUser = () => {
     navigate("/")
   }
 
+  const logOutBtnStyles = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer hover:bg-green-700/20 transition-all duration-300`
+
+  const logOutBtnActive = `border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer bg-green-700/40 transition-all duration-300`
+
   return (
     <div className="flex gap-2 items-center justify-end">
       <div className="flex flex-col items-end">
@@ -35,7 +39,7 @@ const NavUser = () => {
         {/*<p className="text-sm text-black-text font-semibold ">{ auth.userData.firstName} { auth.userData.lastName}</p>*/}
         <button 
           onClick={toggleShowLogoutConfirm}
-          className="border-2 mx-2 text-green-700 text-xs font-semibold rounded-3xl px-3 py-1.5 cursor-pointer hover:bg-gray-200/50 transition-all duration-300">
+          className={showLogoutConfirm ? `${logOutBtnActive}`: `${logOutBtnStyles}`}>
             <img
             src="icons/logoutIcon.svg"
             width={15}

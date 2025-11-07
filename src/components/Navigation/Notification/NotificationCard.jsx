@@ -36,7 +36,7 @@ export default function NotificationCard({className}) {
   console.log(fetchedData)
 
   return (
-  <div className={`p-4 bg-white rounded-xl shadow-lg border w-[17rem] ${className}`}>
+  <div className={`p-4 bg-white rounded-xl shadow-lg border w-[15rem] md:w-[17rem] ${className}`}>
       <p className='text-xl font-semibold mb-2'>Notifications</p>
 
       <div className='flex flex-col'>
