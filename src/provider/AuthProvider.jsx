@@ -12,6 +12,7 @@ const AuthProvider = ({children}) => {
   const [error, setError] = useState({})
   const [signUpError, setSignUpError] = useState({})
   const [userId, setUserId] = useState("")
+  const [fileUpload, setFileUpload] = useState(null)
   const [auth, setAuth] = useState({
     email: null,
     password : null,
@@ -202,6 +203,7 @@ const AuthProvider = ({children}) => {
       signUpFor, setSignUpFor,
       signUpError, handleSignUpError, resetSignUpError,
       userId, setUserId,
+      fileUpload, setFileUpload
     }}>
       {children}
     </AuthContext.Provider>

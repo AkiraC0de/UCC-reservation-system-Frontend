@@ -5,11 +5,11 @@ import SecondaryButton from "../../Shared/SecondaryButton"
 import PrimaryButton from "../../Shared/PrimaryButton"
 
 const Stage2 = () => {
-  const {auth, resetSignUpError, handleSignUpError, signUpFor, setSignUpStage} = useAuth()
+  const {auth, resetSignUpError, handleSignUpError, signUpFor, setSignUpStage, fileUpload} = useAuth()
 
   const handleNextStage2 = () => {
     resetSignUpError()
-    const requiredFields = ["firstName", "lastName", "section", "studentNo"]
+    const requiredFields = ["firstName", "lastName", "section", ]
     let hasError = false
 
     setTimeout(() => {
@@ -19,11 +19,16 @@ const Stage2 = () => {
           hasError = true
         }
       })
-    }, 100)
 
-    if (!hasError) {
-      setSignUpStage(3)
-    }
+      if(fileUpload == null){
+         handleSignUpError("fileUpload", `image of Student Id is required`)
+          hasError = true
+      }
+
+      if (!hasError) {
+        setSignUpStage(3)
+      }
+    }, 100)
   }
 
   return (

@@ -130,7 +130,7 @@ const AddNewUser = () => {
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 h-screen w-screen bg-black/10">
-      <div className="absolute right-1/50 flex flex-col top-1/40 h-38/40 shadow-xl w-105 bg-white rounded-2xl overflow-hidden anim-fade-pop-top">
+      <div className="absolute right-1/50 flex flex-col top-1/40 h-38/40 shadow-xl w-105 bg-white rounded-2xl overflow-hidden anim-slide-to-left">
         
         <div className="bg-green-gradient-2 px-6 py-4">
           <div className="flex items-center justify-between">
@@ -419,6 +419,21 @@ const AddNewUser = () => {
         <div className="border-t text-xs border-gray-200 px-6 py-4 bg-gray-50 flex justify-end gap-3">
             <button
               type="button"
+              onClick={handleCreateUser}
+              disabled={isSubmitting}
+              className="flex-1 center px-6 py-2 bg-green-gradient-2 text-white rounded-lg hover:scale-104 transition-all cursor-pointer font-medium flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isSubmitting ? (
+                <SyncLoader size={6} color="#00a63d"/>
+              ) : (
+                <>
+                  <Check size={18} />
+                  Create User
+                </>
+              )}
+            </button>
+            <button
+              type="button"
               onClick={() => {
                 setFormData({
                   firstName: '',
@@ -438,21 +453,6 @@ const AddNewUser = () => {
               disabled={isSubmitting}
             >
               Cancel
-            </button>
-            <button
-              type="button"
-              onClick={handleCreateUser}
-              disabled={isSubmitting}
-              className="px-6 py-2 bg-green-gradient-2 text-white rounded-lg hover:scale-104 transition-all cursor-pointer font-medium flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <SyncLoader size={6} color="#00a63d"/>
-              ) : (
-                <>
-                  <Check size={18} />
-                  Create User
-                </>
-              )}
             </button>
           </div>
 

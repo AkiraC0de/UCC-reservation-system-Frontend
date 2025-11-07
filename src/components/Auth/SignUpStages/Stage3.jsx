@@ -16,7 +16,8 @@ const Stage3 = () => {
     signUpError, 
     handleSignUpError, 
     resetSignUpError,
-    setUserId
+    setUserId,
+    fileUpload
   } = useAuth()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -70,23 +71,24 @@ const Stage3 = () => {
 
       try {
         // Prepare signup data - ensure all required fields are present
-        const signupData = {
-          firstName: auth.firstName?.trim(),
-          lastName: auth.lastName?.trim(),
-          program: auth.program?.trim(),
-          yearLevel: auth.yearLevel,
-          section: auth.section?.trim(),
-          email: auth.email?.trim(),
-          password: auth.password,
-          role: signUpFor,
+        const formData = new FormData()
+
+        formData.append("firstName", auth.firstName?.trim());
+        formData.append("lastName", auth.lastName?.trim());
+        formData.append("program", auth.program?.trim());
+        formData.append("yearLevel", auth.yearLevel);
+        formData.append("section", auth.section?.trim());
+        formData.append("email", auth.email?.trim());
+        formData.append("password", auth.password);
+        formData.append("role", signUpFor);
+
+        if (fileUpload) {
+          formData.append("studentId", fileUpload); 
         }
 
         const response = await fetch("http://localhost:8080/api/auth/signup", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(signupData),
+          body: formData,
         })
 
         const data = await response.json()
