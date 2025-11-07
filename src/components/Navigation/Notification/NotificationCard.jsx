@@ -47,7 +47,7 @@ export default function NotificationCard({className}) {
           return (
             <div
               key={notif.id}
-              className='rounded-xl flex gap-3 p-2 hover:bg-gray-50 active:bg-gray-100 cursor-pointer transition-all'
+              className='rounded-xl flex gap-3 p-2 hover:bg-gray-100 active:bg-gray-200 cursor-pointer transition-all'
             >
               <div className='text-md mt-1'>{s.icon}</div>
               <div className='flex-1 text-sm'>

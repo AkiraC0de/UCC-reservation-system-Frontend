@@ -12,7 +12,7 @@ export default function NavItems(){
        <Menu color="#15803d" className="md:hidden hover:cursor-pointer" onClick={()=> setMenuOpen(!menuOpen)}/>
 
 
-  <div className="hidden md:flex justify-evenly gap-[30%] ">
+  <div className="hidden md:flex justify-evenly gap-[40%] ">
         {NAV_ITEMS.map(item => (
             <div 
                 key={item.id}
