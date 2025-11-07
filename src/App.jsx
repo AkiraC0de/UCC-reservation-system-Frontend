@@ -14,6 +14,7 @@ import Reservations from "./pages/Admin/Reservations"
 import ItemReservation from "./pages/Admin/ItemReservation"
 import Applications from "./pages/Admin/Applications"
 import UserList from "./pages/Admin/UserList"
+import Calendar from "./pages/Admin/Calendar"
 
 function App() {
   return (
@@ -43,8 +44,8 @@ function App() {
       }>
         <Route index element={<Dashboard/>}/>
 
-        <Route path="/admin/reservation-all" element={<Reservations />} />
-        <Route path="/admin/reservation-pending" element={<Dashboard />} />
+        <Route path="/admin/reservation-room" element={<Reservations />} />
+        <Route path="/admin/reservation-item" element={<ItemReservation />} />
 
         <Route path="/admin/manage-items" element={<Dashboard />} />
         <Route path="/admin/manage-rooms" element={<Dashboard />} />
@@ -53,7 +54,7 @@ function App() {
         <Route path="/admin/user-application" element={<Applications />} />
         <Route path="/admin/user-reports" element={<Dashboard />} />
         
-        <Route path="/admin/calendar" element={<Dashboard />} />
+        <Route path="/admin/calendar" element={<Calendar />} />
         <Route path="/admin/activity-logs" element={<Dashboard />} />
         <Route path="/admin/history" element={<Dashboard />} />
 

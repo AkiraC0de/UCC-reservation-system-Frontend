@@ -55,13 +55,13 @@ const UserApplicationModal = ({ user, isOpen, onClose, onApprove, onReject, onRe
   return (
     <>
       <div 
-        className={`fixed inset-0 bg-black/10 transition-opacity duration-300 z-40 ${
+        className={`fixed inset-0 bg-black/10 transition-opacity duration-300 z-60 ${
           isOpen ? 'bg-opacity-50' : 'bg-opacity-0 pointer-events-none'
         }`}
         onClick={onClose}
       />
 
-      <div className={`anim-slide-to-left fixed right-0 top-0 h-full w-full sm:w-[500px] lg:w-[600px] bg-white shadow-2xl transform transition-transform duration-300 z-50 ${
+      <div className={`anim-slide-to-left fixed right-0 top-0 h-full w-full sm:w-[500px] lg:w-[600px] bg-white shadow-2xl transform transition-transform duration-300 z-70 ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}>
         <div className="h-full flex flex-col">

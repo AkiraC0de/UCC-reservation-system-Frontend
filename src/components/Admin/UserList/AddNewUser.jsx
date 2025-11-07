@@ -129,7 +129,7 @@ const AddNewUser = () => {
   }
 
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 h-screen w-screen bg-black/10">
+    <div className="fixed top-0 bottom-0 left-0 right-0 h-screen w-screen bg-black/10 z-60">
       <div className="absolute right-1/50 flex flex-col top-1/40 h-38/40 shadow-xl w-105 bg-white rounded-2xl overflow-hidden anim-slide-to-left">
         
         <div className="bg-green-gradient-2 px-6 py-4">
