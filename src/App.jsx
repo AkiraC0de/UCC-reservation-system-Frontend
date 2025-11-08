@@ -14,6 +14,7 @@ import Reservations from "./pages/Admin/Reservations"
 import ItemReservation from "./pages/Admin/ItemReservation"
 import Applications from "./pages/Admin/Applications"
 import UserList from "./pages/Admin/UserList"
+import History from "./pages/Admin/History"
 
 function App() {
   return (
@@ -55,7 +56,7 @@ function App() {
         
         <Route path="/admin/calendar" element={<Dashboard />} />
         <Route path="/admin/activity-logs" element={<Dashboard />} />
-        <Route path="/admin/history" element={<Dashboard />} />
+        <Route path="/admin/history" element={<History />} />
 
       </Route> 
       <Route path="*" element={<div>404 Not Found</div>} />

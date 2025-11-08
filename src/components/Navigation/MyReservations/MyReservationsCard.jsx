@@ -83,7 +83,7 @@ export default function NotificationCard({className}) {
                   </span>
                     
                   <button
-                    className='flex items-center mt-2 gap-1 text-xs px-3 py-1 rounded-full text-red-600 border border-red-300 
+                    className='flex items-center mt-2 gap-1 text-xs px-2 py-0.5 rounded-full text-red-600 border border-red-300 
                     bg-red-50 hover:bg-red-100 hover:cursor-pointer active:bg-red-200 transition-all'
                   >
                     <X className='w-3 h-3' />
