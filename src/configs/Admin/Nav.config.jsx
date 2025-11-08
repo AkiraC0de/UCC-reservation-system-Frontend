@@ -14,8 +14,8 @@ export const MENU_ITEMS = [
     icon: Calendar,
     type: 'section',
     items: [
-      { id: 'all-reservations', label: 'All Reservations', to: '/admin/reservation-all' },
-      { id: 'pending-approvals', label: 'Pending Approvals',  to: '/admin/reservation-pending' }
+      { id: 'all-reservations', label: 'Room Reservations', to: '/admin/reservation-room' },
+      { id: 'pending-approvals', label: 'Item Reservations',  to: '/admin/reservation-item' }
     ]
   },
   {

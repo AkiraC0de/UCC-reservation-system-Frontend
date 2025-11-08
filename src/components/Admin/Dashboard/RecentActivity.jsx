@@ -1,15 +1,15 @@
 import {Building2, Package} from "lucide-react"
+import useDashboard from "../../../hooks/Admin/useDashboard"
+import { useMemo } from "react"
+import { TIME_SLOTS_30_MIN } from "../../../configs/Room.config"
 
 const RecentActivity = () => {
-  const recentActivity = [
-    { id: 1, type: 'Room', purpose: 'Laboratory Activity', reservedBy: 'Juan Dela Cruz', date: '2025-11-05', status: 'pending' },
-    { id: 2, type: 'Item', purpose: 'Group Study', reservedBy: 'Maria Santos', date: '2025-11-04', status: 'accepted' },
-    { id: 3, type: 'Room', purpose: 'Thesis Defense', reservedBy: 'Pedro Garcia', date: '2025-11-06', status: 'accepted' },
-    { id: 4, type: 'Item', purpose: 'Video Recording', reservedBy: 'Ana Reyes', date: '2025-11-04', status: 'rejected' },
-    { id: 5, type: 'Room', purpose: 'Meeting', reservedBy: 'Carlos Mendoza', date: '2025-11-05', status: 'pending' },
-    { id: 6, type: 'Item', purpose: 'Class Presentation', reservedBy: 'Sofia Torres', date: '2025-11-07', status: 'accepted' },
-    { id: 7, type: 'Room', purpose: 'Workshop', reservedBy: 'Miguel Ramos', date: '2025-11-08', status: 'pending' }
-  ]
+  const {calendarReservation} = useDashboard()
+
+  const recentActivity = useMemo(() => {
+    return calendarReservation.slice(0, 7)
+  }, [calendarReservation])
+
 
   const getStatusBadge = (status) => {
     const styles = {
@@ -43,7 +43,7 @@ const RecentActivity = () => {
           </thead>
           <tbody>
             {recentActivity.map((activity) => (
-              <tr key={activity.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <tr key={activity._id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                 <td className="py-3 px-4">
                   <span className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
                     activity.type === 'Room' ? 'bg-green-50 text-green-700' : 'bg-blue-50 text-blue-700'
@@ -54,7 +54,7 @@ const RecentActivity = () => {
                 </td>
                 <td className="py-3 px-4 text-sm text-gray-900">{activity.purpose}</td>
                 <td className="py-3 px-4 text-sm text-gray-700">{activity.reservedBy}</td>
-                <td className="py-3 px-4 text-sm text-gray-600">{activity.date}</td>
+                <td className="py-3 px-4 text-sm text-gray-600">{activity.date} {TIME_SLOTS_30_MIN[activity.startingTime]} - {TIME_SLOTS_30_MIN[activity.startingTime]}</td>
                 <td className="py-3 px-4">{getStatusBadge(activity.status)}</td>
               </tr>
             ))}

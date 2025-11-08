@@ -3,7 +3,7 @@ import { motion } from "motion/react"
 
 const LogoutConfirmation = ({onConfirm = () => {}, onCancel = () => {}}) => {
   return (
-    <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/40">
+    <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/40 z-900">
       <motion.div
       initial={{ opacity: 0, scale: 0}}
       animate={{ opacity: 1, scale: 1 }}

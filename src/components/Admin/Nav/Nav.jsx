@@ -4,7 +4,7 @@ import NavActions from "./NavActions"
 
 const Nav = () => {
   return (
-    <aside className="sticky h-screen top-0 p-3 bg-white shadow-md flex flex-col">
+    <aside className="sticky h-screen top-0 p-3 bg-white shadow-md flex flex-col z-50">
       <Header/>
       <div className="flex flex-col justify-between flex-1">
         <NavList/>
